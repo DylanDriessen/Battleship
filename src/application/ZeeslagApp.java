@@ -2,16 +2,16 @@ package application;
 
 import javax.swing.JFrame;
 
+import controller.Controller;
 import controller.ZeeslagController;
 import view.GameFrame;
+import view.View;
 
 public class ZeeslagApp {
 	
 	public static void main(String[] args) {
-		GameFrame view = new GameFrame();
-		view.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		view.setVisible(true);
-		ZeeslagController controller = new ZeeslagController(view);
+		View view = new GameFrame();
+		Controller controller = new ZeeslagController(view);
 	}
 	
 }
