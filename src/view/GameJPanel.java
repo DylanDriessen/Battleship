@@ -2,11 +2,15 @@ package view;
 
 import java.awt.Color;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
+import listener.ClickListener;
 
 public class GameJPanel extends JPanel {
 
@@ -15,14 +19,17 @@ public class GameJPanel extends JPanel {
 	public GameJPanel() {		
 		this.setLayout(new GridLayout(10, 10));
 		
-		for(int x = 0; x < 10; x++) {
-			for(int y = 0; y < 10; y++) {
+		for(int y = 0; y < 10; y++) {
+			for(int x = 0; x < 10; x++) {
 				JButton button = new JButton("" + x + y);
 				button.setBackground(Color.LIGHT_GRAY);
 				this.buttons.add(button);
 				this.add(button);
-				System.out.println("Added button: " + button.getText());
 			}
 		}
+	}
+	
+	public List<JButton> getButtons() {
+		return this.buttons;
 	}
 }
