@@ -11,6 +11,7 @@ public class ZeeslagApp {
 	
 	public static void main(String[] args) {
 		View view = new GameFrame();
+		view.startView();
 		Controller controller = new ZeeslagController(view);
 	}
 	

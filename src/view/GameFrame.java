@@ -1,5 +1,9 @@
 package view;
 
+import java.awt.Color;
+import java.awt.GridLayout;
+
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -13,14 +17,19 @@ public class GameFrame extends JFrame implements View {
 		super();
 		this.setSize(WIDTH, HEIGHT);
 		this.setResizable(false);
-		this.setLayout(null);
+		this.setLayout(new GridLayout(1,2));
 		
-		this.panel1 = new GameJPanel(0, 0);
-		
-		this.panel2 = new GameJPanel(0, 0);
-		
+		this.panel1 = new GameJPanel();
+		this.panel1.setBackground(Color.BLUE);
+		this.panel1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		this.add(panel1);
+		
+		this.panel2 = new GameJPanel();
+		this.panel2.setBackground(Color.RED);
+		this.panel2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		this.add(panel2);
+		
+		revalidate();
 	}
 
 	public JPanel getPanel1() {
