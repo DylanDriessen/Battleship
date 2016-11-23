@@ -22,20 +22,14 @@ public class GameFrame extends JFrame implements View {
 		this.setResizable(false);
 		this.setLayout(new GridLayout(1,2));
 		
-		this.panel1 = new GameJPanel();
+		this.panel1 = new GameJPanel(this);
 		this.panel1.setBackground(Color.BLUE);
 		this.panel1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		for(JButton b : (this.panel1).getButtons()) {
-			b.addActionListener(new ClickListener(this));
-		}
 		this.add(panel1);
 		
-		this.panel2 = new GameJPanel();
+		this.panel2 = new GameJPanel(this);
 		this.panel2.setBackground(Color.RED);
 		this.panel2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-		for(JButton b : (this.panel2).getButtons()) {
-			b.addActionListener(new ClickListener(this));
-		}
 		this.add(panel2);
 		
 		revalidate();
