@@ -1,12 +1,12 @@
 package controller;
 
-import view.SpelFrame;
+import view.GameFrame;
 
 public class ZeeslagController {
 
-	private SpelFrame view;
+	private GameFrame view;
 	
-	public ZeeslagController(SpelFrame view) {
+	public ZeeslagController(GameFrame view) {
 		this.view = view;
 	}
 
