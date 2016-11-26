@@ -13,8 +13,8 @@ import listener.ClickListener;
 public class GameFrame extends JFrame implements View {
 	
 	private GamePanel panel1, panel2;
-	private static final int WIDTH = 850;
-	private static final int HEIGHT = 500;
+	private static final int WIDTH = 750;
+	private static final int HEIGHT = 420;
 
 	public GameFrame() {
 		super();
@@ -27,7 +27,7 @@ public class GameFrame extends JFrame implements View {
 		
 		this.panel2 = new GamePanel(this, "Computer");
 		this.add(panel2);
-		
+	
 		revalidate();
 	}
 
