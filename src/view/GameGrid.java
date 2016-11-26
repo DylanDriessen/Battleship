@@ -6,14 +6,13 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import listener.ClickListener;
 
 public class GameGrid extends JPanel {
 
-private List<JButton> buttons = new ArrayList<JButton>();
+private List<Square> buttons = new ArrayList<Square>();
 	
 	public GameGrid(View gameFrame, int width) {		
 		this.setLayout(new GridLayout(10, 10));
@@ -21,7 +20,7 @@ private List<JButton> buttons = new ArrayList<JButton>();
 		
 		for(int y = 0; y < 10; y++) {
 			for(int x = 0; x < 10; x++) {
-				JButton button = new JButton("" + x + y);
+				Square button = new Square(x, y);
 				button.setBackground(Color.LIGHT_GRAY);
 				button.addActionListener(new ClickListener(gameFrame));
 				this.buttons.add(button);
@@ -30,7 +29,7 @@ private List<JButton> buttons = new ArrayList<JButton>();
 		}
 	}
 	
-	public List<JButton> getButtons() {
+	public List<Square> getButtons() {
 		return this.buttons;
 	}
 	

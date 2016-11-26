@@ -9,6 +9,7 @@ public class Scoreboard extends JPanel {
 	
 	public Scoreboard(String playerName) {
 		this.playerName = new JLabel(playerName + ":");
+		this.add(this.playerName);
 	}
 	
 }

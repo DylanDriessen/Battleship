@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 
 import controller.ZeeslagController;
+import view.Square;
 import view.View;
 
 public class ClickListener extends ZeeslagController implements ActionListener {
@@ -16,9 +17,9 @@ public class ClickListener extends ZeeslagController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		JButton button = ((JButton)e.getSource());
-		int x = Integer.parseInt(button.getText().charAt(0) + "");
-		int y = Integer.parseInt(button.getText().charAt(1) + "");
+		Square button = ((Square)e.getSource());
+		int x = button.getX();
+		int y = button.getY();
 		buttonClicked(x, y);
 	}
 

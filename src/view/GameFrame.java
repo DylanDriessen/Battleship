@@ -14,7 +14,7 @@ public class GameFrame extends JFrame implements View {
 	
 	private GamePanel panel1, panel2;
 	private static final int WIDTH = 850;
-	private static final int HEIGHT = 450;
+	private static final int HEIGHT = 500;
 
 	public GameFrame() {
 		super();
