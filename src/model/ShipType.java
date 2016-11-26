@@ -1,6 +1,6 @@
 package model;
 
-public enum ShipTemplate {
+public enum ShipType {
 
 	VLIEGDEK("Vliegdekschip", 5, 1),
 	SLAG("Slagschip", 4, 2),
@@ -11,7 +11,7 @@ public enum ShipTemplate {
 	private String name;
 	private int length, amount;
 	
-	ShipTemplate(String name, int length, int amount) {
+	ShipType(String name, int length, int amount) {
 		this.name = name;
 		this.length = length;
 		this.amount = amount;

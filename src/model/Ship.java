@@ -1,27 +1,17 @@
 package model;
 
 public class Ship {
-	private String name;
-	private int length;
 	private int x;
 	private int y;
 	private Orientation orientation;
+	private ShipType type;
 	
-	public Ship(String name, int length, int x, int y, Orientation orientation){
-		this.name = name;
-		this.length = length;
+	public Ship(int x, int y, Orientation orientation){
 		this.x = x;
 		this.y = y;
 		this.orientation = orientation;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public int getLength() {
-		return length;
-	}
 
 	public int getX() {
 		return x;
@@ -34,6 +24,10 @@ public class Ship {
 	public Orientation getOrientation() {
 		return orientation;
 	}
-	
-	
+
+	public ShipType getType() {
+		return type;
+	}
+
+		
 }

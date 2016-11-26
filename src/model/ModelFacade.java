@@ -44,7 +44,7 @@ public class ModelFacade {
 		
 	}
 	
-	public Ship getShip(ShipTemplate type, int x, int y, Orientation orientation){
+	public Ship getShip(ShipType type, int x, int y, Orientation orientation){
 		return null;
 		
 	}

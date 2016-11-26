@@ -9,7 +9,7 @@ import model.ModelFacade;
 import model.Orientation;
 import model.Player;
 import model.Ship;
-import model.ShipTemplate;
+import model.ShipType;
 import view.GameFrame;
 import view.View;
 

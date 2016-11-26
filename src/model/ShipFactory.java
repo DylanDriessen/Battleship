@@ -1,10 +1,10 @@
 package model;
 
-import model.ShipTemplate;
+import model.ShipType;
 
 public class ShipFactory {
 	
-	public Ship createShipFromTemplate(ShipTemplate type, int x, int y , Orientation orientation){
+	public Ship createShipFromTemplate(ShipType type, int x, int y , Orientation orientation){
 		return null;		
 	}
 
