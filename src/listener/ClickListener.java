@@ -19,9 +19,6 @@ public class ClickListener extends ZeeslagController implements ActionListener {
 		JButton button = ((JButton)e.getSource());
 		int x = Integer.parseInt(button.getText().charAt(0) + "");
 		int y = Integer.parseInt(button.getText().charAt(1) + "");
-
-		System.out.println("Clicked button with coördinates: x = " + x + ", y = " + y);
-
 		buttonClicked(x, y);
 	}
 

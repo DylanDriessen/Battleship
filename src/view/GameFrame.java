@@ -12,9 +12,9 @@ import listener.ClickListener;
 
 public class GameFrame extends JFrame implements View {
 	
-	private GameJPanel panel1, panel2;
-	private static final int WIDTH = 900;
-	private static final int HEIGHT = 400;
+	private GamePanel panel1, panel2;
+	private static final int WIDTH = 850;
+	private static final int HEIGHT = 450;
 
 	public GameFrame() {
 		super();
@@ -22,14 +22,10 @@ public class GameFrame extends JFrame implements View {
 		this.setResizable(false);
 		this.setLayout(new GridLayout(1,2));
 		
-		this.panel1 = new GameJPanel(this);
-		this.panel1.setBackground(Color.BLUE);
-		this.panel1.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		this.panel1 = new GamePanel(this, "John");
 		this.add(panel1);
 		
-		this.panel2 = new GameJPanel(this);
-		this.panel2.setBackground(Color.RED);
-		this.panel2.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		this.panel2 = new GamePanel(this, "Computer");
 		this.add(panel2);
 		
 		revalidate();

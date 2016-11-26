@@ -13,7 +13,7 @@ public class ZeeslagController implements Controller {
 	
 	public void buttonClicked(int x, int y) {
 		//TODO: change something in the model when a button is clicked etc. etc.
-		System.out.println("buttonClicked() performed in ZeeslagController");
+		System.out.println("Clicked button with coördinates: x = " + x + ", y = " + y);
 	}
 
 }
