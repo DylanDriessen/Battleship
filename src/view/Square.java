@@ -5,25 +5,21 @@ import java.awt.Graphics;
 
 import javax.swing.JButton;
 
+import model.Position;
+
 public class Square extends JButton {
 
-	private final int x;
-	private final int y;
+	private final Position position;
 	
 	public Square(int x, int y) {
 		super();
-		this.x = x;
-		this.y = y;
+		this.position = new Position(x, y);
 	}
 
-	public int getX() {
-		return x;
+	public Position getPosition() {
+		return this.position;
 	}
 
-	public int getY() {
-		return y;
-	}
-	
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
