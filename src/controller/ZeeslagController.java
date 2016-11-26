@@ -1,5 +1,15 @@
 package controller;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.util.List;
+import java.util.Map;
+
+import model.ModelFacade;
+import model.Orientation;
+import model.Player;
+import model.Ship;
+import model.ShipTemplate;
 import view.GameFrame;
 import view.View;
 
@@ -17,3 +27,6 @@ public class ZeeslagController implements Controller {
 	}
 
 }
+	
+	 
+
