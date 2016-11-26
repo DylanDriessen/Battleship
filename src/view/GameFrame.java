@@ -16,13 +16,13 @@ public class GameFrame extends JFrame implements View {
 	private static final int WIDTH = 750;
 	private static final int HEIGHT = 420;
 
-	public GameFrame() {
+	public GameFrame(String playerName) {
 		super();
 		this.setSize(WIDTH, HEIGHT);
 		this.setResizable(false);
 		this.setLayout(new GridLayout(1,2));
 		
-		this.panel1 = new GamePanel(this, "John");
+		this.panel1 = new GamePanel(this, playerName);
 		this.add(panel1);
 		
 		this.panel2 = new GamePanel(this, "Computer");

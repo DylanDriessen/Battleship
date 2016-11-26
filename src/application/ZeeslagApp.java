@@ -1,6 +1,7 @@
 package application;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 import controller.Controller;
 import controller.ZeeslagController;
@@ -10,7 +11,8 @@ import view.View;
 public class ZeeslagApp {
 	
 	public static void main(String[] args) {
-		View view = new GameFrame();
+		String playerName = JOptionPane.showInputDialog(null, "Please enter your name:");
+		View view = new GameFrame(playerName);
 		view.startView();
 		Controller controller = new ZeeslagController(view);
 	}
