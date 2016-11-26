@@ -13,7 +13,6 @@ public class ZeeslagApp {
 		View view = new GameFrame();
 		view.startView();
 		Controller controller = new ZeeslagController(view);
-		//test Dylan
 	}
 	
 }
