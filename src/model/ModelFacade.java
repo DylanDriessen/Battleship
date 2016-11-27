@@ -4,20 +4,20 @@ import javax.swing.JOptionPane;
 
 import exception.CancelledException;
 import exception.DomainException;
-import model.ShipFactory;
 
 public class ModelFacade {
 	
 	private Game game;
 	
-	public void addPlayer(){
+	public ModelFacade(Game game){
+		this.game = game;
+	}
+	
+	public void addPlayer() throws DomainException{
 		try {
 			String Playername = showJOptionInputDialog("Enter your name:", "Add Player");
-			game.addPlayer(name);
+			game.addPlayer(Playername);
 			JOptionPane.showMessageDialog(null, "Player ready to play");
-		} catch (DomainException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-			e.printStackTrace();
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Input not valid");
 			e.printStackTrace();

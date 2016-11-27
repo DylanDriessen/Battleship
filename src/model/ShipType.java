@@ -29,4 +29,10 @@ public enum ShipType {
 		return amount;
 	}
 	
+	public String toString(){
+		return name;
+	}
+	
+
+	
 }

@@ -26,6 +26,7 @@ public class ZeeslagController implements Controller {
 		System.out.println("Clicked button with coördinates: x = " + x + ", y = " + y);
 	}
 
+
 }
 	
 	 

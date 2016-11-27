@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridLayout;
 
@@ -24,6 +25,8 @@ public class GameFrame extends JFrame implements View {
 		this.setResizable(false);
 		this.setLayout(new GridLayout(1,2));
 		
+		this.add(new SelectionPanel());
+		
 		this.panel1 = new GamePanel(this, playerName);
 		this.add(panel1);
 		
@@ -40,6 +43,8 @@ public class GameFrame extends JFrame implements View {
 	public JPanel getPanel2() {
 		return this.panel2;
 	}
+	
+	
 
 	@Override
 	public void startView() {
