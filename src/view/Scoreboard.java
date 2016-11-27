@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -19,7 +20,6 @@ public class Scoreboard extends JPanel {
 		super();		
 		this.playerName = new JLabel(playerName + ":");
 		this.add(this.playerName);
-
 	}
 	
 }

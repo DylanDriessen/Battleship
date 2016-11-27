@@ -36,8 +36,7 @@ public class GamePanel extends JPanel {
 		this.add(scoreboard);
 		
 		this.add(grid);
-		scoreboard.setAlignmentY(TOP_ALIGNMENT);
-		grid.setAlignmentY(BOTTOM_ALIGNMENT);
+
 //		
 //		gbc.weighty = 0.90;
 //	    gbc.gridy = 1;
