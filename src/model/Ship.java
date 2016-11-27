@@ -6,7 +6,8 @@ public class Ship {
 	private Orientation orientation;
 	private ShipType type;
 	
-	public Ship(int x, int y, Orientation orientation){
+	public Ship(ShipType type, int x, int y, Orientation orientation){
+		this.type = type;
 		this.x = x;
 		this.y = y;
 		this.orientation = orientation;
