@@ -19,6 +19,7 @@ public class Scoreboard extends JPanel {
 		super();		
 		this.playerName = new JLabel(playerName + ":");
 		this.add(this.playerName);
+
 	}
 	
 }
