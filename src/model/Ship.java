@@ -1,34 +1,30 @@
 package model;
 
+import model.enums.Orientation;
+import model.enums.ShipType;
+
 public class Ship {
-	private int x;
-	private int y;
-	private Orientation orientation;
-	private ShipType type;
 	
-	public Ship(ShipType type, int x, int y, Orientation orientation){
-		this.type = type;
-		this.x = x;
-		this.y = y;
+	private final ShipType shipType;
+	private final Position anchor;
+	private final Orientation orientation;
+	
+	public Ship(ShipType type, Position position, Orientation orientation){
+		this.shipType = type;
+		this.anchor = position;
 		this.orientation = orientation;
 	}
 
-
-	public int getX() {
-		return x;
+	public ShipType getShipType() {
+		return shipType;
 	}
 
-	public int getY() {
-		return y;
+	public Position getAnchor() {
+		return anchor;
 	}
 
 	public Orientation getOrientation() {
 		return orientation;
 	}
-
-	public ShipType getType() {
-		return type;
-	}
-
 		
 }

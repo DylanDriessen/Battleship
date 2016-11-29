@@ -15,7 +15,7 @@ public class ZeeslagApp {
 		while(playerName == null) {
 			playerName = JOptionPane.showInputDialog(null, "Please enter your name:");
 		}
-		View view = new GameFrame(playerName);
+		GameFrame view = new GameFrame(playerName);
 		view.startView();
 		Controller controller = new ZeeslagController(view);
 	}

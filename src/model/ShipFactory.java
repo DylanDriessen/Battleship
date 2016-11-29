@@ -3,8 +3,9 @@ package model;
 import java.lang.reflect.Constructor;
 
 import model.Ship;
+import model.enums.Orientation;
+import model.enums.ShipType;
 import exception.DomainException;
-import model.ShipType;
 
 public class ShipFactory {
 	

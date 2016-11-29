@@ -9,9 +9,12 @@ public class Board implements BoardObservable{
 	private Player player;
 	private List<BoardObserver> boardObservers;
 	
-	public Player Board(Player player){
-		return player;
-		
+	public Board(String playerName) {
+		this.player = new Player(playerName);
+	}
+	
+	public Player getPlayer() {
+		return this.player;
 	}
 
 	@Override
@@ -30,8 +33,6 @@ public class Board implements BoardObservable{
 	public void notifyBoardChanged() {
 		// TODO Auto-generated method stub
 		
-	}
-	
-	
+	}	
 
 }

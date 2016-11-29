@@ -8,11 +8,12 @@ import java.util.List;
 
 import javax.swing.JPanel;
 
-import listener.ClickListener;
+import model.Board;
+import model.BoardObserver;
 
-public class GameGrid extends JPanel {
+public class GameGrid extends JPanel implements BoardObserver {
 
-private List<Square> buttons = new ArrayList<Square>();
+	private Square[][] buttons = new Square[10][10];
 	
 	public GameGrid(View gameFrame, int width) {
 		super();
@@ -22,14 +23,19 @@ private List<Square> buttons = new ArrayList<Square>();
 		for(int y = 0; y < 10; y++) {
 			for(int x = 0; x < 10; x++) {
 				Square button = new Square(x, y);
-				button.addActionListener(new ClickListener(gameFrame));
-				this.buttons.add(button);
+				this.buttons[x][y] = button;
 				this.add(button);
 			}
 		}
 	}
+
+	@Override
+	public void boardChanged(Board board) {
+		// TODO Auto-generated method stub
+		
+	}
 	
-	public List<Square> getButtons() {
+	public Square[][] getButtons() {
 		return this.buttons;
 	}
 	

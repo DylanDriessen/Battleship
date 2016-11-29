@@ -42,7 +42,15 @@ public class GamePanel extends JPanel {
 //	    gbc.gridy = 1;
 //		this.add(grid, gbc);
 		
-		}
-        
 	}
 
+	public GameGrid getGrid() {
+		return grid;
+	}
+
+	public Scoreboard getScoreboard() {
+		return scoreboard;
+	}       
+	
+
+}

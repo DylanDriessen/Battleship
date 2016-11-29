@@ -4,6 +4,8 @@ import javax.swing.JOptionPane;
 
 import exception.CancelledException;
 import exception.DomainException;
+import model.enums.Orientation;
+import model.enums.ShipType;
 
 public class ModelFacade {
 	
@@ -16,7 +18,7 @@ public class ModelFacade {
 	public void addPlayer() throws DomainException{
 		try {
 			String Playername = showJOptionInputDialog("Enter your name:", "Add Player");
-			game.addPlayer(Playername);
+			//game.addPlayer(Playername);
 			JOptionPane.showMessageDialog(null, "Player ready to play");
 		} catch (NumberFormatException e) {
 			JOptionPane.showMessageDialog(null, "Input not valid");

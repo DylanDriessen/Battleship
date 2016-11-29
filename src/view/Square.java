@@ -2,6 +2,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 
@@ -27,14 +28,12 @@ public class Square extends JButton {
 		setBackground(new Color(240, 240, 240));
 	}
 	
-	@Override
 	public int getY(){
 		return this.getPosition().getY();
 	}
 	
-	@Override
 	public int getX(){
 		return this.getPosition().getX();
 	}
-
+	
 }

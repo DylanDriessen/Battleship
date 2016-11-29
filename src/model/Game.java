@@ -1,25 +1,20 @@
 package model;
 
-import java.util.List;
-
 public class Game {
 	
-	private List<Player> players;
-	private String name;
+	private Board board1, board2;
 	
-	public void addPlayer(String name){
-		Player newPlayer = new Player(name);
-		players.add(newPlayer);
-	}
-	
-	public Player getPlayer(String name){
-		return null;
-		
+	public  Game(String playerName){
+		this.board1 = new Board(playerName);
+		this.board2 = new Board("Computer");
 	}
 
-	public String getName() {
-		return name;
+	public Board getBoard1() {
+		return board1;
 	}
 
+	public Board getBoard2() {
+		return board2;
+	}
 
 }

@@ -1,8 +1,8 @@
-package model;
+package model.enums;
 
 public enum Orientation {
 
-	VERTICAl("Vertical"), HORIZONTAL("Horizontal");
+	VERTICAL("Vertical"), HORIZONTAL("Horizontal");
 	
 	private String name;
 	

@@ -11,8 +11,6 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.ComboBoxModel;
 
-import listener.ClickListener;
-
 public class GameFrame extends JFrame implements View {
 	
 	private GamePanel panel1, panel2;
@@ -36,20 +34,20 @@ public class GameFrame extends JFrame implements View {
 		revalidate();
 	}
 
-	public JPanel getPanel1() {
+	public GamePanel getPanel1() {
 		return this.panel1;
 	}
 
-	public JPanel getPanel2() {
+	public GamePanel getPanel2() {
 		return this.panel2;
-	}
-	
-	
+	}	
 
 	@Override
 	public void startView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-	}	
+	}
+	
+	
 
 }
