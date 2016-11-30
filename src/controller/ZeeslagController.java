@@ -69,7 +69,7 @@ public class ZeeslagController implements Controller {
 			Square button = (Square)e.getSource();
 			int x = button.getX();
 			int y = button.getY();
-			System.out.println("hover over " + x + y + " bitchez");
+			// System.out.println("hover over " + x + y + " bitchez");
 		}
 		
 		@Override
@@ -77,7 +77,7 @@ public class ZeeslagController implements Controller {
 			Square button = (Square)e.getSource();
 			int x = button.getX();
 			int y = button.getY();
-			System.out.println("exited " + x + y + " bitchez");
+			// System.out.println("exited " + x + y + " bitchez");
 		}
 
 	}

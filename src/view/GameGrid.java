@@ -56,7 +56,9 @@ public class GameGrid extends JPanel implements BoardObserver {
 		for(int y = 0; y < 10; y++) {
 			for(int x = 0; x < 10; x++) {
 				if(this.board.getContainsShip()[x][y]) {
-					this.buttons[x][y].setBackground(Color.RED);
+					System.out.println("change color");
+					this.buttons[x][y].setForeground(Color.RED);
+					this.paintComponent(this.buttons[x][y].getGraphics());
 				}
 			}
 		}

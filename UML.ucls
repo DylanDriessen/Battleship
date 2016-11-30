@@ -147,7 +147,7 @@
   </interface>  
   <association id="17">    
     <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="18" name="boardObservers">        
+      <attribute id="18" name="observers">        
         <position height="0" width="0" x="-882" y="-460"/>      
       </attribute>      
       <multiplicity id="19" minimum="0" maximum="2147483647">        

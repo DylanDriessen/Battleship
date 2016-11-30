@@ -9,13 +9,13 @@ import model.Ship;
 public class Board implements BoardObservable{
 	
 	private Player player;
-	private List<BoardObserver> boardObservers;
+	private List<BoardObserver> observers;
 	private boolean[][] containsShip;
 	
 	public Board(String playerName) {
 		this.player = new Player(playerName);
 		this.containsShip = new boolean[10][10];
-		this.boardObservers = new ArrayList<BoardObserver>();
+		this.observers = new ArrayList<BoardObserver>();
 	}
 	
 	public void placeShip(Ship ship) {
@@ -35,7 +35,9 @@ public class Board implements BoardObservable{
 			}
 		}
 		
-		notifyBoardChanged();
+		System.out.println("notifying observers");
+		
+		this.notifyBoardChanged();
 	}
 	
 	//Getters
@@ -49,7 +51,7 @@ public class Board implements BoardObservable{
 
 	@Override
 	public void addObserver(BoardObserver o) {
-		// TODO Auto-generated method stub
+		this.observers.add(o);
 		
 	}
 
@@ -61,7 +63,7 @@ public class Board implements BoardObservable{
 
 	@Override
 	public void notifyBoardChanged() {
-		for(BoardObserver o : this.boardObservers) {
+		for(BoardObserver o : this.observers) {
 			o.boardChanged(this);
 		}
 	}
