@@ -1,19 +1,12 @@
 package controller;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.List;
-import java.util.Map;
 
-import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 
-import model.ModelFacade;
-import model.Player;
-import model.Ship;
 import model.enums.Orientation;
 import model.enums.ShipType;
 import model.game.state.BattleState;
@@ -22,8 +15,8 @@ import model.game.state.GameState;
 import model.game.state.InitState;
 import view.GameFrame;
 import view.Square;
-import view.View;
 import view.ViewFacade;
+import view.combobox.ComboBox;
 import view.combobox.ComboItem;
 
 public class ZeeslagController implements Controller {
@@ -65,10 +58,6 @@ public class ZeeslagController implements Controller {
 	}
 	
 	public void buttonClicked(int x, int y) {
-		//TODO: change something in the model when a button is clicked etc. etc.
-		
-		System.out.println("Clicked button with coördinates: x = " + x + ", y = " + y);
-		
 		this.currentState.addShip();
 	}
 	
@@ -112,8 +101,8 @@ public class ZeeslagController implements Controller {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			JComboBox box = (JComboBox)e.getSource();
-			ShipType shipType = ((ComboItem)box.getSelectedItem()).getShipType();
+			ComboBox<ComboItem<ShipType>> box = (ComboBox<ComboItem<ShipType>>)e.getSource();
+			ShipType shipType = ((ComboItem<ShipType>)box.getSelectedItem()).getValue();
 			System.out.println("You selected: " + shipType);
 		}
 		

@@ -1,19 +1,17 @@
 package view.combobox;
 
-import model.enums.ShipType;
-
-public class ComboItem {
+public class ComboItem<T> {
 
 	private String label;
-	private ShipType shipType;
+	private T value;
 	
 	public ComboItem(String label) {
 		this(label, null);
 	}
 	
-	public ComboItem(String label, ShipType shipType) {
+	public ComboItem(String label, T value) {
 		this.label = label;
-		this.shipType = shipType;
+		this.value = value;
 	}
 	
 	public String getLabel() {
@@ -24,12 +22,12 @@ public class ComboItem {
 		this.label = label;
 	}
 
-	public ShipType getShipType() {
-		return shipType;
+	public T getValue() {
+		return value;
 	}
 
-	public void setShipType(ShipType shipType) {
-		this.shipType = shipType;
+	public void setValue(T value) {
+		this.value = value;
 	}
 	
 	@Override

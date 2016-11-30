@@ -1,23 +1,18 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
+import java.awt.FlowLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-
-import javafx.geometry.HorizontalDirection;
 
 public class Scoreboard extends JPanel {
 
+	private static final long serialVersionUID = 1L;
 	private JLabel playerName;
 	
 	public Scoreboard(String playerName) {
-		super();		
+		super();
+		this.setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.playerName = new JLabel(playerName + ":");
 		this.add(this.playerName);
 	}

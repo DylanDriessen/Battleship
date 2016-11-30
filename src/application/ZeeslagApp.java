@@ -1,6 +1,5 @@
 package application;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import controller.Controller;
@@ -12,7 +11,7 @@ public class ZeeslagApp {
 	
 	public static void main(String[] args) {
 		String playerName = null;
-		while(playerName == null) {
+		while(playerName == null || playerName.isEmpty()) {
 			playerName = JOptionPane.showInputDialog(null, "Please enter your name:");
 		}
 		GameFrame view = new GameFrame(playerName);

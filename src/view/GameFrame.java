@@ -1,28 +1,22 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.GridLayout;
 
-import javax.swing.BorderFactory;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.ComboBoxModel;
 
 public class GameFrame extends JFrame implements View {
 	
+	private static final long serialVersionUID = 1L;
 	private GamePanel panel1, panel2;
 	private SelectionPanel selectionPanel;
-	private static final int WIDTH = 750;
-	private static final int HEIGHT = 420;
+	private static final int WIDTH = 940;
+	private static final int HEIGHT = 340;
 
 	public GameFrame(String playerName) {
 		super();
 		this.setSize(WIDTH, HEIGHT);
 		this.setResizable(false);
-		this.setLayout(new GridLayout(1,2));
+		this.setLayout(new GridLayout(1,3));
 		
 		this.selectionPanel = new SelectionPanel();
 		this.add(this.selectionPanel);

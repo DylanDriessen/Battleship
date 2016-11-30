@@ -1,10 +1,8 @@
 package view;
 
-import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JPanel;
 
@@ -13,12 +11,16 @@ import model.BoardObserver;
 
 public class GameGrid extends JPanel implements BoardObserver {
 
+	private static final long serialVersionUID = 1L;
 	private Square[][] buttons = new Square[10][10];
 	
 	public GameGrid(View gameFrame, int width) {
 		super();
 		this.setLayout(new GridLayout(10, 10));
-		this.setPreferredSize(new Dimension(width, width));
+		
+		Dimension size = new Dimension(width, width);
+		this.setPreferredSize(size);
+		this.setMaximumSize(size);
 		
 		for(int y = 0; y < 10; y++) {
 			for(int x = 0; x < 10; x++) {
@@ -37,6 +39,12 @@ public class GameGrid extends JPanel implements BoardObserver {
 	
 	public Square[][] getButtons() {
 		return this.buttons;
+	}
+	
+	@Override
+	protected void paintComponent(Graphics g) {
+		super.paintComponent(g);
+
 	}
 	
 }

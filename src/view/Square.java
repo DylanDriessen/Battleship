@@ -2,7 +2,6 @@ package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 
@@ -10,6 +9,7 @@ import model.Position;
 
 public class Square extends JButton {
 
+	private static final long serialVersionUID = 1L;
 	private final Position position;
 	
 	public Square(int x, int y) {
