@@ -27,8 +27,9 @@ public class SelectionPanel extends JPanel {
 		this.shipsLabel = new JLabel("Beschikbare schepen:");
 		this.add(this.shipsLabel);
 
-		String[] ships = new String[ShipType.values().length];
-		for (int i = 0; i < ShipType.values().length; i++) {
+		String[] ships = new String[ShipType.values().length+1];
+		ships[0] = "Selected Ships";
+		for (int i = 1; i < ShipType.values().length; i++) {
 			ships[i] = ShipType.values()[i].getName() + " (" + ShipType.values()[i].getLength() + ")";
 		}
 
