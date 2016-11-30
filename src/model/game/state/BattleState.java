@@ -13,7 +13,7 @@ public class BattleState implements GameState {
 	}
 	
 	@Override
-	public void buttonClicked(int x, int y, ShipType shipType, Orientation orientation) {
+	public void squareClicked(int x, int y, ShipType shipType, Orientation orientation) {
 		
 		
 	}

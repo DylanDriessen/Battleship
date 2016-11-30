@@ -1,5 +1,6 @@
 package model.facade;
 
+import exception.ModelException;
 import model.Board;
 import model.Game;
 import model.enums.Orientation;
@@ -21,7 +22,7 @@ public class ModelFacade {
 		return this.game.getBoard2();
 	}
 	
-	public void buttonClicked(int x, int y, ShipType shipType, Orientation orientation) {
+	public void buttonClicked(int x, int y, ShipType shipType, Orientation orientation) throws ModelException {
 		this.game.buttonClicked(x, y, shipType, orientation);
 	}
 	

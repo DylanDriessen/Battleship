@@ -5,8 +5,10 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
+import exception.ModelException;
 import model.enums.Orientation;
 import model.enums.ShipType;
 import model.facade.ModelFacade;
@@ -43,7 +45,11 @@ public class ZeeslagController implements Controller {
 	
 	public void buttonClicked(int x, int y) {
 		//TODO: shouldn't this be a Position object instead of x y?
-		this.modelFacade.buttonClicked(x, y, this.shipType, this.orientation);
+		try {
+			this.modelFacade.buttonClicked(x, y, this.shipType, this.orientation);
+		} catch (ModelException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
 	}
 	
 	public void setOrientation(Orientation orientation) {

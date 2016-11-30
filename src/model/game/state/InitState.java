@@ -1,5 +1,6 @@
 package model.game.state;
 
+import exception.ModelException;
 import model.Game;
 import model.Position;
 import model.Ship;
@@ -15,12 +16,16 @@ public class InitState implements GameState {
 	}
 	
 	@Override
-	public void buttonClicked(int x, int y, ShipType shipType, Orientation orientation) {	
-		//TODO:
-		// tell model to make a ship
+	public void squareClicked(int x, int y, ShipType shipType, Orientation orientation) throws ModelException {	
+		if(shipType == null) {
+			throw new ModelException("Gelieve een schip te kiezen.");
+		}
+		if(orientation == null) {
+			throw new ModelException("Gelieve een orientatie te kiezen.");
+		}
+		
 		Ship ship = new Ship(shipType, new Position(x, y), orientation);
 		
-		// tell model that certain squares are occupied by a ship
 		this.game.getBoard1().placeShip(ship);
 		
 		// since view observes model, it will draw the squares differently

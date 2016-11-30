@@ -1,5 +1,6 @@
 package model;
 
+import exception.ModelException;
 import model.enums.Orientation;
 import model.enums.ShipType;
 import model.game.state.BattleState;
@@ -22,8 +23,8 @@ public class Game {
 		this.currentState = this.initState;
 	}
 
-	public void buttonClicked(int x, int y, ShipType shipType, Orientation orientation) {
-		this.currentState.buttonClicked(x, y, shipType, orientation);
+	public void buttonClicked(int x, int y, ShipType shipType, Orientation orientation) throws ModelException {
+		this.currentState.squareClicked(x, y, shipType, orientation);
 	}
 	
 	//GETTERS

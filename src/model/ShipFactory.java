@@ -5,11 +5,11 @@ import java.lang.reflect.Constructor;
 import model.Ship;
 import model.enums.Orientation;
 import model.enums.ShipType;
-import exception.DomainException;
+import exception.ModelException;
 
 public class ShipFactory {
 	
-	public static Ship createShipFromTemplate(ShipType shipType, int x, int y , Orientation orientation) throws DomainException{
+	public static Ship createShipFromTemplate(ShipType shipType, int x, int y , Orientation orientation) throws ModelException{
 		try {
 			//Get fully qualified path name
 			String type = shipType.getName();
@@ -28,7 +28,7 @@ public class ShipFactory {
 			return ship;
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new DomainException("Could not create your ship because of factory issue.\n" + e.getMessage());
+			throw new ModelException("Could not create your ship because of factory issue.\n" + e.getMessage());
 		}
 		
 	}		

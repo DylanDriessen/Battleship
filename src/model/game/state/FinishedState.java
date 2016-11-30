@@ -13,9 +13,8 @@ public class FinishedState implements GameState {
 	}
 	
 	@Override
-	public void buttonClicked(int x, int y, ShipType shipType, Orientation orientation) {
-		// TODO Auto-generated method stub
-		
+	public void squareClicked(int x, int y, ShipType shipType, Orientation orientation) {
+
 	}
 
 }
