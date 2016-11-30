@@ -46,8 +46,6 @@ public class GameFrame extends JFrame implements View {
 	public void startView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-	}
-	
-	
+	}	
 
 }

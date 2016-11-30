@@ -58,7 +58,7 @@ public class ZeeslagController implements Controller {
 	}
 	
 	public void buttonClicked(int x, int y) {
-		this.currentState.addShip();
+		this.currentState.buttonClicked(x, y);
 	}
 	
 	public void setOrientation(Orientation orientation) {
