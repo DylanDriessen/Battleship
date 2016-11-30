@@ -4,11 +4,11 @@ import model.Game;
 import model.enums.Orientation;
 import model.enums.ShipType;
 
-public class BattleState implements GameState {
+public class StartedState implements GameState {
 
 	private Game game;
 	
-	public BattleState(Game game) {
+	public StartedState(Game game) {
 		this.game = game;
 	}
 	
