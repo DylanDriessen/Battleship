@@ -5,8 +5,9 @@ import javax.swing.JOptionPane;
 import controller.Controller;
 import controller.ZeeslagController;
 import model.Game;
+import model.facade.ModelFacade;
 import view.GameFrame;
-import view.View;
+import view.facade.ViewFacade;
 
 public class ZeeslagApp {
 	
@@ -15,11 +16,14 @@ public class ZeeslagApp {
 		while(playerName == null || playerName.isEmpty()) {
 			playerName = JOptionPane.showInputDialog(null, "Please enter your name:");
 		}
+		
 		//TODO: view should "observe" playerName from the model:
 		// I think code should work without the playerName parameter in the GameFrame constructor?
-		GameFrame view = new GameFrame(playerName);
 		Game model = new Game(playerName);
-		Controller controller = new ZeeslagController(view, model);
+		ModelFacade modelFacade = new ModelFacade(model);
+		GameFrame view = new GameFrame(playerName, modelFacade);
+		ViewFacade viewFacade = new ViewFacade(view);
+		new ZeeslagController(modelFacade, viewFacade);
 		view.startView();
 	}
 	

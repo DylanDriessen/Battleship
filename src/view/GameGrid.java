@@ -16,7 +16,7 @@ public class GameGrid extends JPanel implements BoardObserver {
 	private Square[][] buttons = new Square[10][10];
 	private Board board;
 	
-	public GameGrid(View gameFrame, int width) {
+	public GameGrid(View gameFrame, int width, Board board) {
 		super();
 		this.setLayout(new GridLayout(10, 10));
 		
@@ -32,13 +32,14 @@ public class GameGrid extends JPanel implements BoardObserver {
 			}
 		}
 		
+		this.board = board;
 		this.board.addObserver(this);
 	}
 
 	@Override
 	public void boardChanged(Board board) {
 		this.board = board;
-		place();	
+		this.place();	
 	}
 	
 	public Square[][] getButtons() {
@@ -48,7 +49,6 @@ public class GameGrid extends JPanel implements BoardObserver {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
-
 	}
 	
 	public void place() {

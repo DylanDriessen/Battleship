@@ -1,9 +1,7 @@
-package model;
+package model.facade;
 
-import javax.swing.JOptionPane;
-
-import exception.CancelledException;
-import exception.DomainException;
+import model.Board;
+import model.Game;
 import model.enums.Orientation;
 import model.enums.ShipType;
 
@@ -13,6 +11,18 @@ public class ModelFacade {
 	
 	public ModelFacade(Game game){
 		this.game = game;
+	}
+	
+	public Board getBoard1() {
+		return this.game.getBoard1();
+	}
+	
+	public Board getBoard2() {
+		return this.game.getBoard2();
+	}
+	
+	public void buttonClicked(int x, int y, ShipType shipType, Orientation orientation) {
+		this.game.buttonClicked(x, y, shipType, orientation);
 	}
 	
 	/*

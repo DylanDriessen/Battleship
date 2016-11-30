@@ -9,31 +9,25 @@ import javax.swing.JRadioButton;
 
 import model.enums.Orientation;
 import model.enums.ShipType;
-import model.Game;
-import model.game.state.BattleState;
-import model.game.state.FinishedState;
-import model.game.state.GameState;
-import model.game.state.InitState;
-import view.GameFrame;
+import model.facade.ModelFacade;
 import view.Square;
-import view.ViewFacade;
 import view.combobox.ComboBox;
 import view.combobox.ComboItem;
+import view.facade.ViewFacade;
 
 public class ZeeslagController implements Controller {
 
-	private GameFrame view;
 	private final ViewFacade viewFacade;
-	private Game model;
+	private final ModelFacade modelFacade;
 	private Orientation orientation;
 	private ShipType shipType;
 	
-	public ZeeslagController(GameFrame view, Game model) {
-		this.view = view;
-		this.viewFacade = new ViewFacade();
+	public ZeeslagController(ModelFacade modelFacade, ViewFacade viewFacade) {
+		this.modelFacade = modelFacade;
+		this.viewFacade = viewFacade;
 		
-		Square[][] squares1 = this.viewFacade.getButtonsPanel1(view);
-		Square[][] squares2 = this.viewFacade.getButtonsPanel2(view);
+		Square[][] squares1 = this.viewFacade.getButtonsPanel1();
+		Square[][] squares2 = this.viewFacade.getButtonsPanel2();
 		
 		for(int y = 0; y < 10; y++) {
 			for(int x = 0; x < 10; x++) {
@@ -42,16 +36,14 @@ public class ZeeslagController implements Controller {
 			}
 		}
 		
-		this.viewFacade.getHorizontalButton(view).addActionListener(new RadioListener());
-		this.viewFacade.getVerticalButton(view).addActionListener(new RadioListener());
-		this.viewFacade.getJComboBox(view).addActionListener(new ComboboxListener());
-		
-		this.model = model;
+		this.viewFacade.getHorizontalButton().addActionListener(new RadioListener());
+		this.viewFacade.getVerticalButton().addActionListener(new RadioListener());
+		this.viewFacade.getJComboBox().addActionListener(new ComboboxListener());
 	}
 	
 	public void buttonClicked(int x, int y) {
 		//TODO: shouldn't this be a Position object instead of x y?
-		this.model.buttonClicked(x, y, this.shipType, this.orientation);
+		this.modelFacade.buttonClicked(x, y, this.shipType, this.orientation);
 	}
 	
 	public void setOrientation(Orientation orientation) {

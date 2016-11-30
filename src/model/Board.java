@@ -15,17 +15,15 @@ public class Board implements BoardObservable{
 	public Board(String playerName) {
 		this.player = new Player(playerName);
 		this.containsShip = new boolean[10][10];
-		this.boardObservers = new ArrayList<BoardObserver>
+		this.boardObservers = new ArrayList<BoardObserver>();
 	}
-	
-	
 	
 	public void placeShip(Ship ship) {
 		int x = ship.getAnchor().getX();
 		int y = ship.getAnchor().getY();
 		int length = ship.getShipType().getLength();
 		
-		System.out.println("right here");
+		System.out.println(ship.getShipType());
 		
 		if(ship.getOrientation().equals(Orientation.HORIZONTAL)) {
 			for(int i = x; i < x + length; i++) {

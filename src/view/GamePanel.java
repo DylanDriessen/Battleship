@@ -3,17 +3,19 @@ package view;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
+import model.Board;
+
 public class GamePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private Scoreboard scoreboard;
 	private GameGrid grid;
 	
-	public GamePanel(View gameFrame, String playerName) {
+	public GamePanel(View gameFrame, String playerName, Board board) {
 		super();
 		
 		this.scoreboard = new Scoreboard(playerName);
-		this.grid = new GameGrid(gameFrame, 300);
+		this.grid = new GameGrid(gameFrame, 300, board);
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
 		
