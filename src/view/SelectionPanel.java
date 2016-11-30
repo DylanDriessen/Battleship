@@ -18,10 +18,14 @@ import model.enums.ShipType;
 
 public class SelectionPanel extends JPanel {
 
+	JLabel shipsLabel;
+	JComboBox<String> shipsComboBox;
+	JRadioButton horizontal;
+	JRadioButton vertical;
+	
 	public SelectionPanel() {
-
-		JLabel shipsLabel = new JLabel("Beschikbare schepen:");
-		this.add(shipsLabel);
+		this.shipsLabel = new JLabel("Beschikbare schepen:");
+		this.add(this.shipsLabel);
 
 		String[] ships = new String[ShipType.values().length];
 		for (int i = 0; i < ShipType.values().length; i++) {
@@ -29,18 +33,35 @@ public class SelectionPanel extends JPanel {
 		}
 
 		// JComboBox fucked de UI
-		JComboBox<String> shipsComboBox = new JComboBox<>(ships);
+		this.shipsComboBox = new JComboBox<>(ships);
 
 		// shipsComboBox.setPreferredSize(new Dimension(5,5));
-		this.add(shipsComboBox);
+		this.add(this.shipsComboBox);
 		
 		ButtonGroup buttonGroup = new ButtonGroup();
-		JRadioButton horizontal = new JRadioButton(Orientation.HORIZONTAL.getName());
-		JRadioButton vertical = new JRadioButton(Orientation.VERTICAL.getName());
+		this.horizontal = new JRadioButton(Orientation.HORIZONTAL.getName());
+		this.vertical = new JRadioButton(Orientation.VERTICAL.getName());
 
-		buttonGroup.add(horizontal);
-		buttonGroup.add(vertical);
-		this.add(horizontal);
-		this.add(vertical);
+		buttonGroup.add(this.horizontal);
+		buttonGroup.add(this.vertical);
+		this.add(this.horizontal);
+		this.add(this.vertical);
 	}
+
+	public JLabel getShipsLabel() {
+		return shipsLabel;
+	}
+
+	public JComboBox<String> getShipsComboBox() {
+		return shipsComboBox;
+	}
+
+	public JRadioButton getHorizontal() {
+		return horizontal;
+	}
+
+	public JRadioButton getVertical() {
+		return vertical;
+	}
+	
 }

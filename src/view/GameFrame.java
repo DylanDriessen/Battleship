@@ -14,6 +14,7 @@ import javax.swing.ComboBoxModel;
 public class GameFrame extends JFrame implements View {
 	
 	private GamePanel panel1, panel2;
+	private SelectionPanel selectionPanel;
 	private static final int WIDTH = 750;
 	private static final int HEIGHT = 420;
 
@@ -23,13 +24,14 @@ public class GameFrame extends JFrame implements View {
 		this.setResizable(false);
 		this.setLayout(new GridLayout(1,2));
 		
-		this.add(new SelectionPanel());
+		this.selectionPanel = new SelectionPanel();
+		this.add(this.selectionPanel);
 		
 		this.panel1 = new GamePanel(this, playerName);
-		this.add(panel1);
+		this.add(this.panel1);
 		
 		this.panel2 = new GamePanel(this, "Computer");
-		this.add(panel2);
+		this.add(this.panel2);
 	
 		revalidate();
 	}
@@ -40,7 +42,11 @@ public class GameFrame extends JFrame implements View {
 
 	public GamePanel getPanel2() {
 		return this.panel2;
-	}	
+	}
+	
+	public SelectionPanel getSelectionPanel() {
+		return this.selectionPanel;
+	}
 
 	@Override
 	public void startView() {
