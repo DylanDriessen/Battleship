@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
 
+import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import model.Board;
@@ -32,6 +33,8 @@ public class GameGrid extends JPanel implements BoardObserver {
 			}
 		}
 		
+		this.setBorder(BorderFactory.createLineBorder(new Color(139, 162, 180), 3));
+
 		this.board = board;
 		this.board.addObserver(this);
 	}
@@ -39,28 +42,23 @@ public class GameGrid extends JPanel implements BoardObserver {
 	@Override
 	public void boardChanged(Board board) {
 		this.board = board;
-		this.place();	
+		this.paintBoard();	
 	}
+	
+	public void paintBoard() {
+		for(int y = 0; y < 10; y++) {
+			for(int x = 0; x < 10; x++) {
+				if(this.board.getContainsShip()[x][y]) {
+					this.buttons[x][y].setBackground(Color.RED);
+					this.buttons[x][y].setBorderPainted(false);
+				}
+				this.buttons[x][y].repaint();
+			}
+		}
+	}	
 	
 	public Square[][] getButtons() {
 		return this.buttons;
 	}
-	
-	@Override
-	protected void paintComponent(Graphics g) {
-		super.paintComponent(g);
-	}
-	
-	public void place() {
-		System.out.println("im here bryh");
-		for(int y = 0; y < 10; y++) {
-			for(int x = 0; x < 10; x++) {
-				if(this.board.getContainsShip()[x][y]) {
-					System.out.println("change color");
-					this.buttons[x][y].setForeground(Color.RED);
-					this.paintComponent(this.buttons[x][y].getGraphics());
-				}
-			}
-		}
-	}
+
 }

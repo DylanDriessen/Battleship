@@ -13,7 +13,9 @@ public class Scoreboard extends JPanel {
 	public Scoreboard(String playerName) {
 		super();
 		this.setLayout(new FlowLayout(FlowLayout.LEFT));
+
 		this.playerName = new JLabel(playerName + ":");
+		this.playerName.setFont(GameFrame.DEFAULT_FONT);
 		this.add(this.playerName);
 	}
 	

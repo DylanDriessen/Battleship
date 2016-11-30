@@ -15,9 +15,7 @@ public class InitState implements GameState {
 	}
 	
 	@Override
-	public void buttonClicked(int x, int y, ShipType shipType, Orientation orientation) {
-		System.out.println("Placed ship");
-		
+	public void buttonClicked(int x, int y, ShipType shipType, Orientation orientation) {	
 		//TODO:
 		// tell model to make a ship
 		Ship ship = new Ship(shipType, new Position(x, y), orientation);

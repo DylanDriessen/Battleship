@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-import javafx.geometry.Orientation;
+import model.enums.Orientation;
 import model.Ship;
 
 public class Board implements BoardObservable{
@@ -22,9 +22,7 @@ public class Board implements BoardObservable{
 		int x = ship.getAnchor().getX();
 		int y = ship.getAnchor().getY();
 		int length = ship.getShipType().getLength();
-		
-		System.out.println(ship.getShipType());
-		
+				
 		if(ship.getOrientation().equals(Orientation.HORIZONTAL)) {
 			for(int i = x; i < x + length; i++) {
 				this.containsShip[i][y] = true;
@@ -34,9 +32,7 @@ public class Board implements BoardObservable{
 				this.containsShip[x][i] = true;
 			}
 		}
-		
-		System.out.println("notifying observers");
-		
+				
 		this.notifyBoardChanged();
 	}
 	

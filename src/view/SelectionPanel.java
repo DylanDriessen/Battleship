@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.lang.reflect.Array;
@@ -25,14 +26,15 @@ public class SelectionPanel extends JPanel {
 	private JRadioButton vertical;
 	
 	public SelectionPanel() {
-		
+				
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
 		gbc.anchor = GridBagConstraints.NORTHWEST;
-		gbc.weighty = 1;
-		gbc.weightx = 1;
+		gbc.weighty = 7;
+		gbc.weightx = 2;
 
 		this.shipsLabel = new JLabel("Beschikbare schepen:");
+		this.shipsLabel.setFont(GameFrame.DEFAULT_FONT);
 	    gbc.gridx = 0;
 	    gbc.gridy = 0;
 	    gbc.gridwidth = 2;
@@ -47,21 +49,25 @@ public class SelectionPanel extends JPanel {
 		}
 
 		this.shipsComboBox = new ComboBox<ComboItem<ShipType>>(ships, new ComboItem<ShipType>("Select a ship:"));
-	    gbc.gridy = 1;
+	    this.shipsComboBox.setFont(GameFrame.DEFAULT_FONT);
+		gbc.gridy = 1;
 		this.add(this.shipsComboBox, gbc);
 		
 	    this.orientationLabel = new JLabel("Orientatie:");
-	    gbc.gridy = 2;
+	    this.orientationLabel.setFont(GameFrame.DEFAULT_FONT);
+	    gbc.gridy = 3;
 	    this.add(this.orientationLabel, gbc);
 	    
 		ButtonGroup buttonGroup = new ButtonGroup();
 		this.horizontal = new JRadioButton(Orientation.HORIZONTAL.getName());
+		this.horizontal.setFont(GameFrame.DEFAULT_FONT);
 		this.vertical = new JRadioButton(Orientation.VERTICAL.getName());
+		this.vertical.setFont(GameFrame.DEFAULT_FONT);
 		
 		buttonGroup.add(this.horizontal);
 		buttonGroup.add(this.vertical);
 		
-	    gbc.gridy = 3;
+	    gbc.gridy = 4;
 	    gbc.gridwidth = 1;
 		this.add(this.horizontal, gbc);
 		

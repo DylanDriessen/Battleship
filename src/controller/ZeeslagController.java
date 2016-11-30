@@ -88,7 +88,6 @@ public class ZeeslagController implements Controller {
 		public void actionPerformed(ActionEvent e) {
 			ComboBox<ComboItem<ShipType>> box = (ComboBox<ComboItem<ShipType>>)e.getSource();
 			ShipType shipType = ((ComboItem<ShipType>)box.getSelectedItem()).getValue();
-			System.out.println("You selected: " + shipType);
 			setShipType(shipType);
 		}
 		

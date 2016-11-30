@@ -3,6 +3,7 @@ package view;
 import java.awt.Color;
 import java.awt.Graphics;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import model.Position;
@@ -15,6 +16,7 @@ public class Square extends JButton {
 	public Square(int x, int y) {
 		super();
 		this.position = new Position(x, y);
+		this.setBackground(new Color(165, 214, 254));
 	}
 
 	public Position getPosition() {
@@ -23,9 +25,8 @@ public class Square extends JButton {
 
 	@Override
 	protected void paintComponent(Graphics g) {
+		this.setBorder(BorderFactory.createLineBorder(new Color(194, 227, 254)));
 		super.paintComponent(g);
-		
-		setBackground(new Color(240, 240, 240));
 	}
 	
 	public int getY(){
