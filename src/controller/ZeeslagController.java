@@ -9,6 +9,7 @@ import javax.swing.JRadioButton;
 
 import model.enums.Orientation;
 import model.enums.ShipType;
+import model.Game;
 import model.game.state.BattleState;
 import model.game.state.FinishedState;
 import model.game.state.GameState;
@@ -23,16 +24,11 @@ public class ZeeslagController implements Controller {
 
 	private GameFrame view;
 	private final ViewFacade viewFacade;
-	
-	private GameState currentState;
-	private GameState initState;
-	private GameState battleState;
-	private GameState finishedState;
-	
+	private Game model;
 	private Orientation orientation;
 	private ShipType shipType;
 	
-	public ZeeslagController(GameFrame view) {
+	public ZeeslagController(GameFrame view, Game model) {
 		this.view = view;
 		this.viewFacade = new ViewFacade();
 		
@@ -50,15 +46,12 @@ public class ZeeslagController implements Controller {
 		this.viewFacade.getVerticalButton(view).addActionListener(new RadioListener());
 		this.viewFacade.getJComboBox(view).addActionListener(new ComboboxListener());
 		
-		this.initState = new InitState();
-		this.battleState = new BattleState();
-		this.finishedState = new FinishedState();
-		
-		this.currentState = this.initState;
+		this.model = model;
 	}
 	
 	public void buttonClicked(int x, int y) {
-		this.currentState.buttonClicked(x, y);
+		//TODO: shouldn't this be a Position object instead of x y?
+		this.model.buttonClicked(x, y, this.shipType, this.orientation);
 	}
 	
 	public void setOrientation(Orientation orientation) {
@@ -104,6 +97,7 @@ public class ZeeslagController implements Controller {
 			ComboBox<ComboItem<ShipType>> box = (ComboBox<ComboItem<ShipType>>)e.getSource();
 			ShipType shipType = ((ComboItem<ShipType>)box.getSelectedItem()).getValue();
 			System.out.println("You selected: " + shipType);
+			setShipType(shipType);
 		}
 		
 	}

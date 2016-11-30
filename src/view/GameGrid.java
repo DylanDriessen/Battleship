@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridLayout;
@@ -13,6 +14,7 @@ public class GameGrid extends JPanel implements BoardObserver {
 
 	private static final long serialVersionUID = 1L;
 	private Square[][] buttons = new Square[10][10];
+	private Board board;
 	
 	public GameGrid(View gameFrame, int width) {
 		super();
@@ -29,12 +31,14 @@ public class GameGrid extends JPanel implements BoardObserver {
 				this.add(button);
 			}
 		}
+		
+		this.board.addObserver(this);
 	}
 
 	@Override
 	public void boardChanged(Board board) {
-		// TODO Auto-generated method stub
-		
+		this.board = board;
+		place();	
 	}
 	
 	public Square[][] getButtons() {
@@ -47,4 +51,14 @@ public class GameGrid extends JPanel implements BoardObserver {
 
 	}
 	
+	public void place() {
+		System.out.println("im here bryh");
+		for(int y = 0; y < 10; y++) {
+			for(int x = 0; x < 10; x++) {
+				if(this.board.getContainsShip()[x][y]) {
+					this.buttons[x][y].setBackground(Color.RED);
+				}
+			}
+		}
+	}
 }

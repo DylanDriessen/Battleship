@@ -15,6 +15,7 @@ public class ModelFacade {
 		this.game = game;
 	}
 	
+	/*
 	public void addPlayer() throws DomainException{
 		try {
 			String Playername = showJOptionInputDialog("Enter your name:", "Add Player");
@@ -50,5 +51,6 @@ public class ModelFacade {
 		return null;
 		
 	}
+	*/
 	
 }
