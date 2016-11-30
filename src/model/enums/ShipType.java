@@ -30,12 +30,10 @@ public enum ShipType {
 		return amount;
 	}
 	
+	@Override
 	public String toString(){
-		return name;
+		return this.name;
 	}
-	
-	//Contributor check
-	
 
 	
 }

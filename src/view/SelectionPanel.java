@@ -15,11 +15,13 @@ import javax.swing.border.EmptyBorder;
 
 import model.enums.Orientation;
 import model.enums.ShipType;
+import view.combobox.ComboBox;
+import view.combobox.ComboItem;
 
 public class SelectionPanel extends JPanel {
 
 	JLabel shipsLabel;
-	JComboBox<String> shipsComboBox;
+	ComboBox<ComboItem> shipsComboBox;
 	JRadioButton horizontal;
 	JRadioButton vertical;
 	
@@ -27,16 +29,13 @@ public class SelectionPanel extends JPanel {
 		this.shipsLabel = new JLabel("Beschikbare schepen:");
 		this.add(this.shipsLabel);
 
-		String[] ships = new String[ShipType.values().length+1];
-		ships[0] = "Selected Ships";
-		for (int i = 1; i < ShipType.values().length; i++) {
-			ships[i] = ShipType.values()[i].getName() + " (" + ShipType.values()[i].getLength() + ")";
+		ComboItem[] ships = new ComboItem[ShipType.values().length];
+		for (int i = 0; i < ShipType.values().length; i++) {
+			ShipType st = ShipType.values()[i];
+			ships[i] = new ComboItem(st + " (" + st.getLength() + ")", st);
 		}
 
-		// JComboBox fucked de UI
-		this.shipsComboBox = new JComboBox<>(ships);
-
-		// shipsComboBox.setPreferredSize(new Dimension(5,5));
+		this.shipsComboBox = new ComboBox<ComboItem>(ships, new ComboItem("Select a ship:"));
 		this.add(this.shipsComboBox);
 		
 		ButtonGroup buttonGroup = new ButtonGroup();
@@ -53,7 +52,7 @@ public class SelectionPanel extends JPanel {
 		return shipsLabel;
 	}
 
-	public JComboBox<String> getShipsComboBox() {
+	public JComboBox<ComboItem> getShipsComboBox() {
 		return shipsComboBox;
 	}
 
