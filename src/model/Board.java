@@ -25,11 +25,9 @@ public class Board implements BoardObservable{
 		this.containsShip = new ButtonType[10][10];
 		this.observers = new ArrayList<BoardObserver>();
 		this.shipTypeCounter = new EnumMap<ShipType, Integer>(ShipType.class){{
-			put(ShipType.ONDERZEEËR, 0);
-			put(ShipType.PATROUILLE, 0);
-			put(ShipType.SLAG, 0);
-			put(ShipType.TORPEDO, 0);
-			put(ShipType.VLIEGDEK, 0);
+			for(ShipType st : ShipType.values()) {
+				put(st, 0);
+			}
 		}};
 	}
 	
