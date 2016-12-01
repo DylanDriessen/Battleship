@@ -10,6 +10,8 @@ import javax.swing.JPanel;
 
 import model.Board;
 import model.BoardObserver;
+import model.Position;
+import model.enums.ButtonType;
 
 public class GameGrid extends JPanel implements BoardObserver {
 
@@ -39,6 +41,10 @@ public class GameGrid extends JPanel implements BoardObserver {
 		this.board.addObserver(this);
 	}
 
+	public Board getBoard() {
+		return board;
+	}
+
 	@Override
 	public void boardChanged(Board board) {
 		this.board = board;
@@ -46,22 +52,15 @@ public class GameGrid extends JPanel implements BoardObserver {
 	}
 	
 	public void paintBoard() {
-		for(int y = 0; y < 10; y++) {
-			for(int x = 0; x < 10; x++) {
-				if(this.board.getContainsShip()[x][y] == 2) {
-					this.buttons[x][y].setBackground(Color.RED);
-					this.buttons[x][y].setBorderPainted(false);
-				}
-				if(this.board.getContainsShip()[x][y] == 1) {
-					this.buttons[x][y].setBackground(Color.GRAY);
-					this.buttons[x][y].setBorderPainted(true);
-				}
-				if(this.board.getContainsShip()[x][y] == 0) {
-					this.buttons[x][y].setBackground(new Color(165, 214, 254));
-					this.buttons[x][y].setBorderPainted(true);
-				}
-				this.buttons[x][y].repaint();
+		for(Position p : this.board.getChangedButtons()) {
+			int x = p.getX();
+			int y = p.getY();
+			Color color = this.board.getContainsShip()[x][y].getColor();
+			this.buttons[x][y].setBackground(color);
+			if (color == Color.RED) {
+				this.buttons[x][y].setBorderPainted(false);
 			}
+			this.buttons[x][y].repaint();
 		}
 	}	
 	

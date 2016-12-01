@@ -1,6 +1,7 @@
 package model.game.state;
 
 import exception.ModelException;
+import model.Board;
 import model.Game;
 import model.Position;
 import model.Ship;
@@ -16,12 +17,15 @@ public class NewState implements GameState {
 	}
 	
 	@Override
-	public void squareClicked(int x, int y, ShipType shipType, Orientation orientation) throws ModelException {	
+	public void squareClicked(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {	
 		if(shipType == null) {
 			throw new ModelException("Gelieve een schip te kiezen.");
 		}
 		if(orientation == null) {
 			throw new ModelException("Gelieve een orientatie te kiezen.");
+		}
+		if (!board.equals(this.game.getBoard1())) {
+			return;
 		}
 		
 		Ship ship = new Ship(shipType, new Position(x, y), orientation);
@@ -32,23 +36,29 @@ public class NewState implements GameState {
 	}
 
 	@Override
-	public void squareEntered(int x, int y, ShipType shipType, Orientation orientation) throws ModelException {
+	public void squareEntered(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
 		if(shipType == null) {
 			return;
 		}
 		if(orientation == null) {
 			return;
 		}
-
+		if (!board.equals(this.game.getBoard1())) {
+			return;
+		}
+		
 		this.game.getBoard1().placeGhostShip(x, y, shipType, orientation);
 	}
 
 	@Override
-	public void squareExited(int x, int y, ShipType shipType, Orientation orientation) throws ModelException {
+	public void squareExited(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
 		if(shipType == null) {
 			return;
 		}
 		if(orientation == null) {
+			return;
+		}
+		if (!board.equals(this.game.getBoard1())) {
 			return;
 		}
 		

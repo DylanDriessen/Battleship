@@ -23,16 +23,16 @@ public class Game {
 		this.currentState = this.newState;
 	}
 
-	public void buttonClicked(int x, int y, ShipType shipType, Orientation orientation) throws ModelException {
-		this.currentState.squareClicked(x, y, shipType, orientation);
+	public void buttonClicked(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+		this.currentState.squareClicked(x, y, shipType, orientation, board);
 	}
 	
-	public void buttonEntered(int x, int y, ShipType shipType, Orientation orientation) throws ModelException {
-		this.currentState.squareEntered(x, y, shipType, orientation);
+	public void buttonEntered(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+		this.currentState.squareEntered(x, y, shipType, orientation, board);
 	}
 	
-	public void buttonExited(int x, int y, ShipType shipType, Orientation orientation) throws ModelException {
-		this.currentState.squareExited(x, y, shipType, orientation);
+	public void buttonExited(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+		this.currentState.squareExited(x, y, shipType, orientation, board);
 	}
 	
 	//GETTERS

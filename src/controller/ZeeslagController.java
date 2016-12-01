@@ -9,9 +9,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
 import exception.ModelException;
+import model.Board;
 import model.enums.Orientation;
 import model.enums.ShipType;
 import model.facade.ModelFacade;
+import view.GameGrid;
 import view.Square;
 import view.combobox.ComboBox;
 import view.combobox.ComboItem;
@@ -43,28 +45,28 @@ public class ZeeslagController implements Controller {
 		this.viewFacade.getJComboBox().addActionListener(new ComboboxListener());
 	}
 	
-	public void buttonClicked(int x, int y) {
+	public void buttonClicked(int x, int y, Board board) {
 		//TODO: shouldn't this be a Position object instead of x y?
 		try {
-			this.modelFacade.buttonClicked(x, y, this.shipType, this.orientation);
+			this.modelFacade.buttonClicked(x, y, this.shipType, this.orientation, board);
 		} catch (ModelException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}
 	
-	public void buttonEntered(int x, int y) {
+	public void buttonEntered(int x, int y, Board board) {
 		//TODO: shouldn't this be a Position object instead of x y?
 		try {
-			this.modelFacade.buttonEntered(x, y, this.shipType, this.orientation);
+			this.modelFacade.buttonEntered(x, y, this.shipType, this.orientation, board);
 		} catch (ModelException e) {
 			return;
 		}
 	}
 	
-	public void buttonExited(int x, int y) {
+	public void buttonExited(int x, int y, Board board) {
 		//TODO: shouldn't this be a Position object instead of x y?
 		try {
-			this.modelFacade.buttonExited(x, y, this.shipType, this.orientation);
+			this.modelFacade.buttonExited(x, y, this.shipType, this.orientation, board);
 		} catch (ModelException e) {
 			return;
 		}
@@ -85,7 +87,8 @@ public class ZeeslagController implements Controller {
 			Square button = (Square)e.getSource();
 			int x = button.getX();
 			int y = button.getY();
-			buttonClicked(x, y);
+			Board board = ((GameGrid) button.getParent()).getBoard();
+			buttonClicked(x, y, board);
 		}
 		
 		@Override
@@ -93,7 +96,8 @@ public class ZeeslagController implements Controller {
 			Square button = (Square)e.getSource();
 			int x = button.getX();
 			int y = button.getY();
-			buttonEntered(x, y);
+			Board board = ((GameGrid) button.getParent()).getBoard();
+			buttonEntered(x, y, board);
 		}
 		
 		@Override
@@ -101,7 +105,8 @@ public class ZeeslagController implements Controller {
 			Square button = (Square)e.getSource();
 			int x = button.getX();
 			int y = button.getY();
-			buttonExited(x, y);
+			Board board = ((GameGrid) button.getParent()).getBoard();
+			buttonExited(x, y, board);
 		}
 
 	}

@@ -1,6 +1,7 @@
 package model.game.state;
 
 import exception.ModelException;
+import model.Board;
 import model.Game;
 import model.enums.Orientation;
 import model.enums.ShipType;
@@ -14,19 +15,19 @@ public class StartedState implements GameState {
 	}
 	
 	@Override
-	public void squareClicked(int x, int y, ShipType shipType, Orientation orientation) {
+	public void squareClicked(int x, int y, ShipType shipType, Orientation orientation, Board board) {
 		
 		
 	}
 
 	@Override
-	public void squareEntered(int x, int y, ShipType shipType, Orientation orientation) throws ModelException {
+	public void squareEntered(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void squareExited(int x, int y, ShipType shipType, Orientation orientation) throws ModelException {
+	public void squareExited(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
 		// TODO Auto-generated method stub
 		
 	}

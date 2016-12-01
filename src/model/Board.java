@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import exception.ModelException;
+import model.enums.ButtonType;
 import model.enums.Orientation;
 import model.enums.ShipType;
 import model.Ship;
@@ -14,13 +15,14 @@ public class Board implements BoardObservable{
 	
 	private Player player;
 	private List<BoardObserver> observers;
-	private int[][] containsShip;
+	private ButtonType[][] containsShip;
 	private Map<ShipType, Integer> shipTypeCounter;
 	private int shipCounter;
+	private ArrayList<Position> changed = new ArrayList<Position>();
 	
 	public Board(String playerName) {
 		this.player = new Player(playerName);
-		this.containsShip = new int[10][10];
+		this.containsShip = new ButtonType[10][10];
 		this.observers = new ArrayList<BoardObserver>();
 		this.shipTypeCounter = new EnumMap<ShipType, Integer>(ShipType.class){{
 			put(ShipType.ONDERZEEËR, 0);
@@ -48,14 +50,16 @@ public class Board implements BoardObservable{
 				verifyEnvironment(i, y);
 			}
 			for(int i = x; i < x + length; i++) {
-				this.containsShip[i][y] = 2;
+				this.containsShip[i][y] = ButtonType.OCCUPIED;
+				changed.add(new Position(i, y));
 			}
 		} else {
 			for(int i = y; i < y + length; i++) {
 				verifyEnvironment(x, i);
 			}
 			for(int i = y; i < y + length; i++) {
-				this.containsShip[x][i] = 2;
+				this.containsShip[x][i] = ButtonType.OCCUPIED;
+				changed.add(new Position(x, i));
 			}
 		}
 		
@@ -78,14 +82,16 @@ public class Board implements BoardObservable{
 				verifyEnvironment(i, y);
 			}
 			for(int i = x; i < x + length; i++) {
-				this.containsShip[i][y] = 1;
+				this.containsShip[i][y] = ButtonType.FOCUS;
+				changed.add(new Position(i, y));
 			}
 		} else {
 			for(int i = y; i < y + length; i++) {
 				verifyEnvironment(x, i);
 			}
 			for(int i = y; i < y + length; i++) {
-				this.containsShip[x][i] = 1;
+				this.containsShip[x][i] = ButtonType.FOCUS;
+				changed.add(new Position(x, i));
 			}
 		}
 		
@@ -100,14 +106,16 @@ public class Board implements BoardObservable{
 				verifyEnvironment(i, y);
 			}
 			for(int i = x; i < x + length; i++) {
-				this.containsShip[i][y] = 0;
+				this.containsShip[i][y] = ButtonType.EMPTY;
+				changed.add(new Position(i, y));
 			}
 		} else {
 			for(int i = y; i < y + length; i++) {
 				verifyEnvironment(x, i);
 			}
 			for(int i = y; i < y + length; i++) {
-				this.containsShip[x][i] = 0;
+				this.containsShip[x][i] = ButtonType.EMPTY;
+				changed.add(new Position(x, i));
 			}
 		}
 		
@@ -122,7 +130,7 @@ public class Board implements BoardObservable{
 		if(x > 9 || y > 9) {
 			throw new ModelException("Je kan geen schip buiten het bord plaatsen.");
 		}
-		if(this.containsShip[x][y] == 2) {
+		if(this.containsShip[x][y] == ButtonType.OCCUPIED) {
 			throw new ModelException("Je kan geen schip bovenop een ander schip plaatsen.");
 		}
 		if(neighbourContainsShip(x, y)) {
@@ -131,10 +139,10 @@ public class Board implements BoardObservable{
 	}
 		
 	private boolean neighbourContainsShip(int x, int y) {
-		int occupied = 0;
+		ButtonType occupied = ButtonType.EMPTY;
 		
-		for(int i = x - 1; i <= x + 1 && !(occupied == 2); i++) {
-			for(int j = y - 1; j <= y + 1 && !(occupied == 2); j++) {
+		for(int i = x - 1; i <= x + 1 && !(occupied == ButtonType.OCCUPIED); i++) {
+			for(int j = y - 1; j <= y + 1 && !(occupied == ButtonType.OCCUPIED); j++) {
 				try {
 					occupied = this.containsShip[i][j];
 				} catch(ArrayIndexOutOfBoundsException e) {
@@ -143,7 +151,7 @@ public class Board implements BoardObservable{
 			}
 		}
 		
-		return occupied == 2;
+		return occupied == ButtonType.OCCUPIED;
 	}
 	
 	private void incrementCounters(ShipType shipType) {
@@ -158,20 +166,22 @@ public class Board implements BoardObservable{
 		return this.player;
 	}
 	
-	public int[][] getContainsShip() {
-		return containsShip;
+	public ButtonType[][] getContainsShip() {
+		return this.containsShip;
+	}
+	
+	public ArrayList<Position> getChangedButtons() {
+		return this.changed;
 	}
 
 	@Override
 	public void addObserver(BoardObserver o) {
 		this.observers.add(o);
-		
 	}
 
 	@Override
 	public void removeObserver(BoardObserver o) {
-		// TODO Auto-generated method stub
-		
+		this.observers.remove(o);
 	}
 
 	@Override
