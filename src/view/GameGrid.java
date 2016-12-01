@@ -9,6 +9,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import model.Board;
+import model.BoardObservable;
 import model.BoardObserver;
 import model.Position;
 import model.enums.ButtonType;
@@ -17,7 +18,7 @@ public class GameGrid extends JPanel implements BoardObserver {
 
 	private static final long serialVersionUID = 1L;
 	private Square[][] buttons = new Square[10][10];
-	private Board board;
+	private BoardObservable board;
 	
 	public GameGrid(View gameFrame, int width, Board board) {
 		super();
@@ -41,7 +42,7 @@ public class GameGrid extends JPanel implements BoardObserver {
 		this.board.addObserver(this);
 	}
 
-	public Board getBoard() {
+	public BoardObservable getBoard() {
 		return board;
 	}
 
