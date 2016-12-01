@@ -18,7 +18,7 @@ public class GameGrid extends JPanel implements BoardObserver {
 
 	private static final long serialVersionUID = 1L;
 	private Square[][] buttons = new Square[10][10];
-	private BoardObservable board;
+	private Board board;
 	
 	public GameGrid(View gameFrame, int width, Board board) {
 		super();
@@ -42,7 +42,7 @@ public class GameGrid extends JPanel implements BoardObserver {
 		this.board.addObserver(this);
 	}
 
-	public BoardObservable getBoard() {
+	public Board getBoard() {
 		return board;
 	}
 
