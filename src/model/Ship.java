@@ -5,6 +5,8 @@ import model.enums.ShipType;
 
 public class Ship {
 	
+	private int timesHit = 0;
+
 	private final ShipType shipType;
 	private final Position anchor;
 	private final Orientation orientation;
@@ -13,6 +15,18 @@ public class Ship {
 		this.shipType = type;
 		this.anchor = position;
 		this.orientation = orientation;
+	}
+	
+	public int getTimesHit() {
+		return this.timesHit;
+	}
+	
+	public void hitShip() {
+		this.timesHit++;
+	}
+	
+	public boolean isSunk() {
+		return this.timesHit == this.shipType.getLength();
 	}
 
 	public ShipType getShipType() {

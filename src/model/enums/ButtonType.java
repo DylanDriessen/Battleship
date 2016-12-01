@@ -7,7 +7,8 @@ public enum ButtonType {
 	FOCUS(Color.GRAY), 
 	OCCUPIED(Color.RED), 
 	SHOT_MISSED(Color.BLUE), 
-	SHOT_HIT(Color.MAGENTA);
+	SHOT_HIT(Color.MAGENTA),
+	SUNK(Color.BLACK);
 	
 	private Color color;
 	

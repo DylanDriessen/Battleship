@@ -20,6 +20,8 @@ public class Board implements BoardObservable{
 	private int shipCounter;
 	private ArrayList<Position> changed = new ArrayList<Position>();
 	
+	private BoardPosition[][] boardPositions;
+	
 	public Board(String playerName) {
 		this.player = new Player(playerName);
 		this.containsShip = new ButtonType[10][10];
@@ -29,6 +31,7 @@ public class Board implements BoardObservable{
 				put(st, 0);
 			}
 		}};
+		this.boardPositions = new BoardPosition[10][10];
 	}
 	
 	public void placeShip(Ship ship) throws ModelException {
@@ -48,7 +51,8 @@ public class Board implements BoardObservable{
 				verifyEnvironment(i, y);
 			}
 			for(int i = x; i < x + length; i++) {
-				this.containsShip[i][y] = ButtonType.OCCUPIED;
+				//this.containsShip[i][y] = ButtonType.OCCUPIED;
+				this.boardPositions[i][y].setShip(ship);
 				changed.add(new Position(i, y));
 			}
 		} else {
