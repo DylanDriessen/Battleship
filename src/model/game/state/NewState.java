@@ -31,4 +31,28 @@ public class NewState implements GameState {
 		// since view observes model, it will draw the squares differently
 	}
 
+	@Override
+	public void squareEntered(int x, int y, ShipType shipType, Orientation orientation) throws ModelException {
+		if(shipType == null) {
+			return;
+		}
+		if(orientation == null) {
+			return;
+		}
+
+		this.game.getBoard1().placeGhostShip(x, y, shipType, orientation);
+	}
+
+	@Override
+	public void squareExited(int x, int y, ShipType shipType, Orientation orientation) throws ModelException {
+		if(shipType == null) {
+			return;
+		}
+		if(orientation == null) {
+			return;
+		}
+		
+		this.game.getBoard1().removeGhostShip(x, y, shipType, orientation);
+	}
+
 }

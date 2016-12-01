@@ -52,6 +52,24 @@ public class ZeeslagController implements Controller {
 		}
 	}
 	
+	public void buttonEntered(int x, int y) {
+		//TODO: shouldn't this be a Position object instead of x y?
+		try {
+			this.modelFacade.buttonEntered(x, y, this.shipType, this.orientation);
+		} catch (ModelException e) {
+			return;
+		}
+	}
+	
+	public void buttonExited(int x, int y) {
+		//TODO: shouldn't this be a Position object instead of x y?
+		try {
+			this.modelFacade.buttonExited(x, y, this.shipType, this.orientation);
+		} catch (ModelException e) {
+			return;
+		}
+	}
+	
 	public void setOrientation(Orientation orientation) {
 		this.orientation = orientation;
 	}
@@ -75,7 +93,7 @@ public class ZeeslagController implements Controller {
 			Square button = (Square)e.getSource();
 			int x = button.getX();
 			int y = button.getY();
-			// System.out.println("hover over " + x + y + " bitchez");
+			buttonEntered(x, y);
 		}
 		
 		@Override
@@ -83,7 +101,7 @@ public class ZeeslagController implements Controller {
 			Square button = (Square)e.getSource();
 			int x = button.getX();
 			int y = button.getY();
-			// System.out.println("exited " + x + y + " bitchez");
+			buttonExited(x, y);
 		}
 
 	}

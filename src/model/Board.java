@@ -14,13 +14,13 @@ public class Board implements BoardObservable{
 	
 	private Player player;
 	private List<BoardObserver> observers;
-	private boolean[][] containsShip;
+	private int[][] containsShip;
 	private Map<ShipType, Integer> shipTypeCounter;
 	private int shipCounter;
 	
 	public Board(String playerName) {
 		this.player = new Player(playerName);
-		this.containsShip = new boolean[10][10];
+		this.containsShip = new int[10][10];
 		this.observers = new ArrayList<BoardObserver>();
 		this.shipTypeCounter = new EnumMap<ShipType, Integer>(ShipType.class){{
 			put(ShipType.ONDERZEEËR, 0);
@@ -48,18 +48,69 @@ public class Board implements BoardObservable{
 				verifyEnvironment(i, y);
 			}
 			for(int i = x; i < x + length; i++) {
-				this.containsShip[i][y] = true;
+				this.containsShip[i][y] = 2;
 			}
 		} else {
 			for(int i = y; i < y + length; i++) {
 				verifyEnvironment(x, i);
 			}
 			for(int i = y; i < y + length; i++) {
-				this.containsShip[x][i] = true;
+				this.containsShip[x][i] = 2;
 			}
 		}
 		
 		this.incrementCounters(ship.getShipType());	
+		this.notifyBoardChanged();
+	}
+	
+	public void placeGhostShip(int x, int y, ShipType type, Orientation orientation) throws ModelException {
+		if(this.shipCounter == 5) {
+			return;
+		}
+		if(maxAmountShipsReached(type)) {
+			return;
+		}
+		
+		int length = type.getLength();
+		
+		if(orientation.equals(Orientation.HORIZONTAL)) {
+			for(int i = x; i < x + length; i++) {
+				verifyEnvironment(i, y);
+			}
+			for(int i = x; i < x + length; i++) {
+				this.containsShip[i][y] = 1;
+			}
+		} else {
+			for(int i = y; i < y + length; i++) {
+				verifyEnvironment(x, i);
+			}
+			for(int i = y; i < y + length; i++) {
+				this.containsShip[x][i] = 1;
+			}
+		}
+		
+		this.notifyBoardChanged();
+	}
+	
+	public void removeGhostShip(int x, int y, ShipType type, Orientation orientation) throws ModelException {
+		int length = type.getLength();
+		
+		if(orientation.equals(Orientation.HORIZONTAL)) {
+			for(int i = x; i < x + length; i++) {
+				verifyEnvironment(i, y);
+			}
+			for(int i = x; i < x + length; i++) {
+				this.containsShip[i][y] = 0;
+			}
+		} else {
+			for(int i = y; i < y + length; i++) {
+				verifyEnvironment(x, i);
+			}
+			for(int i = y; i < y + length; i++) {
+				this.containsShip[x][i] = 0;
+			}
+		}
+		
 		this.notifyBoardChanged();
 	}
 	
@@ -71,7 +122,7 @@ public class Board implements BoardObservable{
 		if(x > 9 || y > 9) {
 			throw new ModelException("Je kan geen schip buiten het bord plaatsen.");
 		}
-		if(this.containsShip[x][y]) {
+		if(this.containsShip[x][y] == 2) {
 			throw new ModelException("Je kan geen schip bovenop een ander schip plaatsen.");
 		}
 		if(neighbourContainsShip(x, y)) {
@@ -80,10 +131,10 @@ public class Board implements BoardObservable{
 	}
 		
 	private boolean neighbourContainsShip(int x, int y) {
-		boolean occupied = false;
+		int occupied = 0;
 		
-		for(int i = x - 1; i <= x + 1 && !occupied; i++) {
-			for(int j = y - 1; j <= y + 1 && !occupied; j++) {
+		for(int i = x - 1; i <= x + 1 && !(occupied == 2); i++) {
+			for(int j = y - 1; j <= y + 1 && !(occupied == 2); j++) {
 				try {
 					occupied = this.containsShip[i][j];
 				} catch(ArrayIndexOutOfBoundsException e) {
@@ -92,7 +143,7 @@ public class Board implements BoardObservable{
 			}
 		}
 		
-		return occupied;
+		return occupied == 2;
 	}
 	
 	private void incrementCounters(ShipType shipType) {
@@ -107,7 +158,7 @@ public class Board implements BoardObservable{
 		return this.player;
 	}
 	
-	public boolean[][] getContainsShip() {
+	public int[][] getContainsShip() {
 		return containsShip;
 	}
 
