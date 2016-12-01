@@ -52,7 +52,7 @@ public class Board implements BoardObservable{
 			}
 			for(int i = x; i < x + length; i++) {
 				//this.containsShip[i][y] = ButtonType.OCCUPIED;
-				this.boardPositions[i][y].setShip(ship);
+				this.boardPositions[i][y] = new BoardPosition(ship);
 				changed.add(new Position(i, y));
 			}
 		} else {
@@ -60,7 +60,8 @@ public class Board implements BoardObservable{
 				verifyEnvironment(x, i);
 			}
 			for(int i = y; i < y + length; i++) {
-				this.containsShip[x][i] = ButtonType.OCCUPIED;
+				//this.containsShip[x][i] = ButtonType.OCCUPIED;
+				this.boardPositions[x][i] = new BoardPosition(ship);
 				changed.add(new Position(x, i));
 			}
 		}
@@ -170,6 +171,10 @@ public class Board implements BoardObservable{
 	
 	public ButtonType[][] getContainsShip() {
 		return this.containsShip;
+	}
+	
+	public BoardPosition[][] getBoardPositions() {
+		return this.boardPositions;
 	}
 	
 	public ArrayList<Position> getChangedButtons() {
