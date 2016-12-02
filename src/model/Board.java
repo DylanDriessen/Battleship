@@ -18,7 +18,8 @@ public class Board implements BoardObservable{
 	private ButtonType[][] containsShip;
 	private Map<ShipType, Integer> shipTypeCounter;
 	private int shipCounter;
-	private ArrayList<Position> changed = new ArrayList<Position>();
+	private ArrayList<Position> changed;
+	private ArrayList<Position> focus;
 	
 	private BoardPosition[][] boardPositions;
 	
@@ -45,6 +46,7 @@ public class Board implements BoardObservable{
 		int x = ship.getAnchor().getX();
 		int y = ship.getAnchor().getY();
 		int length = ship.getShipType().getLength();
+		this.setChangedButtons(new ArrayList<Position>());
 		
 		if(ship.getOrientation().equals(Orientation.HORIZONTAL)) {
 			for(int i = x; i < x + length; i++) {
@@ -79,6 +81,7 @@ public class Board implements BoardObservable{
 		}
 		
 		int length = type.getLength();
+		this.setFocusButtons(new ArrayList<Position>());
 		
 		if(orientation.equals(Orientation.HORIZONTAL)) {
 			for(int i = x; i < x + length; i++) {
@@ -86,7 +89,7 @@ public class Board implements BoardObservable{
 			}
 			for(int i = x; i < x + length; i++) {
 				this.containsShip[i][y] = ButtonType.FOCUS;
-				changed.add(new Position(i, y));
+				this.focus.add(new Position(i, y));
 			}
 		} else {
 			for(int i = y; i < y + length; i++) {
@@ -94,7 +97,7 @@ public class Board implements BoardObservable{
 			}
 			for(int i = y; i < y + length; i++) {
 				this.containsShip[x][i] = ButtonType.FOCUS;
-				changed.add(new Position(x, i));
+				this.focus.add(new Position(x, i));
 			}
 		}
 		
@@ -103,6 +106,7 @@ public class Board implements BoardObservable{
 	
 	public void removeGhostShip(int x, int y, ShipType type, Orientation orientation) throws ModelException {
 		int length = type.getLength();
+		this.setFocusButtons(new ArrayList<Position>());
 		
 		if(orientation.equals(Orientation.HORIZONTAL)) {
 			for(int i = x; i < x + length; i++) {
@@ -110,7 +114,7 @@ public class Board implements BoardObservable{
 			}
 			for(int i = x; i < x + length; i++) {
 				this.containsShip[i][y] = ButtonType.EMPTY;
-				changed.add(new Position(i, y));
+				this.focus.add(new Position(i, y));
 			}
 		} else {
 			for(int i = y; i < y + length; i++) {
@@ -118,7 +122,7 @@ public class Board implements BoardObservable{
 			}
 			for(int i = y; i < y + length; i++) {
 				this.containsShip[x][i] = ButtonType.EMPTY;
-				changed.add(new Position(x, i));
+				this.focus.add(new Position(x, i));
 			}
 		}
 		
@@ -179,6 +183,18 @@ public class Board implements BoardObservable{
 	
 	public ArrayList<Position> getChangedButtons() {
 		return this.changed;
+	}
+	
+	private void setChangedButtons(ArrayList<Position> changed) {
+		this.changed = changed;
+	}
+
+	public ArrayList<Position> getFocusButtons() {
+		return focus;
+	}
+
+	private void setFocusButtons(ArrayList<Position> focus) {
+		this.focus = focus;
 	}
 
 	@Override
