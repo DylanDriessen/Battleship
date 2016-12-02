@@ -9,6 +9,7 @@ import exception.ModelException;
 import model.enums.ButtonType;
 import model.enums.Orientation;
 import model.enums.ShipType;
+import model.player.Player;
 import model.Ship;
 
 public class Board implements BoardObservable{
