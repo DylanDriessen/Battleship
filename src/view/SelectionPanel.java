@@ -6,6 +6,7 @@ import java.awt.GridBagLayout;
 import java.lang.reflect.Array;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,6 +25,7 @@ public class SelectionPanel extends JPanel {
 	private ComboBox<ComboItem<ShipType>> shipsComboBox;
 	private JRadioButton horizontal;
 	private JRadioButton vertical;
+	private JButton startButton;
 	
 	public SelectionPanel() {
 				
@@ -73,22 +75,36 @@ public class SelectionPanel extends JPanel {
 		
 		gbc.gridx = 1;
 		this.add(this.vertical, gbc);
+		
+		this.startButton = new JButton();
+		this.startButton.setFont(GameFrame.DEFAULT_FONT);
+		this.startButton.setText("Start Game");
+		gbc.gridx = 0;
+		gbc.gridy = 5;
+		gbc.gridwidth = 2;
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		this.add(this.startButton, gbc);
+		
 	}
 
 	public JLabel getShipsLabel() {
-		return shipsLabel;
+		return this.shipsLabel;
 	}
 
 	public JComboBox<ComboItem<ShipType>> getShipsComboBox() {
-		return shipsComboBox;
+		return this.shipsComboBox;
 	}
 
 	public JRadioButton getHorizontal() {
-		return horizontal;
+		return this.horizontal;
 	}
 
 	public JRadioButton getVertical() {
-		return vertical;
+		return this.vertical;
+	}
+	
+	public JButton getStartButton() {
+		return this.startButton;
 	}
 	
 }

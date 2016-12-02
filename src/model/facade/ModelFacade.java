@@ -22,6 +22,10 @@ public class ModelFacade {
 		return this.game.getBoard2();
 	}
 	
+	public void startGame() throws ModelException {
+		this.game.startGame();
+	}
+	
 	public void buttonClicked(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
 		this.game.buttonClicked(x, y, shipType, orientation, board);
 	}

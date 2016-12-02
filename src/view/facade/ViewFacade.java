@@ -1,5 +1,6 @@
 package view.facade;
 
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 
@@ -33,6 +34,10 @@ public class ViewFacade {
 	
 	public JComboBox getJComboBox() {
 		return view.getSelectionPanel().getShipsComboBox();
+	}
+	
+	public JButton getStartButton() {
+		return view.getSelectionPanel().getStartButton();
 	}
 	
 }

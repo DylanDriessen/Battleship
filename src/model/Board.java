@@ -175,6 +175,10 @@ public class Board implements BoardObservable{
 		return this.player;
 	}
 	
+	public int getNbOfShips() {
+		return this.shipCounter;
+	}
+	
 	public BoardPosition[][] getBoardPositions() {
 		return this.boardPositions;
 	}

@@ -25,6 +25,7 @@ public class ZeeslagController implements Controller {
 	private final ModelFacade modelFacade;
 	private Orientation orientation;
 	private ShipType shipType;
+	private StartListener startListener;
 	
 	public ZeeslagController(ModelFacade modelFacade, ViewFacade viewFacade) {
 		this.modelFacade = modelFacade;
@@ -35,14 +36,26 @@ public class ZeeslagController implements Controller {
 		
 		for(int y = 0; y < 10; y++) {
 			for(int x = 0; x < 10; x++) {
-				squares1[x][y].addMouseListener(new ClickListener());
-				squares2[x][y].addMouseListener(new ClickListener());
+				squares1[x][y].addMouseListener(new AdvancedClickListener());
+				squares2[x][y].addMouseListener(new AdvancedClickListener());
 			}
 		}
 		
 		this.viewFacade.getHorizontalButton().addActionListener(new RadioListener());
 		this.viewFacade.getVerticalButton().addActionListener(new RadioListener());
 		this.viewFacade.getJComboBox().addActionListener(new ComboboxListener());
+		this.startListener = new StartListener();
+		this.viewFacade.getStartButton().addMouseListener(startListener);
+	}
+	
+	public void startGame() {
+		try {
+			this.modelFacade.startGame();
+			this.viewFacade.getStartButton().removeMouseListener(startListener);
+			this.viewFacade.getStartButton().setEnabled(false);
+		} catch (ModelException e) {
+			JOptionPane.showMessageDialog(null, e.getMessage());
+		}
 	}
 	
 	public void buttonClicked(int x, int y, Board board) {
@@ -79,8 +92,21 @@ public class ZeeslagController implements Controller {
 	public void setShipType(ShipType shipType) {
 		this.shipType = shipType;
 	}
-
+	
 	private class ClickListener extends MouseAdapter {
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			Square button = (Square)e.getSource();
+			int x = button.getX();
+			int y = button.getY();
+			Board board = ((GameGrid) button.getParent()).getBoard();
+			buttonClicked(x, y, board);
+		}
+
+	}
+
+	private class AdvancedClickListener extends MouseAdapter {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -128,6 +154,15 @@ public class ZeeslagController implements Controller {
 		public void actionPerformed(ActionEvent e) {
 			JRadioButton radioButton = (JRadioButton)e.getSource();
 			setOrientation(Orientation.valueOf(radioButton.getText().toUpperCase()));
+		}
+		
+	}
+	
+	private class StartListener extends MouseAdapter {
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			startGame();
 		}
 		
 	}

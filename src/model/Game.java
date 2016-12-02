@@ -22,6 +22,14 @@ public class Game {
 		this.finishedState = new FinishedState(this);
 		this.currentState = this.newState;
 	}
+	
+	public void startGame() throws ModelException {
+		if (board1.getNbOfShips() == 5) {
+			this.currentState = startedState;
+		} else {
+			throw new ModelException("Je moet 5 schepen op je eigen bord plaatsen");
+		}
+	}
 
 	public void buttonClicked(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
 		this.currentState.squareClicked(x, y, shipType, orientation, board);
