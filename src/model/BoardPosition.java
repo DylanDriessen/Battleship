@@ -8,13 +8,7 @@ public class BoardPosition {
 	private boolean isPlayed = false;
 	private Color color = new Color(165, 214, 254);
 	
-	public BoardPosition(Ship ship) {
-		this.setShip(ship);
-	}
-	
-	public boolean containsShip() {
-		return this.ship != null;
-	}
+	public BoardPosition() {}
 	
 	public boolean isPlayed() {
 		return this.isPlayed;
@@ -24,12 +18,17 @@ public class BoardPosition {
 		return this.containsShip() && this.isPlayed();
 	}
 	
+	public boolean containsShip() {
+		return this.ship != null;
+	}
+	
 	public Ship getShip() {
 		return this.ship;
 	}
 	
-	public Color getColor() {
-		return this.color;
+	public void setShip(Ship ship) {
+		this.ship = ship;
+		setColor(Color.RED);
 	}
 	
 	public void setPlayed() {
@@ -50,9 +49,16 @@ public class BoardPosition {
 		this.isPlayed = value;
 	}
 	
-	public void setShip(Ship ship) {
-		this.ship = ship;
-		setColor(Color.RED);
+	public void setFocus(boolean focus) {
+		if (focus) {
+			this.setColor(Color.GRAY);
+		} else {
+			this.setColor(new Color(165, 214, 254));
+		}
+	}
+
+	public Color getColor() {
+		return this.color;
 	}
 	
 	public void setColor(Color color) {

@@ -15,17 +15,13 @@ public class Board implements BoardObservable{
 	
 	private Player player;
 	private List<BoardObserver> observers;
-	private ButtonType[][] containsShip;
 	private Map<ShipType, Integer> shipTypeCounter;
 	private int shipCounter;
-	private ArrayList<Position> changed;
-	private ArrayList<Position> focus;
-	
+	private ArrayList<Position> changed;	
 	private BoardPosition[][] boardPositions;
 	
 	public Board(String playerName) {
 		this.player = new Player(playerName);
-		this.containsShip = new ButtonType[10][10];
 		this.observers = new ArrayList<BoardObserver>();
 		this.shipTypeCounter = new EnumMap<ShipType, Integer>(ShipType.class){{
 			for(ShipType st : ShipType.values()) {
@@ -33,6 +29,11 @@ public class Board implements BoardObservable{
 			}
 		}};
 		this.boardPositions = new BoardPosition[10][10];
+		for (int i = 0; i < 10; i++) {
+			for (int j = 0; j < 10; j++) {
+				boardPositions[i][j] = new BoardPosition();
+			}
+		}
 	}
 	
 	public void placeShip(Ship ship) throws ModelException {
@@ -54,7 +55,7 @@ public class Board implements BoardObservable{
 			}
 			for(int i = x; i < x + length; i++) {
 				//this.containsShip[i][y] = ButtonType.OCCUPIED;
-				this.boardPositions[i][y] = new BoardPosition(ship);
+				this.boardPositions[i][y].setShip(ship);
 				changed.add(new Position(i, y));
 			}
 		} else {
@@ -63,7 +64,7 @@ public class Board implements BoardObservable{
 			}
 			for(int i = y; i < y + length; i++) {
 				//this.containsShip[x][i] = ButtonType.OCCUPIED;
-				this.boardPositions[x][i] = new BoardPosition(ship);
+				this.boardPositions[x][i].setShip(ship);
 				changed.add(new Position(x, i));
 			}
 		}
@@ -81,23 +82,23 @@ public class Board implements BoardObservable{
 		}
 		
 		int length = type.getLength();
-		this.setFocusButtons(new ArrayList<Position>());
+		this.setChangedButtons(new ArrayList<Position>());
 		
 		if(orientation.equals(Orientation.HORIZONTAL)) {
 			for(int i = x; i < x + length; i++) {
 				verifyEnvironment(i, y);
 			}
 			for(int i = x; i < x + length; i++) {
-				this.containsShip[i][y] = ButtonType.FOCUS;
-				this.focus.add(new Position(i, y));
+				this.boardPositions[i][y].setFocus(true);
+				this.changed.add(new Position(i, y));
 			}
 		} else {
 			for(int i = y; i < y + length; i++) {
 				verifyEnvironment(x, i);
 			}
 			for(int i = y; i < y + length; i++) {
-				this.containsShip[x][i] = ButtonType.FOCUS;
-				this.focus.add(new Position(x, i));
+				this.boardPositions[x][i].setFocus(true);
+				this.changed.add(new Position(x, i));
 			}
 		}
 		
@@ -106,23 +107,23 @@ public class Board implements BoardObservable{
 	
 	public void removeGhostShip(int x, int y, ShipType type, Orientation orientation) throws ModelException {
 		int length = type.getLength();
-		this.setFocusButtons(new ArrayList<Position>());
+		this.setChangedButtons(new ArrayList<Position>());
 		
 		if(orientation.equals(Orientation.HORIZONTAL)) {
 			for(int i = x; i < x + length; i++) {
 				verifyEnvironment(i, y);
 			}
 			for(int i = x; i < x + length; i++) {
-				this.containsShip[i][y] = ButtonType.EMPTY;
-				this.focus.add(new Position(i, y));
+				this.boardPositions[i][y].setFocus(false);
+				this.changed.add(new Position(i, y));
 			}
 		} else {
 			for(int i = y; i < y + length; i++) {
 				verifyEnvironment(x, i);
 			}
 			for(int i = y; i < y + length; i++) {
-				this.containsShip[x][i] = ButtonType.EMPTY;
-				this.focus.add(new Position(x, i));
+				this.boardPositions[x][i].setFocus(false);
+				this.changed.add(new Position(x, i));
 			}
 		}
 		
@@ -137,7 +138,7 @@ public class Board implements BoardObservable{
 		if(x > 9 || y > 9) {
 			throw new ModelException("Je kan geen schip buiten het bord plaatsen.");
 		}
-		if(this.containsShip[x][y] == ButtonType.OCCUPIED) {
+		if(this.boardPositions[x][y].containsShip()) {
 			throw new ModelException("Je kan geen schip bovenop een ander schip plaatsen.");
 		}
 		if(neighbourContainsShip(x, y)) {
@@ -146,19 +147,19 @@ public class Board implements BoardObservable{
 	}
 		
 	private boolean neighbourContainsShip(int x, int y) {
-		ButtonType occupied = ButtonType.EMPTY;
+		boolean occupied = false;
 		
-		for(int i = x - 1; i <= x + 1 && !(occupied == ButtonType.OCCUPIED); i++) {
-			for(int j = y - 1; j <= y + 1 && !(occupied == ButtonType.OCCUPIED); j++) {
+		for(int i = x - 1; i <= x + 1 && !occupied; i++) {
+			for(int j = y - 1; j <= y + 1 && !occupied; j++) {
 				try {
-					occupied = this.containsShip[i][j];
+					occupied = this.boardPositions[i][j].containsShip();
 				} catch(ArrayIndexOutOfBoundsException e) {
 					//Do nothing
 				}
 			}
 		}
 		
-		return occupied == ButtonType.OCCUPIED;
+		return occupied;
 	}
 	
 	private void incrementCounters(ShipType shipType) {
@@ -173,10 +174,6 @@ public class Board implements BoardObservable{
 		return this.player;
 	}
 	
-	public ButtonType[][] getContainsShip() {
-		return this.containsShip;
-	}
-	
 	public BoardPosition[][] getBoardPositions() {
 		return this.boardPositions;
 	}
@@ -187,14 +184,6 @@ public class Board implements BoardObservable{
 	
 	private void setChangedButtons(ArrayList<Position> changed) {
 		this.changed = changed;
-	}
-
-	public ArrayList<Position> getFocusButtons() {
-		return focus;
-	}
-
-	private void setFocusButtons(ArrayList<Position> focus) {
-		this.focus = focus;
 	}
 
 	@Override
