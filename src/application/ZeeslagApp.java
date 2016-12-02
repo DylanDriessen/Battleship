@@ -6,6 +6,7 @@ import controller.Controller;
 import controller.ZeeslagController;
 import model.Game;
 import model.facade.ModelFacade;
+import properties.PropertiesFile;
 import view.GameFrame;
 import view.facade.ViewFacade;
 
@@ -19,6 +20,7 @@ public class ZeeslagApp {
 		
 		//TODO: view should "observe" playerName from the model:
 		// I think code should work without the playerName parameter in the GameFrame constructor?
+		PropertiesFile properties = new PropertiesFile();
 		Game model = new Game(playerName);
 		ModelFacade modelFacade = new ModelFacade(model);
 		GameFrame view = new GameFrame(playerName, modelFacade);
