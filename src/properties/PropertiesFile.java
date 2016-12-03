@@ -12,6 +12,7 @@ import java.util.Properties;
 
 public class PropertiesFile {
 	private Properties properties;
+	private String fileName = "zeeslag.ini";
 	
 	public PropertiesFile() {
 		this.properties = new Properties();
@@ -20,11 +21,12 @@ public class PropertiesFile {
 		if(!f.exists() || f.isDirectory()) { 
 		    this.create();
 		}
+		read();
 	}
 	
 	public void read() {
 		try {
-			InputStream is = new FileInputStream("zeeslag.ini");
+			InputStream is = new FileInputStream(this.fileName);
 			this.properties.load(is);
 			is.close();
 		} catch (FileNotFoundException e) {
@@ -36,7 +38,7 @@ public class PropertiesFile {
 	
 	public void write() {
 		try {
-			OutputStream os = new FileOutputStream("zeeslag.ini");
+			OutputStream os = new FileOutputStream(this.fileName);
 			this.properties.store(os, null);
 			os.close();
 		} catch (FileNotFoundException e) {
@@ -56,7 +58,7 @@ public class PropertiesFile {
 	
 	public void create() {
 		try{
-		    PrintWriter writer = new PrintWriter("zeeslag.ini", "UTF-8");
+		    PrintWriter writer = new PrintWriter(this.fileName, "UTF-8");
 		    writer.println("AI=random");
 		    writer.close();
 		} catch (Exception e) {

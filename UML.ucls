@@ -82,16 +82,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="10" language="java" name="model.Player" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/model/Player.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1019" y="910"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="11" language="java" name="model.game.state.FinishedState" project="OOO-Zeeslag" 
+  <class id="10" language="java" name="model.game.state.FinishedState" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/model/game/state/FinishedState.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2512" y="748"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -100,7 +91,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="12" language="java" name="model.game.state.GameState" project="OOO-Zeeslag" 
+  <interface id="11" language="java" name="model.game.state.GameState" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/model/game/state/GameState.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2122" y="469"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -109,7 +100,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="13" language="java" name="model.game.state.NewState" project="OOO-Zeeslag" 
+  <class id="12" language="java" name="model.game.state.NewState" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/model/game/state/NewState.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1765" y="749"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -118,7 +109,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="14" language="java" name="model.game.state.StartedState" project="OOO-Zeeslag" 
+  <class id="13" language="java" name="model.game.state.StartedState" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/model/game/state/StartedState.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="2137" y="748"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -127,7 +118,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <interface id="15" language="java" name="model.BoardObservable" project="OOO-Zeeslag" 
+  <interface id="14" language="java" name="model.BoardObservable" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/model/BoardObservable.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1498" y="1308"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -136,7 +127,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <interface id="16" language="java" name="model.BoardObserver" project="OOO-Zeeslag" 
+  <interface id="15" language="java" name="model.BoardObserver" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/model/BoardObserver.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="1176" y="1295"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -145,7 +136,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="17" language="java" name="model.Ship" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/model/Ship.java" 
+  <class id="16" language="java" name="model.Ship" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/model/Ship.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="405" y="1055"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -154,7 +145,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="18" language="java" name="model.Position" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/model/Position.java" 
+  <class id="17" language="java" name="model.Position" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/model/Position.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="726" y="1103"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -163,7 +154,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <enumeration id="19" language="java" name="model.enums.Orientation" project="OOO-Zeeslag" 
+  <enumeration id="18" language="java" name="model.enums.Orientation" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/model/enums/Orientation.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="686" y="753"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -172,7 +163,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <enumeration id="20" language="java" name="model.enums.ShipType" project="OOO-Zeeslag" 
+  <enumeration id="19" language="java" name="model.enums.ShipType" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/model/enums/ShipType.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="460" y="721"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -181,7 +172,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
-  <interface id="21" language="java" name="view.View" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/view/View.java" 
+  <interface id="20" language="java" name="view.View" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/view/View.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="-58" y="293"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -190,7 +181,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
-  <class id="22" language="java" name="view.facade.ViewFacade" project="OOO-Zeeslag" 
+  <class id="21" language="java" name="view.facade.ViewFacade" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/view/facade/ViewFacade.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="262" y="294"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -199,7 +190,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="23" language="java" name="view.GameFrame" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/view/GameFrame.java" 
+  <class id="22" language="java" name="view.GameFrame" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/view/GameFrame.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="-37" y="610"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -208,7 +199,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="24" language="java" name="view.GameGrid" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/view/GameGrid.java" 
+  <class id="23" language="java" name="view.GameGrid" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/view/GameGrid.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="52" y="1190"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -217,7 +208,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="25" language="java" name="view.GamePanel" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/view/GamePanel.java" 
+  <class id="24" language="java" name="view.GamePanel" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/view/GamePanel.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="-48" y="871"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -226,7 +217,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="26" language="java" name="view.Scoreboard" project="OOO-Zeeslag" 
+  <class id="25" language="java" name="view.Scoreboard" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/view/Scoreboard.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="-143" y="1151"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -235,7 +226,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="27" language="java" name="view.SelectionPanel" project="OOO-Zeeslag" 
+  <class id="26" language="java" name="view.SelectionPanel" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/view/SelectionPanel.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="-486" y="937"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -244,7 +235,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="28" language="java" name="view.Square" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/view/Square.java" 
+  <class id="27" language="java" name="view.Square" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/view/Square.java" 
     binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="56" y="1445"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -253,7 +244,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="29" language="java" name="view.combobox.ComboBox" project="OOO-Zeeslag" 
+  <class id="28" language="java" name="view.combobox.ComboBox" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/view/combobox/ComboBox.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="-480" y="1199"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -262,7 +253,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="30" language="java" name="view.combobox.ComboItem" project="OOO-Zeeslag" 
+  <class id="29" language="java" name="view.combobox.ComboItem" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/view/combobox/ComboItem.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="-480" y="1394"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -271,7 +262,7 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="31" language="java" name="model.BoardPosition" project="OOO-Zeeslag" 
+  <class id="30" language="java" name="model.BoardPosition" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/model/BoardPosition.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="828" y="1364"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
@@ -280,60 +271,69 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
+  <class id="31" language="java" name="model.player.Player" project="OOO-Zeeslag" 
+    file="/OOO-Zeeslag/src/model/player/Player.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="956" y="738"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
   <association id="32">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="33" name="modelFacade">        
+    <end type="SOURCE" refId="13" navigable="false">      
+      <attribute id="33" name="game">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="34" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="35">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="36" name="shipType">        
-        <position height="0" width="0" x="-8" y="-64"/>      
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="36" name="startedState">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="37" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-8" y="-64"/>      
+        <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="20" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="38">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="39" name="selectionPanel">        
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="39" name="scoreboard">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="40" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="27" navigable="true"/>    
+    <end type="TARGET" refId="25" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="41">    
-    <end type="SOURCE" refId="11" navigable="false">      
-      <attribute id="42" name="game">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="43" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <nesting id="44">    
+  <nesting id="41">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="2"/>  
   </nesting>  
+  <association id="42">    
+    <end type="SOURCE" refId="24" navigable="false">      
+      <attribute id="43" name="grid">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="44" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
   <association id="45">    
-    <end type="SOURCE" refId="3" navigable="false">      
+    <end type="SOURCE" refId="16" navigable="false">      
       <attribute id="46" name="orientation">        
         <position height="0" width="0" x="6" y="-96"/>      
       </attribute>      
@@ -341,359 +341,387 @@
         <position height="0" width="0" x="6" y="-96"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
+    <end type="TARGET" refId="18" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="48">    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="49" name="board">        
+    <end type="SOURCE" refId="30" navigable="false">      
+      <attribute id="49" name="ship">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="50" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
+    <end type="TARGET" refId="16" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="51">    
-    <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="52" name="viewFacade">        
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="52" name="game">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="53" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="22" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="54">    
-    <end type="SOURCE" refId="24" navigable="false">      
-      <attribute id="55" name="buttons">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="56" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="55" name="ai"/>      
+      <multiplicity id="56" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="28" navigable="true"/>    
+    <end type="TARGET" refId="31" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="57">    
-    <end type="SOURCE" refId="31" navigable="false">      
-      <attribute id="58" name="ship"/>      
-      <multiplicity id="59" minimum="0" maximum="1"/>    
+    <end type="SOURCE" refId="7" navigable="false">      
+      <attribute id="58" name="game">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="59" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
-    <end type="TARGET" refId="17" navigable="true"/>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="60">    
-    <end type="SOURCE" refId="28" navigable="false">      
-      <attribute id="61" name="position">        
-        <position height="0" width="0" x="62" y="74"/>      
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="61" name="shipType">        
+        <position height="0" width="0" x="-8" y="-64"/>      
       </attribute>      
       <multiplicity id="62" minimum="0" maximum="1">        
-        <position height="0" width="0" x="62" y="74"/>      
+        <position height="0" width="0" x="-8" y="-64"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
+    <end type="TARGET" refId="19" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="63">    
     <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="64" name="modelFacade">        
+      <attribute id="64" name="board">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="65" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="7" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="66">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="67" name="panel2">        
+    <end type="SOURCE" refId="21" navigable="false">      
+      <attribute id="67" name="view">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="68" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="25" navigable="true"/>    
+    <end type="TARGET" refId="20" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="69">    
-    <end type="SOURCE" refId="13" navigable="false">      
-      <attribute id="70" name="game">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="71" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="72">    
-    <end type="SOURCE" refId="25" navigable="false">      
-      <attribute id="73" name="grid">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="74" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="24" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="75">    
-    <end type="SOURCE" refId="24"/>    
-    <end type="TARGET" refId="16"/>  
-  </realization>  
-  <association id="76">    
     <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="77" name="player">        
-        <position height="0" width="0" x="46" y="-96"/>      
+      <attribute id="70" name="boardPositions">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="78" minimum="0" maximum="1">        
-        <position height="0" width="0" x="46" y="-96"/>      
+      <multiplicity id="71" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="10" navigable="true"/>    
+    <end type="TARGET" refId="30" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <realization id="72">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="14"/>  
+  </realization>  
+  <association id="73">    
+    <end type="SOURCE" refId="27" navigable="false">      
+      <attribute id="74" name="position">        
+        <position height="0" width="0" x="62" y="74"/>      
+      </attribute>      
+      <multiplicity id="75" minimum="0" maximum="1">        
+        <position height="0" width="0" x="62" y="74"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="76">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="77" name="buttons">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="78" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="27" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="79">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="80" name="board2">        
-        <position height="0" width="0" x="0" y="0"/>      
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="80" name="orientation">        
+        <position height="0" width="0" x="6" y="-96"/>      
       </attribute>      
       <multiplicity id="81" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+        <position height="0" width="0" x="6" y="-96"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="9" navigable="true"/>    
+    <end type="TARGET" refId="18" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="82">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="83" name="boardPositions"/>      
-      <multiplicity id="84" minimum="0" maximum="2147483647"/>    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="83" name="player"/>      
+      <multiplicity id="84" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="31" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="85">    
-    <end type="SOURCE" refId="23" navigable="false">      
-      <attribute id="86" name="panel1">        
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="86" name="newState">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="87" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="25" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="88">    
-    <end type="SOURCE" refId="27" navigable="false">      
-      <attribute id="89" name="shipsComboBox">        
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="89" name="selectionPanel">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="90" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="29" navigable="true"/>    
+    <end type="TARGET" refId="26" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="91">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="92" name="orientation">        
-        <position height="0" width="0" x="6" y="-96"/>      
-      </attribute>      
-      <multiplicity id="93" minimum="0" maximum="1">        
-        <position height="0" width="0" x="6" y="-96"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="19" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="94">    
     <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="95" name="board1">        
+      <attribute id="92" name="boardPlayer">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="96" minimum="0" maximum="1">        
+      <multiplicity id="93" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="97">    
-    <end type="SOURCE" refId="9" navigable="false">      
-      <attribute id="98" name="observers">        
+  <association id="94">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="95" name="finishedState">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="99" minimum="0" maximum="2147483647">        
+      <multiplicity id="96" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="16" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="97">    
+    <end type="SOURCE" refId="12" navigable="false">      
+      <attribute id="98" name="game">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="99" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="100">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="101" name="newState">        
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="101" name="viewFacade">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="102" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="21" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="103">    
-    <end type="SOURCE" refId="14" navigable="false">      
-      <attribute id="104" name="game">        
+    <end type="SOURCE" refId="31" navigable="false">      
+      <attribute id="104" name="board"/>      
+      <multiplicity id="105" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="9" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="106">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="107" name="shipType">        
+        <position height="0" width="0" x="-8" y="-64"/>      
+      </attribute>      
+      <multiplicity id="108" minimum="0" maximum="1">        
+        <position height="0" width="0" x="-8" y="-64"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="19" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="109">    
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="110" name="boardAI">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="105" minimum="0" maximum="1">        
+      <multiplicity id="111" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
+    <end type="TARGET" refId="9" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="106">    
-    <end type="SOURCE" refId="9"/>    
+  <realization id="112">    
+    <end type="SOURCE" refId="23"/>    
     <end type="TARGET" refId="15"/>  
   </realization>  
-  <association id="107">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="108" name="finishedState">        
-        <position height="0" width="0" x="0" y="0"/>      
+  <association id="113">    
+    <end type="SOURCE" refId="16" navigable="false">      
+      <attribute id="114" name="anchor">        
+        <position height="0" width="0" x="62" y="74"/>      
       </attribute>      
-      <multiplicity id="109" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
+      <multiplicity id="115" minimum="0" maximum="1">        
+        <position height="0" width="0" x="62" y="74"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="17" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="110">    
-    <end type="SOURCE" refId="11"/>    
-    <end type="TARGET" refId="12"/>  
-  </realization>  
-  <association id="111">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="112" name="currentState">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="113" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <realization id="114">    
-    <end type="SOURCE" refId="13"/>    
-    <end type="TARGET" refId="12"/>  
-  </realization>  
-  <nesting id="115">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="5"/>  
-  </nesting>  
   <association id="116">    
-    <end type="SOURCE" refId="25" navigable="false">      
-      <attribute id="117" name="scoreboard">        
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="117" name="shipsComboBox">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="118" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="26" navigable="true"/>    
+    <end type="TARGET" refId="28" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <realization id="119">    
-    <end type="SOURCE" refId="14"/>    
-    <end type="TARGET" refId="12"/>  
-  </realization>  
-  <realization id="120">    
     <end type="SOURCE" refId="3"/>    
     <end type="TARGET" refId="6"/>  
   </realization>  
-  <association id="121">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="122" name="shipType">        
-        <position height="0" width="0" x="-8" y="-64"/>      
-      </attribute>      
-      <multiplicity id="123" minimum="0" maximum="1">        
-        <position height="0" width="0" x="-8" y="-64"/>      
-      </multiplicity>    
+  <association id="120">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="121" name="player"/>      
+      <multiplicity id="122" minimum="0" maximum="1"/>    
     </end>    
-    <end type="TARGET" refId="20" navigable="true"/>    
+    <end type="TARGET" refId="31" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <nesting id="124">    
+  <nesting id="123">    
     <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="4"/>  
+    <end type="TARGET" refId="5"/>  
   </nesting>  
+  <realization id="124">    
+    <end type="SOURCE" refId="22"/>    
+    <end type="TARGET" refId="20"/>  
+  </realization>  
   <association id="125">    
-    <end type="SOURCE" refId="8" navigable="false">      
-      <attribute id="126" name="startedState">        
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="126" name="modelFacade">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="127" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="12" navigable="true"/>    
+    <end type="TARGET" refId="7" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <realization id="128">    
-    <end type="SOURCE" refId="23"/>    
-    <end type="TARGET" refId="21"/>  
+    <end type="SOURCE" refId="10"/>    
+    <end type="TARGET" refId="11"/>  
   </realization>  
-  <association id="129">    
+  <realization id="129">    
+    <end type="SOURCE" refId="12"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <realization id="130">    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="11"/>  
+  </realization>  
+  <association id="131">    
     <end type="SOURCE" refId="22" navigable="false">      
-      <attribute id="130" name="view">        
+      <attribute id="132" name="panel1">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="131" minimum="0" maximum="1">        
+      <multiplicity id="133" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="21" navigable="true"/>    
+    <end type="TARGET" refId="24" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="132">    
-    <end type="SOURCE" refId="7" navigable="false">      
-      <attribute id="133" name="game">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="134" minimum="0" maximum="1">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="8" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
+  <nesting id="134">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="4"/>  
+  </nesting>  
   <association id="135">    
-    <end type="SOURCE" refId="17" navigable="false">      
-      <attribute id="136" name="anchor">        
-        <position height="0" width="0" x="62" y="74"/>      
+    <end type="SOURCE" refId="8" navigable="false">      
+      <attribute id="136" name="currentState">        
+        <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="137" minimum="0" maximum="1">        
-        <position height="0" width="0" x="62" y="74"/>      
+        <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="18" navigable="true"/>    
+    <end type="TARGET" refId="11" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="138">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="139" name="panel2">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="140" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="24" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="141">    
+    <end type="SOURCE" refId="3" navigable="false">      
+      <attribute id="142" name="modelFacade">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="143" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="7" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="144">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="145" name="observers">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="146" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="15" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
