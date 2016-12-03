@@ -2,9 +2,8 @@ package model.player.placestrategy;
 
 import java.util.Random;
 
-import exception.ModelException;
+import model.Position;
 import model.Ship;
-import model.ShipFactory;
 import model.enums.Orientation;
 import model.enums.ShipType;
 
@@ -18,17 +17,18 @@ public class RandomPlaceStrategy implements PlaceStrategy {
 		int succeededCount = 0;
 		while (succeededCount < 5){
 			
-			int shipTemplateIndex = r.nextInt(ShipType.values().length);
-			int xCoord = r.nextInt(9)-1;
-			int yCoord = r.nextInt(9)-1;
-			int orientationIndex = r.nextInt(Orientation.values().length);
+			int shipTypeIndex = r.nextInt(ShipType.values().length)-1;
+			int xCoord = r.nextInt(9);
+			int yCoord = r.nextInt(9);
+			int orientationIndex = r.nextInt(Orientation.values().length)-1;
 			
-			Ship ship = new Ship(shipTemplateIndex, xCoord, yCoord, orientationIndex);
+			Position p = new Position(xCoord, yCoord);
+			Ship ship = new Ship(ShipType.values()[shipTypeIndex], p , Orientation.values()[orientationIndex]);
 			
 			try {
 				//Ship plaatsen
 				succeededCount++;
-			} catch (ModelException ignored){
+			} catch (Exception ignored){
 				
 			}
 		}
