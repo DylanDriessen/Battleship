@@ -8,10 +8,10 @@ import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import model.Board;
-import model.BoardObservable;
-import model.BoardObserver;
 import model.Position;
+import model.board.Board;
+import model.board.BoardObservable;
+import model.board.BoardObserver;
 import model.enums.ButtonType;
 
 public class GameGrid extends JPanel implements BoardObserver {

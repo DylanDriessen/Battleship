@@ -1,8 +1,8 @@
 package model.facade;
 
 import exception.ModelException;
-import model.Board;
 import model.Game;
+import model.board.Board;
 import model.enums.Orientation;
 import model.enums.ShipType;
 
@@ -14,12 +14,12 @@ public class ModelFacade {
 		this.game = game;
 	}
 	
-	public Board getBoard1() {
-		return this.game.getBoardPlayer();
+	public Board getBoardPlayer() {
+		return this.game.getPlayer().getMyBoard();
 	}
 	
-	public Board getBoard2() {
-		return this.game.getBoardAI();
+	public Board getBoardAI() {
+		return this.game.getAI().getMyBoard();
 	}
 	
 	public void startGame() throws ModelException {

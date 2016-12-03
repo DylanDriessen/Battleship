@@ -1,6 +1,8 @@
-package model;
+package model.board;
 
 import java.awt.Color;
+
+import model.Ship;
 
 public class BoardPosition {
 	

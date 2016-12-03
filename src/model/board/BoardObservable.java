@@ -1,4 +1,4 @@
-package model;
+package model.board;
 
 public interface BoardObservable {
 	void addObserver (BoardObserver o);

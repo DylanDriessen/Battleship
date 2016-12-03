@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
 import exception.ModelException;
-import model.Board;
+import model.board.Board;
 import model.enums.Orientation;
 import model.enums.ShipType;
 import model.facade.ModelFacade;

@@ -3,7 +3,7 @@ package view;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import model.Board;
+import model.board.Board;
 
 public class GamePanel extends JPanel {
 

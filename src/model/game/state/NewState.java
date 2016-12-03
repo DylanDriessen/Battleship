@@ -1,10 +1,10 @@
 package model.game.state;
 
 import exception.ModelException;
-import model.Board;
 import model.Game;
 import model.Position;
 import model.Ship;
+import model.board.Board;
 import model.enums.Orientation;
 import model.enums.ShipType;
 
@@ -24,13 +24,13 @@ public class NewState implements GameState {
 		if(orientation == null) {
 			throw new ModelException("Gelieve een orientatie te kiezen.");
 		}
-		if (!board.equals(this.game.getBoardPlayer())) {
+		if (!board.equals(this.game.getPlayer().getMyBoard())) {
 			return;
 		}
 		
 		Ship ship = new Ship(shipType, new Position(x, y), orientation);
 		
-		this.game.getBoardPlayer().placeShip(ship);
+		this.game.getPlayer().getMyBoard().placeShip(ship);
 		
 		// since view observes model, it will draw the squares differently
 	}
@@ -43,11 +43,11 @@ public class NewState implements GameState {
 		if(orientation == null) {
 			return;
 		}
-		if (!board.equals(this.game.getBoardPlayer())) {
+		if (!board.equals(this.game.getPlayer().getMyBoard())) {
 			return;
 		}
 		
-		this.game.getBoardPlayer().placeGhostShip(x, y, shipType, orientation);
+		this.game.getPlayer().getMyBoard().placeGhostShip(x, y, shipType, orientation);
 	}
 
 	@Override
@@ -58,11 +58,11 @@ public class NewState implements GameState {
 		if(orientation == null) {
 			return;
 		}
-		if (!board.equals(this.game.getBoardPlayer())) {
+		if (!board.equals(this.game.getPlayer().getMyBoard())) {
 			return;
 		}
 		
-		this.game.getBoardPlayer().removeGhostShip(x, y, shipType, orientation);
+		this.game.getPlayer().getMyBoard().removeGhostShip(x, y, shipType, orientation);
 	}
 
 }

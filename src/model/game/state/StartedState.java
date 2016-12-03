@@ -1,8 +1,8 @@
 package model.game.state;
 
 import exception.ModelException;
-import model.Board;
 import model.Game;
+import model.board.Board;
 import model.enums.Orientation;
 import model.enums.ShipType;
 

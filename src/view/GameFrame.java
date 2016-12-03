@@ -7,7 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.border.Border;
 
-import model.Board;
+import model.board.Board;
 import model.facade.ModelFacade;
 
 public class GameFrame extends JFrame implements View {
@@ -36,12 +36,12 @@ public class GameFrame extends JFrame implements View {
 		this.selectionPanel.setBorder(padding);
 		this.add(this.selectionPanel);
 		
-		Board board1 = this.modelFacade.getBoard1();
+		Board board1 = this.modelFacade.getBoardPlayer();
 		this.panel1 = new GamePanel(this, playerName, board1);
 		this.panel1.setBorder(padding);
 		this.add(this.panel1);
 		
-		Board board2 = this.modelFacade.getBoard2();
+		Board board2 = this.modelFacade.getBoardAI();
 		this.panel2 = new GamePanel(this, "Computer", board2);
 		this.panel2.setBorder(padding);
 		this.add(this.panel2);

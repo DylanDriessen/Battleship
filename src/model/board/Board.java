@@ -1,4 +1,4 @@
-package model;
+package model.board;
 
 import java.util.ArrayList;
 import java.util.EnumMap;
@@ -10,20 +10,18 @@ import model.enums.ButtonType;
 import model.enums.Orientation;
 import model.enums.ShipType;
 import model.player.Player;
+import model.Position;
 import model.Ship;
 
 public class Board implements BoardObservable{
 	
-	private Player player;
 	private List<BoardObserver> observers;
 	private Map<ShipType, Integer> shipTypeCounter;
 	private int shipCounter;
 	private ArrayList<Position> changed;	
 	private BoardPosition[][] boardPositions;
 	
-	public Board(Player player) {
-		this.player = player;
-		this.player.setBoard(this);
+	public Board() {
 		this.observers = new ArrayList<BoardObserver>();
 		this.shipTypeCounter = new EnumMap<ShipType, Integer>(ShipType.class){{
 			for(ShipType st : ShipType.values()) {
@@ -56,7 +54,6 @@ public class Board implements BoardObservable{
 				verifyEnvironment(i, y);
 			}
 			for(int i = x; i < x + length; i++) {
-				//this.containsShip[i][y] = ButtonType.OCCUPIED;
 				this.boardPositions[i][y].setShip(ship);
 				changed.add(new Position(i, y));
 			}
@@ -65,7 +62,6 @@ public class Board implements BoardObservable{
 				verifyEnvironment(x, i);
 			}
 			for(int i = y; i < y + length; i++) {
-				//this.containsShip[x][i] = ButtonType.OCCUPIED;
 				this.boardPositions[x][i].setShip(ship);
 				changed.add(new Position(x, i));
 			}
@@ -171,11 +167,7 @@ public class Board implements BoardObservable{
 		this.shipCounter++;
 	}
 	
-	//Getters
-	public Player getPlayer() {
-		return this.player;
-	}
-	
+	//Getters	
 	public int getNbOfShips() {
 		return this.shipCounter;
 	}
