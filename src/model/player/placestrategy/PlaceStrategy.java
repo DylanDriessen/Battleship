@@ -1,7 +1,9 @@
 package model.player.placestrategy;
 
+import model.Ship;
+
 public interface PlaceStrategy {
 
-	public void placeShip();
+	void placeShip();
 	
 }
