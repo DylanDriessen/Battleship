@@ -6,9 +6,16 @@ import model.Position;
 import model.Ship;
 import model.enums.Orientation;
 import model.enums.ShipType;
+import model.player.AI;
 
 public class RandomPlaceStrategy implements PlaceStrategy {
 	
+	private AI ai;
+	
+	public RandomPlaceStrategy(AI ai) {
+		this.ai = ai;
+	}
+
 	@Override
 	public void placeShip() {
 		

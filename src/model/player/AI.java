@@ -12,7 +12,7 @@ public class AI extends Player {
 	
 	public AI(PropertiesFile properties, Board myBoard, Board enemyBoard) throws ModelException {
 		super("Computer", myBoard, enemyBoard);
-		this.placeStrategy = PlaceStrategyFactory.create(properties.get("AI"));
+		this.placeStrategy = PlaceStrategyFactory.create(properties.get("AI"), this);
 	}
 
 	public void placeShip() {
