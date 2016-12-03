@@ -4,18 +4,25 @@ import exception.ModelException;
 import model.enums.Orientation;
 import model.enums.ShipType;
 import model.game.state.StartedState;
+import model.player.AI;
+import model.player.Player;
+import properties.PropertiesFile;
 import model.game.state.FinishedState;
 import model.game.state.GameState;
 import model.game.state.NewState;
 
 public class Game {
 	
-	private Board board1, board2;
+	private Player player, ai;
+	private Board boardPlayer, boardAI;
 	private GameState currentState, newState, startedState, finishedState;
 	
-	public  Game(String playerName){
-		this.board1 = new Board(playerName);
-		this.board2 = new Board("Computer");
+	public  Game(PropertiesFile properties, String playerName) throws ModelException{
+		this.player = new Player(playerName);
+		this.ai = new AI(properties);
+		
+		this.boardPlayer = new Board(this.player);
+		this.boardAI = new Board(this.ai);
 		
 		this.newState = new NewState(this);
 		this.startedState = new StartedState(this);
@@ -24,7 +31,7 @@ public class Game {
 	}
 	
 	public void startGame() throws ModelException {
-		if (board1.getNbOfShips() == 5) {
+		if (boardPlayer.getNbOfShips() == 5) {
 			this.currentState = startedState;
 		} else {
 			throw new ModelException("Je moet 5 schepen op je eigen bord plaatsen");
@@ -44,12 +51,12 @@ public class Game {
 	}
 	
 	//GETTERS
-	public Board getBoard1() {
-		return board1;
+	public Board getBoardPlayer() {
+		return boardPlayer;
 	}
 
-	public Board getBoard2() {
-		return board2;
+	public Board getBoardAI() {
+		return boardAI;
 	}
 
 }

@@ -24,13 +24,13 @@ public class NewState implements GameState {
 		if(orientation == null) {
 			throw new ModelException("Gelieve een orientatie te kiezen.");
 		}
-		if (!board.equals(this.game.getBoard1())) {
+		if (!board.equals(this.game.getBoardPlayer())) {
 			return;
 		}
 		
 		Ship ship = new Ship(shipType, new Position(x, y), orientation);
 		
-		this.game.getBoard1().placeShip(ship);
+		this.game.getBoardPlayer().placeShip(ship);
 		
 		// since view observes model, it will draw the squares differently
 	}
@@ -43,11 +43,11 @@ public class NewState implements GameState {
 		if(orientation == null) {
 			return;
 		}
-		if (!board.equals(this.game.getBoard1())) {
+		if (!board.equals(this.game.getBoardPlayer())) {
 			return;
 		}
 		
-		this.game.getBoard1().placeGhostShip(x, y, shipType, orientation);
+		this.game.getBoardPlayer().placeGhostShip(x, y, shipType, orientation);
 	}
 
 	@Override
@@ -58,11 +58,11 @@ public class NewState implements GameState {
 		if(orientation == null) {
 			return;
 		}
-		if (!board.equals(this.game.getBoard1())) {
+		if (!board.equals(this.game.getBoardPlayer())) {
 			return;
 		}
 		
-		this.game.getBoard1().removeGhostShip(x, y, shipType, orientation);
+		this.game.getBoardPlayer().removeGhostShip(x, y, shipType, orientation);
 	}
 
 }

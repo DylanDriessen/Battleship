@@ -15,11 +15,11 @@ public class ModelFacade {
 	}
 	
 	public Board getBoard1() {
-		return this.game.getBoard1();
+		return this.game.getBoardPlayer();
 	}
 	
 	public Board getBoard2() {
-		return this.game.getBoard2();
+		return this.game.getBoardAI();
 	}
 	
 	public void startGame() throws ModelException {
