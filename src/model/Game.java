@@ -14,7 +14,9 @@ import model.game.state.NewState;
 
 public class Game {
 	
-	private Player player, ai;
+	private Player player;
+	//TODO: Statisch type AI is geen player meer omdat we anders niet aan placeShip() kunnen. Kan dit beter? 
+	private AI ai;
 	private GameState currentState, newState, startedState, finishedState;
 	
 	public  Game(PropertiesFile properties, String playerName) throws ModelException{
@@ -57,7 +59,7 @@ public class Game {
 		return player;
 	}
 	
-	public Player getAI() {
+	public AI getAI() {
 		return ai;
 	}
 

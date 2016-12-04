@@ -46,6 +46,8 @@ public class ZeeslagController implements Controller {
 		this.viewFacade.getJComboBox().addActionListener(new ComboboxListener());
 		this.startListener = new StartListener();
 		this.viewFacade.getStartButton().addMouseListener(startListener);
+		
+		this.modelFacade.placeAIShips();
 	}
 	
 	public void startGame() {

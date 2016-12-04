@@ -2,6 +2,7 @@ package model.player.placestrategy;
 
 import java.util.Random;
 
+import exception.ModelException;
 import model.Position;
 import model.Ship;
 import model.enums.Orientation;
@@ -17,26 +18,27 @@ public class RandomPlaceStrategy implements PlaceStrategy {
 	}
 
 	@Override
-	public void placeShip() {
+	public void placeShips() {
 		
 		Random r = new Random();
 		
 		int succeededCount = 0;
 		while (succeededCount < 5){
 			
-			int shipTypeIndex = r.nextInt(ShipType.values().length)-1;
-			int xCoord = r.nextInt(9);
-			int yCoord = r.nextInt(9);
-			int orientationIndex = r.nextInt(Orientation.values().length)-1;
+			int shipTypeIndex = r.nextInt(ShipType.values().length);
+			int x = r.nextInt(9);
+			int y = r.nextInt(9);
+			int orientationIndex = r.nextInt(Orientation.values().length);
 			
-			Position p = new Position(xCoord, yCoord);
+			Position p = new Position(x, y);
 			Ship ship = new Ship(ShipType.values()[shipTypeIndex], p , Orientation.values()[orientationIndex]);
 			
 			try {
-				this.ai.getEnemyBoard().placeShip(ship);
+				this.ai.getMyBoard().placeShip(ship);
 				succeededCount++;
-			} catch (Exception ignored){
-				
+				System.out.println("AI placed a " + ship.getShipType().getName() + " on (" + x + "," + y + ") with orientation " + ship.getOrientation().getName());
+			} catch (ModelException ignored){
+				//Ignore
 			}
 		}
 		

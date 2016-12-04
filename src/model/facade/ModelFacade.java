@@ -37,6 +37,10 @@ public class ModelFacade {
 	public void buttonExited(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
 		this.game.buttonExited(x, y, shipType, orientation, board);
 	}
+
+	public void placeAIShips() {
+		this.game.getAI().placeShips();
+	}
 	
 	/*
 	public void addPlayer() throws DomainException{
