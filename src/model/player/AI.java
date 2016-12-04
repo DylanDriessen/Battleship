@@ -15,7 +15,7 @@ public class AI extends Player {
 		this.placeStrategy = PlaceStrategyFactory.create(properties.get("AI"), this);
 	}
 
-	public void placeShips() {
-		this.placeStrategy.placeShips();
+	public void placeShips(boolean visible) {
+		this.placeStrategy.placeShips(visible);
 	}
 }

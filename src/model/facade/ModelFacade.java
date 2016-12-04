@@ -38,8 +38,8 @@ public class ModelFacade {
 		this.game.buttonExited(x, y, shipType, orientation, board);
 	}
 
-	public void placeAIShips() {
-		this.game.getAI().placeShips();
+	public void placeAIShips(boolean visible) {
+		this.game.getAI().placeShips(visible);
 	}
 	
 	/*

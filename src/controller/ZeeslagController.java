@@ -47,7 +47,7 @@ public class ZeeslagController implements Controller {
 		this.startListener = new StartListener();
 		this.viewFacade.getStartButton().addMouseListener(startListener);
 		
-		this.modelFacade.placeAIShips();
+		this.modelFacade.placeAIShips(false);
 	}
 	
 	public void startGame() {
