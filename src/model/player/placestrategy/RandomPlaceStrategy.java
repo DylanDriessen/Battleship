@@ -33,7 +33,7 @@ public class RandomPlaceStrategy implements PlaceStrategy {
 			Ship ship = new Ship(ShipType.values()[shipTypeIndex], p , Orientation.values()[orientationIndex]);
 			
 			try {
-				//Ship plaatsen
+				this.ai.getEnemyBoard().placeShip(ship);
 				succeededCount++;
 			} catch (Exception ignored){
 				

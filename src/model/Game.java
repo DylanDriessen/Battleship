@@ -31,6 +31,7 @@ public class Game {
 	}
 	
 	public void startGame() throws ModelException {
+		//RandomPlaceStrategy oproepen
 		if (this.player.getMyBoard().getNbOfShips() == 5) {
 			this.currentState = startedState;
 		} else {
