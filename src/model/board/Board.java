@@ -36,7 +36,7 @@ public class Board implements BoardObservable{
 		}
 	}
 	
-	public void placeShip(Ship ship) throws ModelException {
+	public void placeShip(Ship ship, boolean visible) throws ModelException {
 		if(this.shipCounter == 5) {
 			throw new ModelException("Je hebt het maximumaantal schepen bereikt.");
 		}
@@ -68,7 +68,9 @@ public class Board implements BoardObservable{
 		}
 		
 		this.incrementCounters(ship.getShipType());	
-		this.notifyBoardChanged();
+		if(visible) {
+			this.notifyBoardChanged();
+		}
 	}
 	
 	public void placeGhostShip(int x, int y, ShipType type, Orientation orientation) throws ModelException {

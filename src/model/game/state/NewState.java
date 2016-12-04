@@ -30,7 +30,7 @@ public class NewState implements GameState {
 		
 		Ship ship = new Ship(shipType, new Position(x, y), orientation);
 		
-		this.game.getPlayer().getMyBoard().placeShip(ship);
+		this.game.getPlayer().getMyBoard().placeShip(ship, true);
 		
 		// since view observes model, it will draw the squares differently
 	}
