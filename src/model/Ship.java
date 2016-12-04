@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 import model.enums.Orientation;
 import model.enums.ShipType;
 
@@ -35,6 +37,26 @@ public class Ship {
 
 	public Position getAnchor() {
 		return anchor;
+	}
+	
+	public ArrayList<Position> getPositions() {
+		ArrayList<Position> positions = new ArrayList<Position>();
+		
+		int x = this.getAnchor().getX();
+		int y = this.getAnchor().getY();
+		int length = this.getShipType().getLength();
+		
+		if(this.getOrientation().equals(Orientation.HORIZONTAL)) {
+			for(int i = x; i < x + length; i++) {
+				positions.add(new Position(i, y));
+			}
+		} else {
+			for(int i = y; i < y + length; i++) {
+				positions.add(new Position(x, i));
+			}
+		}
+		
+		return positions;
 	}
 
 	public Orientation getOrientation() {

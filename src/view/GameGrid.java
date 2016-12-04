@@ -56,11 +56,10 @@ public class GameGrid extends JPanel implements BoardObserver {
 		for(Position p : this.board.getChangedButtons()) {
 			int x = p.getX();
 			int y = p.getY();
-			Color color = this.board.getBoardPositions()[x][y].getColor();
-			this.buttons[x][y].setBackground(color);
-			if (color == Color.RED) {
-				this.buttons[x][y].setBorderPainted(false);
-			}
+			ButtonType type = this.board.getBoardPositions()[x][y].getButtonType();
+			this.buttons[x][y].setBackground(type.getColor());
+			this.buttons[x][y].setBorderPainted(type.hasBorder());
+			this.buttons[x][y].setText(type.getText());
 			this.buttons[x][y].repaint();
 		}
 	}	

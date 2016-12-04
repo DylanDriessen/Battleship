@@ -1,14 +1,13 @@
 package model.board;
 
-import java.awt.Color;
-
 import model.Ship;
+import model.enums.ButtonType;
 
 public class BoardPosition {
 	
 	private Ship ship;
 	private boolean isPlayed = false;
-	private Color color = new Color(165, 214, 254);
+	private ButtonType color = ButtonType.EMPTY;
 	
 	public BoardPosition() {}
 	
@@ -30,20 +29,24 @@ public class BoardPosition {
 	
 	public void setShip(Ship ship) {
 		this.ship = ship;
-		setColor(Color.RED);
+		setButtonType(ButtonType.OCCUPIED);
 	}
 	
-	public void setPlayed() {
+	public boolean attack() {
 		setPlayed(true);
 		if(this.ship != null) {
 			this.ship.hitShip();
-			if (this.ship.isSunk()) {
-				setColor(Color.BLACK);
-			} else {
-				setColor(Color.MAGENTA);
-			}
+			setButtonType(ButtonType.SHOT_HIT);
+			return true;
 		} else {
-			setColor(Color.BLUE);
+			setButtonType(ButtonType.SHOT_MISSED);
+			return false;
+		}
+	}
+	
+	public void sink() {
+		if (this.ship.isSunk()) {
+			setButtonType(ButtonType.SUNK);
 		}
 	}
 	
@@ -53,17 +56,17 @@ public class BoardPosition {
 	
 	public void setFocus(boolean focus) {
 		if (focus) {
-			this.setColor(Color.GRAY);
+			this.setButtonType(ButtonType.FOCUS);
 		} else {
-			this.setColor(new Color(165, 214, 254));
+			this.setButtonType(ButtonType.EMPTY);
 		}
 	}
 
-	public Color getColor() {
+	public ButtonType getButtonType() {
 		return this.color;
 	}
 	
-	public void setColor(Color color) {
+	public void setButtonType(ButtonType color) {
 		this.color = color;
 	}
 }

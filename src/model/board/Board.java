@@ -36,6 +36,37 @@ public class Board implements BoardObservable{
 		}
 	}
 	
+	public void attack(int x, int y) throws ModelException {
+		if (!boardPositions[x][y].isPlayed()) {
+			this.setChangedButtons(new ArrayList<Position>());
+			
+			boolean hit = this.boardPositions[x][y].attack();
+			if (hit && this.boardPositions[x][y].getShip().isSunk()) {
+				for (Position p : this.boardPositions[x][y].getShip().getPositions()) {
+					this.boardPositions[p.getX()][p.getY()].sink();
+					this.changed.add(new Position(p.getX(), p.getY()));
+				}
+			} else {
+				this.changed.add(new Position(x, y));
+			}
+			
+			this.notifyBoardChanged();
+		} else {
+			throw new ModelException("Je kan deze coördinaten niet meer aanvallen");
+		}
+	}
+	
+	public void focus(int x, int y, boolean value) {
+		if (!boardPositions[x][y].isPlayed()) {
+			this.setChangedButtons(new ArrayList<Position>());
+			
+			this.boardPositions[x][y].setFocus(value);
+			this.changed.add(new Position(x, y));
+			
+			this.notifyBoardChanged();
+		}
+	}
+	
 	public void placeShip(Ship ship, boolean visible) throws ModelException {
 		if(this.shipCounter == 5) {
 			throw new ModelException("Je hebt het maximumaantal schepen bereikt.");
