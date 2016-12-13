@@ -34,6 +34,7 @@ public class RandomAttackStrategy implements AttackStrategy {
 				this.ai.getEnemyBoard().attack(x, y);
 				succeeded = true;
 				System.out.println("AI attacked position a (" + x + "," + y + ")");
+				
 			} catch (ModelException ignored){
 				//Ignore
 			}

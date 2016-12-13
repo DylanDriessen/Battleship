@@ -12,6 +12,9 @@ public class AttackStrategyFactory {
 			case "random":
 				attackStrategy = new RandomAttackStrategy(ai);
 				break;
+			case "smartRandom":
+				attackStrategy = new SmartRandomAttackStrategy(ai);
+				break;
 			default:
 				throw new ModelException("Unknown attacking strategy: could not create place strategy.");
 		}

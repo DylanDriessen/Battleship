@@ -10,6 +10,7 @@ import model.enums.ButtonType;
 import model.enums.Orientation;
 import model.enums.ShipType;
 import model.player.Player;
+import model.player.placestrategy.RandomPlaceStrategy;
 import model.Position;
 import model.Ship;
 
@@ -44,6 +45,9 @@ public class Board implements BoardObservable{
 			//TODO: kan dit simpeler geschreven worden? :p
 			boolean hit = this.boardPositions[x][y].attack();
 			if (hit) {
+				
+				Position[][] isHit = new Position[x][y];
+//				isHit(isHit);
 				this.player.decrementScore();
 				
 				if(this.boardPositions[x][y].getShip().isSunk()) {
@@ -63,6 +67,30 @@ public class Board implements BoardObservable{
 			throw new ModelException("Je kan deze coördinaten niet meer aanvallen");
 		}
 	}
+	
+//	public void isHit(Position[][] isHit){
+//		List <Position[][]> aroundHit = new ArrayList<>();
+//		
+//		switch() {
+//		case "up":
+//			
+//			break;
+//		case "down":
+//			
+//			break;
+//		case "left":
+//			
+//			break;
+//		case "right":
+//		
+//			break;
+//		
+//		default:
+//			throw new ModelException("/");
+//		
+//		
+//		
+//	}
 	
 	public void focus(int x, int y, boolean value) {
 		if (!boardPositions[x][y].isPlayed()) {
