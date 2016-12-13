@@ -24,6 +24,12 @@ public class StartedState implements GameState {
 		
 		this.game.getPlayer().getEnemyBoard().attack(x, y);
 		
+		boolean won = false;
+		if(won) {
+			this.game.setState(this.game.getFinishedState());
+		} else {
+			this.game.getAI().attack();
+		}
 		// since view observes model, it will draw the squares differently
 	}
 

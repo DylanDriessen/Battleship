@@ -14,7 +14,7 @@ import model.board.BoardObservable;
 import model.board.BoardObserver;
 import model.enums.ButtonType;
 
-public class GameGrid extends JPanel implements BoardObserver {
+public class GameGrid extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 	private Square[][] buttons = new Square[10][10];
@@ -39,19 +39,16 @@ public class GameGrid extends JPanel implements BoardObserver {
 		this.setBorder(BorderFactory.createLineBorder(new Color(139, 162, 180), 3));
 
 		this.board = board;
-		this.board.addObserver(this);
 	}
 
 	public Board getBoard() {
 		return board;
 	}
-
-	@Override
-	public void boardChanged(Board board) {
-		this.board = board;
-		this.paintBoard();	
-	}
 	
+	public void setBoard(Board board) {
+		this.board = board;
+	}
+
 	public void paintBoard() {
 		for(Position p : this.board.getChangedButtons()) {
 			int x = p.getX();

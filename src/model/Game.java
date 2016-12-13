@@ -29,7 +29,7 @@ public class Game {
 		this.newState = new NewState(this);
 		this.startedState = new StartedState(this);
 		this.finishedState = new FinishedState(this);
-		this.currentState = this.newState;
+		setState(this.newState);
 	}
 	
 	public void startGame() throws ModelException {
@@ -53,6 +53,12 @@ public class Game {
 		this.currentState.squareExited(x, y, shipType, orientation, board);
 	}
 	
+	//Setters
+	
+	public void setState(GameState state) {
+		this.currentState = state;
+	}
+	
 	//Getters
 	
 	public Player getPlayer() {
@@ -61,6 +67,18 @@ public class Game {
 	
 	public AI getAI() {
 		return ai;
+	}
+
+	public GameState getNewState() {
+		return newState;
+	}
+
+	public GameState getStartedState() {
+		return startedState;
+	}
+
+	public GameState getFinishedState() {
+		return finishedState;
 	}
 
 }

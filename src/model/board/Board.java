@@ -20,6 +20,7 @@ public class Board implements BoardObservable{
 	private int shipCounter;
 	private ArrayList<Position> changed;	
 	private BoardPosition[][] boardPositions;
+	private Player player;
 	
 	public Board() {
 		this.observers = new ArrayList<BoardObserver>();
@@ -41,11 +42,15 @@ public class Board implements BoardObservable{
 			this.setChangedButtons(new ArrayList<Position>());
 			
 			boolean hit = this.boardPositions[x][y].attack();
-			if (hit && this.boardPositions[x][y].getShip().isSunk()) {
-				for (Position p : this.boardPositions[x][y].getShip().getPositions()) {
-					this.boardPositions[p.getX()][p.getY()].sink();
-					this.changed.add(new Position(p.getX(), p.getY()));
+			if (hit) {
+				this.player.getEnemyBoard().getPlayer().decrementScore();
+				if(this.boardPositions[x][y].getShip().isSunk()) {
+					for (Position p : this.boardPositions[x][y].getShip().getPositions()) {
+						this.boardPositions[p.getX()][p.getY()].sink();
+						this.changed.add(new Position(p.getX(), p.getY()));
+					}
 				}
+					
 			} else {
 				this.changed.add(new Position(x, y));
 			}
@@ -200,7 +205,7 @@ public class Board implements BoardObservable{
 		this.shipCounter++;
 	}
 	
-	//Getters	
+	//Getters & setters
 	public int getNbOfShips() {
 		return this.shipCounter;
 	}
@@ -215,6 +220,14 @@ public class Board implements BoardObservable{
 	
 	private void setChangedButtons(ArrayList<Position> changed) {
 		this.changed = changed;
+	}
+	
+	public Player getPlayer() {
+		return player;
+	}
+
+	public void setPlayer(Player player) {
+		this.player = player;
 	}
 
 	@Override

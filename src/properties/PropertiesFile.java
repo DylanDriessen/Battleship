@@ -59,7 +59,8 @@ public class PropertiesFile {
 	public void create() {
 		try{
 		    PrintWriter writer = new PrintWriter(this.fileName, "UTF-8");
-		    writer.println("AI=random");
+		    writer.println("placeStrategyAI=random");
+		    writer.println("attackStrategyAI=random");
 		    writer.close();
 		} catch (Exception e) {
 		   e.printStackTrace();

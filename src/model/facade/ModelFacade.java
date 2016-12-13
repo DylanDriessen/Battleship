@@ -42,42 +42,20 @@ public class ModelFacade {
 		this.game.getAI().placeShips(visible);
 	}
 	
-	/*
-	public void addPlayer() throws DomainException{
-		try {
-			String Playername = showJOptionInputDialog("Enter your name:", "Add Player");
-			//game.addPlayer(Playername);
-			JOptionPane.showMessageDialog(null, "Player ready to play");
-		} catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "Input not valid");
-			e.printStackTrace();
-		} catch (CancelledException e) {
-			return;
-		}
+	public String getPlayerName() {
+		return this.game.getPlayer().getName();
 	}
-	private String showJOptionInputDialog(String message, String title) throws CancelledException {
-		String value = JOptionPane.showInputDialog(null, message, title, JOptionPane.PLAIN_MESSAGE);
-
-		if (value == null) {
-			throw new CancelledException("User pressed the cancel button");
-		} else {
-			return value;
-		}
+	
+	public String getAIName() {
+		return this.game.getAI().getName();
 	}
 
-	
-	public Player getPlayer(String name){
-		return getPlayer(name);
+	public int getPlayerScore() {
+		return this.game.getPlayer().getScore();
 	}
 	
-	public void applyShip(Ship ship, Player player){
-		
+	public int getAIScore() {
+		return this.game.getAI().getScore();
 	}
-	
-	public Ship getShip(ShipType type, int x, int y, Orientation orientation){
-		return null;
-		
-	}
-	*/
 	
 }

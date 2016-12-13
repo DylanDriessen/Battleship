@@ -26,8 +26,8 @@ public class RandomPlaceStrategy implements PlaceStrategy {
 		while (succeededCount < 5){
 			
 			int shipTypeIndex = r.nextInt(ShipType.values().length);
-			int x = r.nextInt(9);
-			int y = r.nextInt(9);
+			int x = r.nextInt(10);
+			int y = r.nextInt(10);
 			int orientationIndex = r.nextInt(Orientation.values().length);
 			
 			Position p = new Position(x, y);
@@ -43,8 +43,4 @@ public class RandomPlaceStrategy implements PlaceStrategy {
 		}
 		
 	}
-	
-	
-	
-
 }

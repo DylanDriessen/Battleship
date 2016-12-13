@@ -21,10 +21,14 @@ public class GameFrame extends JFrame implements View {
 	public static final int HEIGHT = 360;
 	public static final Font DEFAULT_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, 16);
 
-	public GameFrame(String playerName, ModelFacade modelFacade) {
+	public GameFrame(ModelFacade modelFacade) {
 		super();
 		
 		this.modelFacade = modelFacade;
+		String playerName = this.modelFacade.getPlayerName();
+		String aiName = this.modelFacade.getAIName();
+		int playerScore = this.modelFacade.getPlayerScore();
+		int aiScore = this.modelFacade.getAIScore();
 		
 		this.setSize(WIDTH, HEIGHT);
 		this.setResizable(false);
@@ -37,12 +41,12 @@ public class GameFrame extends JFrame implements View {
 		this.add(this.selectionPanel);
 		
 		Board board1 = this.modelFacade.getBoardPlayer();
-		this.panel1 = new GamePanel(this, playerName, board1);
+		this.panel1 = new GamePanel(this, playerName, playerScore, board1);
 		this.panel1.setBorder(padding);
 		this.add(this.panel1);
 		
 		Board board2 = this.modelFacade.getBoardAI();
-		this.panel2 = new GamePanel(this, "Computer", board2);
+		this.panel2 = new GamePanel(this, aiName, aiScore, board2);
 		this.panel2.setBorder(padding);
 		this.add(this.panel2);
 	
