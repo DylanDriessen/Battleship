@@ -43,7 +43,7 @@ public class Board implements BoardObservable{
 			
 			boolean hit = this.boardPositions[x][y].attack();
 			if (hit) {
-				this.player.getEnemyBoard().getPlayer().decrementScore();
+				this.player.decrementScore();
 				if(this.boardPositions[x][y].getShip().isSunk()) {
 					for (Position p : this.boardPositions[x][y].getShip().getPositions()) {
 						this.boardPositions[p.getX()][p.getY()].sink();

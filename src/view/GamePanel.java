@@ -56,6 +56,7 @@ public class GamePanel extends JPanel implements BoardObserver {
 		this.grid.setBoard(board);
 		this.grid.paintBoard();	
 		this.scoreboard.setScore(board.getPlayer().getScore());
+		this.scoreboard.updateLabel();
 	}	
 	
 }

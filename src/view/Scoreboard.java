@@ -19,7 +19,8 @@ public class Scoreboard extends JPanel {
 		this.playerName = playerName;
 		this.score = score;
 		
-		this.label = new JLabel(playerName + "(" + score + "):");
+		this.label = new JLabel();
+		this.updateLabel();
 		this.label.setFont(GameFrame.DEFAULT_FONT);
 		this.add(this.label);
 	}
@@ -28,4 +29,7 @@ public class Scoreboard extends JPanel {
 		this.score = score;
 	}
 	
+	public void updateLabel() {
+		this.label.setText(this.playerName + " (" + this.score + "):");
+	}
 }
