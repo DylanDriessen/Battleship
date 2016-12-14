@@ -67,11 +67,16 @@ public class ModelFacade {
 		return this.game.getAI().getScore();
 	}
 	
-	public boolean endGame() throws ModelException{
-		if(game.finishedGame() == true){
-			return true;
-		} else {
-			throw new ModelException("Test");
+	public boolean endGame() {
+		try {
+			if(game.finishedGame()){
+				return true;
+			} else {
+				return false;
+			}
+		}
+		catch(Exception e) {
+			return false;
 		}
 	}
 

@@ -70,7 +70,7 @@ public class GameFrame extends JFrame implements View {
 	
 	@Override
 	public void getEndGame(){
-		if(modelFacade.endGame() = true){// why??
+		if(modelFacade.endGame() == true){// why??
 			JOptionPane.showMessageDialog(null, "Game over! " + game.getPlayer().getName() + " has won with " + game.getPlayer().getScore() + " points.");}
 		else {
 			JOptionPane.showMessageDialog(null, "Game over! the AI has won with " + game.getAI().getScore()+ " points.");
