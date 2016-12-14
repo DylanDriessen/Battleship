@@ -42,7 +42,7 @@ public class Board implements BoardObservable{
 		}
 	}
 	
-	public void attack(int x, int y) throws ModelException {
+	public boolean attack(int x, int y) throws ModelException {
 		if (!boardPositions[x][y].isPlayed()) {
 			this.setChangedButtons(new ArrayList<Position>());
 			
@@ -71,34 +71,11 @@ public class Board implements BoardObservable{
 			}
 			
 			this.notifyBoardChanged();
+			return hit;
 		} else {
 			throw new ModelException("Je kan deze coördinaten niet meer aanvallen");
 		}
 	}
-	
-//	public void isHit(Position[][] isHit){
-//		List <Position[][]> aroundHit = new ArrayList<>();
-//		
-//		switch() {
-//		case "up":
-//			
-//			break;
-//		case "down":
-//			
-//			break;
-//		case "left":
-//			
-//			break;
-//		case "right":
-//		
-//			break;
-//		
-//		default:
-//			throw new ModelException("/");
-//		
-//		
-//		
-//	}
 	
 	public void focus(int x, int y, boolean value) {
 		if (!boardPositions[x][y].isPlayed()) {
