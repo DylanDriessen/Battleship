@@ -55,9 +55,13 @@ public class Game {
 		this.currentState.squareExited(x, y, shipType, orientation, board);
 	}
 	
-	public void finishedGame(){
-		//finished
-	}
+	public boolean finishedGame()throws ModelException{
+		if(getPlayer().getMyBoard().getShipCounter() == 0 || getPlayer().getEnemyBoard().getShipCounter() == 0){
+			return true;
+		} else {
+			throw new ModelException("Je moet 5 schepen neerschieten");
+		}
+}
 	
 	//Setters
 	

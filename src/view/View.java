@@ -6,5 +6,6 @@ public interface View {
 	public GamePanel getPanel1();
 	public GamePanel getPanel2();
 	public SelectionPanel getSelectionPanel();
+	public void getEndGame();
 	
 }

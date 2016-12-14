@@ -9,7 +9,16 @@ import model.enums.ShipType;
 public class ModelFacade {
 	
 	private Game game;
+
 	
+	public Game getGame() {
+		return game;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
 	public ModelFacade(Game game){
 		this.game = game;
 	}
@@ -57,5 +66,15 @@ public class ModelFacade {
 	public int getAIScore() {
 		return this.game.getAI().getScore();
 	}
+	
+	public boolean endGame() throws ModelException{
+		if(game.finishedGame() == true){
+			return true;
+		} else {
+			throw new ModelException("Test");
+		}
+	}
+
+
 	
 }
