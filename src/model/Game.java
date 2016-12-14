@@ -1,5 +1,7 @@
 package model;
 
+import javax.swing.JOptionPane;
+
 import exception.ModelException;
 import model.board.Board;
 import model.enums.Orientation;
@@ -51,6 +53,10 @@ public class Game {
 	
 	public void buttonExited(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
 		this.currentState.squareExited(x, y, shipType, orientation, board);
+	}
+	
+	public void finishedGame(){
+		//finished
 	}
 	
 	//Setters

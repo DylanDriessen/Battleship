@@ -1,5 +1,7 @@
 package model.game.state;
 
+import javax.swing.JOptionPane;
+
 import exception.ModelException;
 import model.Game;
 import model.board.Board;
@@ -15,19 +17,23 @@ public class FinishedState implements GameState {
 	}
 	
 	@Override
-	public void squareClicked(int x, int y, ShipType shipType, Orientation orientation, Board board) {
-
+	public void squareClicked(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+		if(game.getPlayer().getMyBoard().getShipCounter() == 0){
+			throw new ModelException("The game is finished");
+		}
+		
+		if(game.getPlayer().getEnemyBoard().getShipCounter() == 0){
+			throw new ModelException("The game is finished");
+		}
 	}
 
 	@Override
 	public void squareEntered(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
-		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void squareExited(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
-		// TODO Auto-generated method stub
 		
 	}
 

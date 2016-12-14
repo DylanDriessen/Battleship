@@ -5,10 +5,13 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.swing.JOptionPane;
+
 import exception.ModelException;
 import model.enums.ButtonType;
 import model.enums.Orientation;
 import model.enums.ShipType;
+import model.player.AI;
 import model.player.Player;
 import model.player.placestrategy.RandomPlaceStrategy;
 import model.Position;
@@ -22,6 +25,7 @@ public class Board implements BoardObservable{
 	private ArrayList<Position> changed;	
 	private BoardPosition[][] boardPositions;
 	private Player player;
+	private AI ai;
 	
 	public Board() {
 		this.observers = new ArrayList<BoardObserver>();
@@ -53,8 +57,12 @@ public class Board implements BoardObservable{
 				if(this.boardPositions[x][y].getShip().isSunk()) {
 					for (Position p : this.boardPositions[x][y].getShip().getPositions()) {
 						this.boardPositions[p.getX()][p.getY()].sink();
-						this.changed.add(new Position(p.getX(), p.getY()));
+						this.changed.add(new Position(p.getX(), p.getY()));	
 					}
+					
+					shipCounter--;
+					System.out.println("Ship sunk");
+					
 				} else {
 					this.changed.add(new Position(x, y));
 				}
@@ -262,6 +270,14 @@ public class Board implements BoardObservable{
 
 	public void setPlayer(Player player) {
 		this.player = player;
+	}
+	
+	public int getShipCounter() {
+		return shipCounter;
+	}
+
+	public void setShipCounter(int shipCounter) {
+		this.shipCounter = shipCounter;
 	}
 
 	@Override
