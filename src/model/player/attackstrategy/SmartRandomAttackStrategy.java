@@ -59,23 +59,31 @@ public class SmartRandomAttackStrategy implements AttackStrategy {
 						this.found = false;
 					}
 				} else if (found) {
-					Ship ship = this.ai.getEnemyBoard().getBoardPositions()[lastHit.getX()][lastHit.getY()].getShip();
-					int backTrack = ship.getTimesHit() - 1;
-					this.direction = Direction.oppositeDirection(this.direction);
-					
-					if (this.direction == Direction.EAST || this.direction == Direction.WEST)
-						this.lastHit = new Position(lastHit.getX() + direction.getX() * backTrack, lastHit.getY());
-					else {
-						this.lastHit = new Position(lastHit.getX(), lastHit.getY() + direction.getY() * backTrack);
-					}
+					changeDirection();
 				}
 				succeeded = true;
 				System.out.println("AI attacked position a (" + x + "," + y + ")");
 				
-			} catch (Exception ignored){
-				//Ignore
+			} catch (ModelException ignored){
+				// ignored
+			} catch (ArrayIndexOutOfBoundsException e) {
+				if (found) {
+					changeDirection();
+					succeeded = true;
+				}
 			}
 		}
-
+	}
+	
+	public void changeDirection() {
+		Ship ship = this.ai.getEnemyBoard().getBoardPositions()[lastHit.getX()][lastHit.getY()].getShip();
+		int backTrack = ship.getTimesHit() - 1;
+		this.direction = Direction.oppositeDirection(this.direction);
+		
+		if (this.direction == Direction.EAST || this.direction == Direction.WEST)
+			this.lastHit = new Position(lastHit.getX() + direction.getX() * backTrack, lastHit.getY());
+		else {
+			this.lastHit = new Position(lastHit.getX(), lastHit.getY() + direction.getY() * backTrack);
+		}
 	}
 }

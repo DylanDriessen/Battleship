@@ -24,6 +24,7 @@ public class Board implements BoardObservable{
 	private int shipCounter;
 	private ArrayList<Position> changed;	
 	private BoardPosition[][] boardPositions;
+	private ArrayList<Ship> ships = new ArrayList<Ship>();
 	private Player player;
 	private AI ai;
 	
@@ -117,7 +118,8 @@ public class Board implements BoardObservable{
 			}
 		}
 		
-		this.incrementCounters(ship.getShipType());	
+		this.incrementCounters(ship.getShipType());
+		this.ships.add(ship);
 		if(visible) {
 			this.notifyBoardChanged();
 		}
@@ -252,6 +254,10 @@ public class Board implements BoardObservable{
 
 	public void setShipCounter(int shipCounter) {
 		this.shipCounter = shipCounter;
+	}
+
+	public ArrayList<Ship> getShips() {
+		return ships;
 	}
 
 	@Override
