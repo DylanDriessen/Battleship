@@ -5,7 +5,7 @@ import javax.swing.JOptionPane;
 import controller.Controller;
 import controller.ZeeslagController;
 import exception.ModelException;
-import model.Game;
+import model.game.Game;
 import model.facade.ModelFacade;
 import properties.PropertiesFile;
 import view.GameFrame;

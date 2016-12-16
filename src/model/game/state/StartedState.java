@@ -3,7 +3,8 @@ package model.game.state;
 import javax.swing.JOptionPane;
 
 import exception.ModelException;
-import model.Game;
+import model.game.Game;
+import model.player.Player;
 import model.Position;
 import model.Ship;
 import model.board.Board;
@@ -28,25 +29,31 @@ public class StartedState implements GameState {
 			return;
 		}
 		
+		//Attack enemy board
 		this.game.getPlayer().getEnemyBoard().attack(x, y);
 		
-		boolean won = false;
-		if(this.game.getPlayer().getMyBoard().getShipCounter() == 0 || this.game.getPlayer().getEnemyBoard().getShipCounter() == 0){
-			won = true;
-		}
-		
-		if(won) { 
-			this.game.setState(this.game.getFinishedState());
-			System.out.println("Game finished");
-			this.game.finishedGame();
-			System.out.println("EndGame is True");
+		Player winner = null;
+		//Check if player has won. If so, end the game
+		if(this.game.getPlayer().getEnemyBoard().getShipCounter() == 0){
+			winner = this.game.getPlayer();
 		} else {
+			//Let AI attack player
 			this.game.getAI().attack();
+			//Check if AI has won. If so, end the game
+			if(this.game.getPlayer().getMyBoard().getShipCounter() == 0) {
+				winner = this.game.getAI();
+			}
 		}
 		
+		if(winner != null) {
+			this.game.setWinner(winner);
+			this.game.notifyGameChanged();
+			this.game.reset();
+			this.game.setState(this.game.getNewState());
+		}
 		
-		// since view observes model, it will draw the squares differently
 	}
+	
 	@Override
 	public void squareEntered(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
 		if (!board.equals(this.game.getPlayer().getEnemyBoard())) {

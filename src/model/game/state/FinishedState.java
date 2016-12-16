@@ -3,7 +3,7 @@ package model.game.state;
 import javax.swing.JOptionPane;
 
 import exception.ModelException;
-import model.Game;
+import model.game.Game;
 import model.board.Board;
 import model.enums.Orientation;
 import model.enums.ShipType;
@@ -17,24 +17,18 @@ public class FinishedState implements GameState {
 	}
 	
 	@Override
-	public void squareClicked(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
-		if(game.getPlayer().getMyBoard().getShipCounter() == 0){
-			throw new ModelException("The game is finished");
-		}
-		
-		if(game.getPlayer().getEnemyBoard().getShipCounter() == 0){
-			throw new ModelException("The game is finished");
-		}
+	public void squareClicked(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {		
+		return;
 	}
 
 	@Override
 	public void squareEntered(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
-
+		return;
 	}
 
 	@Override
 	public void squareExited(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
-		
+		return;
 	}
 
 }

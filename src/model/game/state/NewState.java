@@ -1,7 +1,7 @@
 package model.game.state;
 
 import exception.ModelException;
-import model.Game;
+import model.game.Game;
 import model.Position;
 import model.Ship;
 import model.board.Board;

@@ -58,7 +58,7 @@ public class Board implements BoardObservable{
 						this.changed.add(new Position(p.getX(), p.getY()));	
 					}
 					
-					shipCounter--;
+					this.shipCounter--;
 					System.out.println("Ship sunk");
 					
 				} else {

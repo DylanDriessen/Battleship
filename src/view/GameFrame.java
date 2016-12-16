@@ -8,17 +8,19 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 
-import model.Game;
+import model.game.Game;
+import model.game.GameObservable;
+import model.game.GameObserver;
+import model.player.Player;
 import model.board.Board;
 import model.facade.ModelFacade;
 
-public class GameFrame extends JFrame implements View {
+public class GameFrame extends JFrame implements View, GameObserver {
 	
 	private static final long serialVersionUID = 1L;
 	private GamePanel panel1, panel2;
 	private SelectionPanel selectionPanel;
 	private ModelFacade modelFacade;
-	private Game game;
 	
 	public static final int WIDTH = 940;
 	public static final int HEIGHT = 360;
@@ -28,6 +30,7 @@ public class GameFrame extends JFrame implements View {
 		super();
 		
 		this.modelFacade = modelFacade;
+		this.modelFacade.registerGameObserver(this);
 		String playerName = this.modelFacade.getPlayerName();
 		String aiName = this.modelFacade.getAIName();
 		int playerScore = this.modelFacade.getPlayerScore();
@@ -67,21 +70,18 @@ public class GameFrame extends JFrame implements View {
 	public SelectionPanel getSelectionPanel() {
 		return this.selectionPanel;
 	}
-	
-	@Override
-	public void getEndGame(){
-		if(modelFacade.endGame() == true){// why??
-			JOptionPane.showMessageDialog(null, "Game over! " + game.getPlayer().getName() + " has won with " + game.getPlayer().getScore() + " points.");}
-		else {
-			JOptionPane.showMessageDialog(null, "Game over! the AI has won with " + game.getAI().getScore()+ " points.");
-		}
-}
-		
 
 	@Override
 	public void startView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
-	}	
+	}
+
+	@Override
+	public void gameChanged(Game game) {
+		if(game.getWinner() != null) {
+			JOptionPane.showMessageDialog(null, "Game over!\n" +  game.getWinner().getName() + " won met " +  game.getWinner().getScore() + " punten.");
+		}
+	}
 
 }

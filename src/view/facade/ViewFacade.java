@@ -5,7 +5,7 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
-import model.Game;
+import model.game.Game;
 import view.GameFrame;
 import view.Square;
 import view.View;

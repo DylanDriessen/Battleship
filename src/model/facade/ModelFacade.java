@@ -1,7 +1,8 @@
 package model.facade;
 
 import exception.ModelException;
-import model.Game;
+import model.game.Game;
+import model.game.GameObserver;
 import model.board.Board;
 import model.enums.Orientation;
 import model.enums.ShipType;
@@ -67,19 +68,8 @@ public class ModelFacade {
 		return this.game.getAI().getScore();
 	}
 	
-	public boolean endGame() {
-		try {
-			if(game.finishedGame()){
-				return true;
-			} else {
-				return false;
-			}
-		}
-		catch(Exception e) {
-			return false;
-		}
+	public void registerGameObserver(GameObserver o) {
+		this.game.addObserver(o);
 	}
-
-
 	
 }
