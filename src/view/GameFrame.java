@@ -43,15 +43,15 @@ public class GameFrame extends JFrame implements View {
 		this.selectionPanel.setBorder(padding);
 		this.add(this.selectionPanel);
 		
-		Board board1 = this.modelFacade.getBoardPlayer();
-		this.panel1 = new GamePanel(this, playerName, playerScore, board1);
-		this.panel1.setBorder(padding);
-		this.add(this.panel1);
+//		Board board1 = this.modelFacade.getBoardPlayer();
+//		this.panel1 = new GamePanel(this, playerName, playerScore, board1);
+//		this.panel1.setBorder(padding);
+//		this.add(this.panel1);
 		
-		Board board2 = this.modelFacade.getBoardAI();
-		this.panel2 = new GamePanel(this, aiName, aiScore, board2);
-		this.panel2.setBorder(padding);
-		this.add(this.panel2);
+//		Board board2 = this.modelFacade.getBoardAI();
+//		this.panel2 = new GamePanel(this, aiName, aiScore, board2);
+//		this.panel2.setBorder(padding);
+//		this.add(this.panel2);
 	
 		revalidate();
 	}

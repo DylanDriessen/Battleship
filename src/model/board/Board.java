@@ -49,9 +49,6 @@ public class Board implements BoardObservable{
 			//TODO: kan dit simpeler geschreven worden? :p
 			boolean hit = this.boardPositions[x][y].attack();
 			if (hit) {
-				
-				Position[][] isHit = new Position[x][y];
-//				isHit(isHit);
 				this.player.decrementScore();
 				
 				if(this.boardPositions[x][y].getShip().isSunk()) {
