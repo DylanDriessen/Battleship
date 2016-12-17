@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
 import exception.ModelException;
+import model.Position;
 import model.board.Board;
 import model.enums.Orientation;
 import model.enums.ShipType;
@@ -60,28 +61,28 @@ public class ZeeslagController implements Controller {
 		}
 	}
 	
-	public void buttonClicked(int x, int y, Board board) {
+	public void buttonClicked(Position position, Board board) {
 		//TODO: shouldn't this be a Position object instead of x y?
 		try {
-			this.modelFacade.buttonClicked(x, y, this.shipType, this.orientation, board);
+			this.modelFacade.buttonClicked(position, this.shipType, this.orientation, board);
 		} catch (ModelException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}
 	
-	public void buttonEntered(int x, int y, Board board) {
+	public void buttonEntered(Position position, Board board) {
 		//TODO: shouldn't this be a Position object instead of x y?
 		try {
-			this.modelFacade.buttonEntered(x, y, this.shipType, this.orientation, board);
+			this.modelFacade.buttonEntered(position, this.shipType, this.orientation, board);
 		} catch (ModelException e) {
 			return;
 		}
 	}
 	
-	public void buttonExited(int x, int y, Board board) {
+	public void buttonExited(Position position, Board board) {
 		//TODO: shouldn't this be a Position object instead of x y?
 		try {
-			this.modelFacade.buttonExited(x, y, this.shipType, this.orientation, board);
+			this.modelFacade.buttonExited(position, this.shipType, this.orientation, board);
 		} catch (ModelException e) {
 			return;
 		}
@@ -100,10 +101,9 @@ public class ZeeslagController implements Controller {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			Square button = (Square)e.getSource();
-			int x = button.getX();
-			int y = button.getY();
+			Position position = button.getPosition();
 			Board board = ((GameGrid) button.getParent()).getBoard();
-			buttonClicked(x, y, board);
+			buttonClicked(position, board);
 		}
 
 	}
@@ -113,28 +113,25 @@ public class ZeeslagController implements Controller {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			Square button = (Square)e.getSource();
-			int x = button.getX();
-			int y = button.getY();
+			Position position = button.getPosition();
 			Board board = ((GameGrid) button.getParent()).getBoard();
-			buttonClicked(x, y, board);
+			buttonClicked(position, board);
 		}
 		
 		@Override
 		public void mouseEntered(MouseEvent e) {
 			Square button = (Square)e.getSource();
-			int x = button.getX();
-			int y = button.getY();
+			Position position = button.getPosition();
 			Board board = ((GameGrid) button.getParent()).getBoard();
-			buttonEntered(x, y, board);
+			buttonEntered(position, board);
 		}
 		
 		@Override
 		public void mouseExited(MouseEvent e) {
 			Square button = (Square)e.getSource();
-			int x = button.getX();
-			int y = button.getY();
+			Position position = button.getPosition();
 			Board board = ((GameGrid) button.getParent()).getBoard();
-			buttonExited(x, y, board);
+			buttonExited(position, board);
 		}
 
 	}

@@ -3,9 +3,8 @@ package model.game;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.swing.JOptionPane;
-
 import exception.ModelException;
+import model.Position;
 import model.board.Board;
 import model.enums.Orientation;
 import model.enums.ShipType;
@@ -59,16 +58,16 @@ public class Game implements GameObservable {
 		}
 	}
 
-	public void buttonClicked(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
-		this.currentState.squareClicked(x, y, shipType, orientation, board);
+	public void buttonClicked(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+		this.currentState.squareClicked(position, shipType, orientation, board);
 	}
 	
-	public void buttonEntered(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
-		this.currentState.squareEntered(x, y, shipType, orientation, board);
+	public void buttonEntered(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+		this.currentState.squareEntered(position, shipType, orientation, board);
 	}
 	
-	public void buttonExited(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
-		this.currentState.squareExited(x, y, shipType, orientation, board);
+	public void buttonExited(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+		this.currentState.squareExited(position, shipType, orientation, board);
 	}
 	
 	//Setters

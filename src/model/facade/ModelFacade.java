@@ -3,6 +3,7 @@ package model.facade;
 import exception.ModelException;
 import model.game.Game;
 import model.game.GameObserver;
+import model.Position;
 import model.board.Board;
 import model.enums.Orientation;
 import model.enums.ShipType;
@@ -36,16 +37,16 @@ public class ModelFacade {
 		this.game.startGame();
 	}
 	
-	public void buttonClicked(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
-		this.game.buttonClicked(x, y, shipType, orientation, board);
+	public void buttonClicked(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+		this.game.buttonClicked(position, shipType, orientation, board);
 	}
 	
-	public void buttonEntered(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
-		this.game.buttonEntered(x, y, shipType, orientation, board);
+	public void buttonEntered(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+		this.game.buttonEntered(position, shipType, orientation, board);
 	}
 	
-	public void buttonExited(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
-		this.game.buttonExited(x, y, shipType, orientation, board);
+	public void buttonExited(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+		this.game.buttonExited(position, shipType, orientation, board);
 	}
 
 	public void placeAIShips(boolean visible) {

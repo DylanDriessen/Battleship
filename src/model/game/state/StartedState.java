@@ -1,18 +1,12 @@
 package model.game.state;
 
-import javax.swing.JOptionPane;
-
 import exception.ModelException;
 import model.game.Game;
 import model.player.Player;
 import model.Position;
-import model.Ship;
 import model.board.Board;
 import model.enums.Orientation;
 import model.enums.ShipType;
-import model.facade.ModelFacade;
-import view.GameFrame;
-import view.View;
 
 public class StartedState implements GameState {
 
@@ -24,13 +18,13 @@ public class StartedState implements GameState {
 	}
 	
 	@Override
-	public void squareClicked(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {	
+	public void squareClicked(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {	
 		if (!board.equals(this.game.getPlayer().getEnemyBoard())) {
 			return;
 		}
 		
 		//Attack enemy board
-		this.game.getPlayer().getEnemyBoard().attack(x, y);
+		this.game.getPlayer().getEnemyBoard().attack(position);
 		
 		Player winner = null;
 		//Check if player has won. If so, end the game
@@ -55,21 +49,21 @@ public class StartedState implements GameState {
 	}
 	
 	@Override
-	public void squareEntered(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+	public void squareEntered(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
 		if (!board.equals(this.game.getPlayer().getEnemyBoard())) {
 			return;
 		}
 		
-		this.game.getPlayer().getEnemyBoard().focus(x, y, true);
+		this.game.getPlayer().getEnemyBoard().focus(position, true);
 	}
 
 	@Override
-	public void squareExited(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+	public void squareExited(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
 		if (!board.equals(this.game.getPlayer().getEnemyBoard())) {
 			return;
 		}
 		
-		this.game.getPlayer().getEnemyBoard().focus(x, y, false);
+		this.game.getPlayer().getEnemyBoard().focus(position, false);
 	}
 	
 

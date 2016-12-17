@@ -28,13 +28,5 @@ public class Square extends JButton {
 		this.setBorder(BorderFactory.createLineBorder(new Color(194, 227, 254)));
 		super.paintComponent(g);
 	}
-	
-	public int getY(){
-		return this.getPosition().getY();
-	}
-	
-	public int getX(){
-		return this.getPosition().getX();
-	}
-	
+
 }

@@ -47,7 +47,7 @@ public class ChanceAttackStrategy implements AttackStrategy {
 			}
 
 			try {
-				if (this.ai.getEnemyBoard().attack(x, y)) { // returns true if ship was hit
+				if (this.ai.getEnemyBoard().attack(new Position(x, y))) { // returns true if ship was hit
 					Ship ship = this.ai.getEnemyBoard().getBoardPositions()[x][y].getShip();
 					if (! ship.equals(currShip)) {
 						this.ships.remove(ship);

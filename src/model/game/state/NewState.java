@@ -17,7 +17,7 @@ public class NewState implements GameState {
 	}
 	
 	@Override
-	public void squareClicked(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {	
+	public void squareClicked(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {	
 		if(shipType == null) {
 			throw new ModelException("Gelieve een schip te kiezen.");
 		}
@@ -28,7 +28,7 @@ public class NewState implements GameState {
 			return;
 		}
 		
-		Ship ship = new Ship(shipType, new Position(x, y), orientation);
+		Ship ship = new Ship(shipType, position, orientation);
 		
 		this.game.getPlayer().getMyBoard().placeShip(ship, true);
 		
@@ -36,7 +36,7 @@ public class NewState implements GameState {
 	}
 
 	@Override
-	public void squareEntered(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+	public void squareEntered(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
 		if(shipType == null) {
 			return;
 		}
@@ -47,11 +47,11 @@ public class NewState implements GameState {
 			return;
 		}
 		
-		this.game.getPlayer().getMyBoard().placeGhostShip(x, y, shipType, orientation);
+		this.game.getPlayer().getMyBoard().placeGhostShip(position, shipType, orientation);
 	}
 
 	@Override
-	public void squareExited(int x, int y, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+	public void squareExited(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
 		if(shipType == null) {
 			return;
 		}
@@ -62,7 +62,7 @@ public class NewState implements GameState {
 			return;
 		}
 		
-		this.game.getPlayer().getMyBoard().removeGhostShip(x, y, shipType, orientation);
+		this.game.getPlayer().getMyBoard().removeGhostShip(position, shipType, orientation);
 	}
 
 }

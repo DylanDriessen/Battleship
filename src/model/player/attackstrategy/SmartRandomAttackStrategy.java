@@ -46,7 +46,7 @@ public class SmartRandomAttackStrategy implements AttackStrategy {
 			}
 
 			try {
-				if (this.ai.getEnemyBoard().attack(x, y)) { // returns true if ship was hit
+				if (this.ai.getEnemyBoard().attack(new Position(x, y))) { // returns true if ship was hit
 					Ship ship = this.ai.getEnemyBoard().getBoardPositions()[x][y].getShip();
 					if (ship.getTimesHit() > 1 && !ship.isSunk()) {
 						this.lastHit = new Position(x, y);

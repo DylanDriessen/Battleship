@@ -5,15 +5,11 @@ import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.swing.JOptionPane;
-
 import exception.ModelException;
-import model.enums.ButtonType;
 import model.enums.Orientation;
 import model.enums.ShipType;
 import model.player.AI;
 import model.player.Player;
-import model.player.placestrategy.RandomPlaceStrategy;
 import model.Position;
 import model.Ship;
 
@@ -43,7 +39,10 @@ public class Board implements BoardObservable{
 		}
 	}
 	
-	public boolean attack(int x, int y) throws ModelException {
+	public boolean attack(Position position) throws ModelException {
+		int x = position.getX();
+		int y = position.getY();
+		
 		if (!boardPositions[x][y].isPlayed()) {
 			this.setChangedButtons(new ArrayList<Position>());
 			
@@ -62,10 +61,10 @@ public class Board implements BoardObservable{
 					System.out.println("Ship sunk");
 					
 				} else {
-					this.changed.add(new Position(x, y));
+					this.changed.add(position);
 				}
 			} else {
-				this.changed.add(new Position(x, y));
+				this.changed.add(position);
 			}
 			
 			this.notifyBoardChanged();
@@ -75,12 +74,15 @@ public class Board implements BoardObservable{
 		}
 	}
 	
-	public void focus(int x, int y, boolean value) {
+	public void focus(Position position, boolean value) {
+		int x = position.getX();
+		int y = position.getY();
+		
 		if (!boardPositions[x][y].isPlayed()) {
 			this.setChangedButtons(new ArrayList<Position>());
 			
 			this.boardPositions[x][y].setFocus(value);
-			this.changed.add(new Position(x, y));
+			this.changed.add(position);
 			
 			this.notifyBoardChanged();
 		}
@@ -125,8 +127,11 @@ public class Board implements BoardObservable{
 		}
 	}
 	
-	public void placeGhostShip(int x, int y, ShipType type, Orientation orientation) throws ModelException {
+	public void placeGhostShip(Position position, ShipType type, Orientation orientation) throws ModelException {
 		//TODO: kan dit met template?
+		int x = position.getX();
+		int y = position.getY();
+		
 		if(this.shipCounter == 5) {
 			return;
 		}
@@ -158,8 +163,11 @@ public class Board implements BoardObservable{
 		this.notifyBoardChanged();
 	}
 	
-	public void removeGhostShip(int x, int y, ShipType type, Orientation orientation) throws ModelException {
+	public void removeGhostShip(Position position, ShipType type, Orientation orientation) throws ModelException {
 		//TODO: kan dit met template?
+		int x = position.getX();
+		int y = position.getY();
+		
 		int length = type.getLength();
 		this.setChangedButtons(new ArrayList<Position>());
 		
