@@ -19,27 +19,36 @@ public class ViewFacade {
 	}
 	
 	public Square[][] getButtonsPanel1() {
-		return view.getPanel1().getGrid().getButtons();
+		return this.view.getPanel1().getGrid().getButtons();
 	}
 	
 	public Square[][] getButtonsPanel2() {
-		return view.getPanel2().getGrid().getButtons();
+		return this.view.getPanel2().getGrid().getButtons();
 	}
 	
 	public JRadioButton getHorizontalButton() {
-		return view.getSelectionPanel().getHorizontal();
+		return this.view.getSelectionPanel().getHorizontal();
 	}
 	
 	public JRadioButton getVerticalButton() {
-		return view.getSelectionPanel().getVertical();
+		return this.view.getSelectionPanel().getVertical();
 	}
 	
 	public JComboBox getJComboBox() {
-		return view.getSelectionPanel().getShipsComboBox();
+		return this.view.getSelectionPanel().getShipsComboBox();
 	}
 	
 	public JButton getStartButton() {
-		return view.getSelectionPanel().getStartButton();
+		return this.view.getSelectionPanel().getStartButton();
+	}
+	
+	public JButton getSettingsButton() {
+		return this.view.getSelectionPanel().getSettingsButton();
+	}
+
+	public void openSettings() {
+		this.view.openSettings();
+		
 	}
 	
 }

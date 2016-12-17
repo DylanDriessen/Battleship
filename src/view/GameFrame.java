@@ -4,6 +4,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
@@ -12,6 +13,7 @@ import model.game.Game;
 import model.game.GameObservable;
 import model.game.GameObserver;
 import model.player.Player;
+import properties.PropertiesFile;
 import model.board.Board;
 import model.facade.ModelFacade;
 
@@ -21,14 +23,16 @@ public class GameFrame extends JFrame implements View, GameObserver {
 	private GamePanel panel1, panel2;
 	private SelectionPanel selectionPanel;
 	private ModelFacade modelFacade;
+	private PropertiesFile properties;
 	
 	public static final int WIDTH = 940;
 	public static final int HEIGHT = 360;
 	public static final Font DEFAULT_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, 16);
 
-	public GameFrame(ModelFacade modelFacade) {
+	public GameFrame(PropertiesFile properties, ModelFacade modelFacade) {
 		super();
 		
+		this.properties = properties;
 		this.modelFacade = modelFacade;
 		this.modelFacade.registerGameObserver(this);
 		String playerName = this.modelFacade.getPlayerName();
@@ -82,6 +86,23 @@ public class GameFrame extends JFrame implements View, GameObserver {
 		if(game.getWinner() != null) {
 			JOptionPane.showMessageDialog(null, "Game over!\n" +  game.getWinner().getName() + " won met " +  game.getWinner().getScore() + " punten.");
 		}
+	}
+	
+	@Override
+	public void openSettings() {
+		String[] Settings = { "Easy", "Medium", "Hard" };
+		
+		JFrame frame = new JFrame("Input Dialog Example 3");
+	    String difficulty = (String) JOptionPane.showInputDialog(frame, 
+	        "Please choose a difficulty",
+	        "Difficulty",
+	        JOptionPane.QUESTION_MESSAGE, 
+	        null, 
+	        Settings, 
+	        Settings[0]);
+
+	    // favoritePizza will be null if the user clicks Cancel
+	    System.out.printf("Difficulty is %s.\n", difficulty);
 	}
 
 }

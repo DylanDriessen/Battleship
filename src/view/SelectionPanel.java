@@ -26,6 +26,7 @@ public class SelectionPanel extends JPanel {
 	private JRadioButton horizontal;
 	private JRadioButton vertical;
 	private JButton startButton;
+	private JButton settingsButton;
 	
 	public SelectionPanel() {
 				
@@ -85,6 +86,14 @@ public class SelectionPanel extends JPanel {
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		this.add(this.startButton, gbc);
 		
+		this.settingsButton = new JButton();
+		this.settingsButton.setFont(GameFrame.DEFAULT_FONT);
+		this.settingsButton.setText("Settings");
+		gbc.gridx = 0;
+		gbc.gridy = 6;
+		gbc.gridwidth = 2;
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		this.add(this.settingsButton, gbc);
 	}
 
 	public JLabel getShipsLabel() {
@@ -105,6 +114,10 @@ public class SelectionPanel extends JPanel {
 	
 	public JButton getStartButton() {
 		return this.startButton;
+	}
+	
+	public JButton getSettingsButton() {
+		return this.settingsButton;
 	}
 	
 }

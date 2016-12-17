@@ -27,6 +27,7 @@ public class ZeeslagController implements Controller {
 	private Orientation orientation;
 	private ShipType shipType;
 	private StartListener startListener;
+	private SettingsListener settingsListener;
 	
 	public ZeeslagController(ModelFacade modelFacade, ViewFacade viewFacade) {
 		this.modelFacade = modelFacade;
@@ -46,7 +47,9 @@ public class ZeeslagController implements Controller {
 		this.viewFacade.getVerticalButton().addActionListener(new RadioListener());
 		this.viewFacade.getJComboBox().addActionListener(new ComboboxListener());
 		this.startListener = new StartListener();
+		this.settingsListener = new SettingsListener();
 		this.viewFacade.getStartButton().addMouseListener(startListener);
+		this.viewFacade.getSettingsButton().addMouseListener(settingsListener);
 		
 		this.modelFacade.placeAIShips(false);
 	}
@@ -59,6 +62,10 @@ public class ZeeslagController implements Controller {
 		} catch (ModelException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
+	}
+	
+	public void openSettings() {
+		this.viewFacade.openSettings();
 	}
 	
 	public void buttonClicked(Position position, Board board) {
@@ -162,6 +169,15 @@ public class ZeeslagController implements Controller {
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			startGame();
+		}
+		
+	}
+	
+	private class SettingsListener extends MouseAdapter {
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			openSettings();
 		}
 		
 	}
