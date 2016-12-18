@@ -13,7 +13,7 @@ public class SequentialAttackStrategy implements AttackStrategy {
 	@Override
 	public void attack() {
 
-		//TODO
+		//TODO: implementeren
 
 	}
 

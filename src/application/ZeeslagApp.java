@@ -2,7 +2,6 @@ package application;
 
 import javax.swing.JOptionPane;
 
-import controller.Controller;
 import controller.ZeeslagController;
 import exception.ModelException;
 import model.game.Game;

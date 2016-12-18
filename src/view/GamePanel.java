@@ -3,10 +3,8 @@ package view;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 
-import model.Position;
 import model.board.Board;
 import model.board.BoardObserver;
-import model.enums.ButtonType;
 
 public class GamePanel extends JPanel implements BoardObserver {
 

@@ -13,7 +13,7 @@ import model.player.Player;
 import model.Position;
 import model.Ship;
 
-public class Board implements BoardObservable{
+public class Board implements BoardObservable {
 	
 	private List<BoardObserver> observers;
 	private Map<ShipType, Integer> shipTypeCounter;
@@ -22,7 +22,6 @@ public class Board implements BoardObservable{
 	private BoardPosition[][] boardPositions;
 	private ArrayList<Ship> ships = new ArrayList<Ship>();
 	private Player player;
-	private AI ai;
 	
 	public Board() {
 		this.observers = new ArrayList<BoardObserver>();

@@ -4,15 +4,12 @@ import java.awt.Font;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 
 import model.game.Game;
-import model.game.GameObservable;
 import model.game.GameObserver;
-import model.player.Player;
 import properties.PropertiesFile;
 import model.board.Board;
 import model.facade.ModelFacade;

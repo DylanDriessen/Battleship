@@ -2,7 +2,6 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Graphics;
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
@@ -10,8 +9,6 @@ import javax.swing.JPanel;
 
 import model.Position;
 import model.board.Board;
-import model.board.BoardObservable;
-import model.board.BoardObserver;
 import model.enums.ButtonType;
 
 public class GameGrid extends JPanel {

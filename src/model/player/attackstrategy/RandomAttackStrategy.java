@@ -4,9 +4,6 @@ import java.util.Random;
 
 import exception.ModelException;
 import model.Position;
-import model.Ship;
-import model.enums.Orientation;
-import model.enums.ShipType;
 import model.player.AI;
 
 public class RandomAttackStrategy implements AttackStrategy {
