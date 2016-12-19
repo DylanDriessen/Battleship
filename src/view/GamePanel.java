@@ -24,21 +24,6 @@ public class GamePanel extends JPanel implements BoardObserver {
 		this.add(grid);
 		
 		board.addObserver(this);
-		
-		/*
-		 * GRIDBAGLAYOUT 
-		this.setLayout(new GridBagLayout());
-		GridBagConstraints gbc = new GridBagConstraints();
-		gbc.anchor = GridBagConstraints.LINE_START;
-		gbc.weightx = 1;
-
-		gbc.weighty = 0.1;
-		this.add(scoreboard, gbc);
-		
-		gbc.weighty = 0.9;
-		gbc.gridy = 1;
-		this.add(grid, gbc);
-		*/
 	}
 
 	public GameGrid getGrid() {

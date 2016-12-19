@@ -28,7 +28,7 @@ public class ShipFactory {
 			return ship;
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ModelException("Could not create your ship because of factory issue.\n" + e.getMessage());
+			throw new ModelException("We konden je schip niet maken door een probleem met de applicatie!\n" + e.getMessage());
 		}
 		
 	}		

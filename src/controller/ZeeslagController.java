@@ -20,7 +20,7 @@ import view.combobox.ComboBox;
 import view.combobox.ComboItem;
 import view.facade.ViewFacade;
 
-public class ZeeslagController implements Controller {
+public class ZeeslagController {
 
 	private final ViewFacade viewFacade;
 	private final ModelFacade modelFacade;
@@ -157,7 +157,7 @@ public class ZeeslagController implements Controller {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			JRadioButton radioButton = (JRadioButton)e.getSource();
-			setOrientation(Orientation.valueOf(radioButton.getText().toUpperCase()));
+			setOrientation(Orientation.checkOrientation(radioButton.getText().toUpperCase()));
 		}
 		
 	}

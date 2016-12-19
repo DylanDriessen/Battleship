@@ -56,7 +56,7 @@ public class Board implements BoardObservable {
 					}
 					
 					this.shipCounter--;
-					System.out.println("Ship sunk");
+					System.out.println("Schip gezonken.");
 				}
 			}
 			
@@ -64,7 +64,7 @@ public class Board implements BoardObservable {
 			this.notifyBoardChanged();
 			return hit;
 		} else {
-			throw new ModelException("Je kan deze coördinaten niet meer aanvallen");
+			throw new ModelException("Je kan deze coördinaten niet opnieuw aanvallen.");
 		}
 	}
 	

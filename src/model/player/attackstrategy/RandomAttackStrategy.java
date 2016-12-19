@@ -25,10 +25,10 @@ public class RandomAttackStrategy implements AttackStrategy {
 			int x = r.nextInt(10);
 			int y = r.nextInt(10);
 			
-			//Position p = new Position(x, y);
+			Position p = new Position(x, y);
 			
 			try {
-				this.ai.getEnemyBoard().attack(new Position(x, y));
+				this.ai.getEnemyBoard().attack(p);
 				succeeded = true;
 				System.out.println("AI attacked position a (" + x + "," + y + ")");
 				

@@ -54,7 +54,7 @@ public class Game implements GameObservable {
 		if (this.player.getMyBoard().getNbOfShips() == 5) {
 			this.currentState = startedState;
 		} else {
-			throw new ModelException("Je moet 5 schepen op je eigen bord plaatsen");
+			throw new ModelException("Je moet exact 5 schepen op je eigen bord plaatsen.");
 		}
 	}
 

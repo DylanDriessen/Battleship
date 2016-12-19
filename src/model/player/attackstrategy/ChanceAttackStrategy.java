@@ -31,7 +31,7 @@ public class ChanceAttackStrategy implements AttackStrategy {
 			int chance = r.nextInt(5);
 			
 			if (currShip != null) {
-				System.out.println("destroying current ship");
+				System.out.println("Destroying current ship");
 				Position p = this.currShip.getPositions().get(this.currAttackPosition++);
 				x = p.getX();
 				y = p.getY();

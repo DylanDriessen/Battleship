@@ -50,12 +50,12 @@ public class SelectionPanel extends JPanel {
 			ships[i] = new ComboItem<ShipType>(st + " (" + st.getLength() + ")", st);
 		}
 
-		this.shipsComboBox = new ComboBox<ComboItem<ShipType>>(ships, new ComboItem<ShipType>("Select a ship:"));
+		this.shipsComboBox = new ComboBox<ComboItem<ShipType>>(ships, new ComboItem<ShipType>("Selecteer een schip:"));
 	    this.shipsComboBox.setFont(GameFrame.DEFAULT_FONT);
 		gbc.gridy = 1;
 		this.add(this.shipsComboBox, gbc);
 		
-	    this.orientationLabel = new JLabel("Orientatie:");
+	    this.orientationLabel = new JLabel("Oriëntatie:");
 	    this.orientationLabel.setFont(GameFrame.DEFAULT_FONT);
 	    gbc.gridy = 3;
 	    this.add(this.orientationLabel, gbc);
@@ -76,23 +76,25 @@ public class SelectionPanel extends JPanel {
 		gbc.gridx = 1;
 		this.add(this.vertical, gbc);
 		
-		this.startButton = new JButton();
-		this.startButton.setFont(GameFrame.DEFAULT_FONT);
-		this.startButton.setText("Start Game");
+		this.settingsButton = new JButton();
+		this.settingsButton.setFont(GameFrame.DEFAULT_FONT);
+		this.settingsButton.setText("Instellingen");
 		gbc.gridx = 0;
 		gbc.gridy = 5;
 		gbc.gridwidth = 2;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-		this.add(this.startButton, gbc);
+		this.add(this.settingsButton, gbc);
 		
-		this.settingsButton = new JButton();
-		this.settingsButton.setFont(GameFrame.DEFAULT_FONT);
-		this.settingsButton.setText("Settings");
+		this.startButton = new JButton();
+		this.startButton.setFont(GameFrame.DEFAULT_FONT);
+		this.startButton.setText("Start Spel");
 		gbc.gridx = 0;
 		gbc.gridy = 6;
 		gbc.gridwidth = 2;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
-		this.add(this.settingsButton, gbc);
+		this.add(this.startButton, gbc);
+		
+		
 	}
 
 	public JLabel getShipsLabel() {

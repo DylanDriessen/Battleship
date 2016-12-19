@@ -86,12 +86,11 @@ public class GameFrame extends JFrame implements View, GameObserver {
 	
 	@Override
 	public void openSettings() {
-		String[] Settings = { "Easy", "Medium", "Hard" };
+		String[] Settings = { "Makkelijk", "Medium", "Moeilijk" };
 		
-		JFrame frame = new JFrame("Input Dialog Example 3");
-	    String difficulty = (String) JOptionPane.showInputDialog(frame, 
-	        "Please choose a difficulty",
-	        "Difficulty",
+	    String difficulty = (String) JOptionPane.showInputDialog(null, 
+	        "Kies een moeilijkheidsgraad:",
+	        "Instellingen",
 	        JOptionPane.QUESTION_MESSAGE, 
 	        null, 
 	        Settings, 

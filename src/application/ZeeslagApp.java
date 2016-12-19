@@ -15,7 +15,7 @@ public class ZeeslagApp {
 	public static void main(String[] args) {
 		String playerName = null;
 		while(playerName == null || playerName.isEmpty()) {
-			playerName = JOptionPane.showInputDialog(null, "Please enter your name:");
+			playerName = JOptionPane.showInputDialog(null, "Gelieve uw naam in te vullen:");
 		}
 		
 		//TODO: view should "observe" playerName from the model:
