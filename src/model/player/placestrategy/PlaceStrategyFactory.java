@@ -12,6 +12,9 @@ public class PlaceStrategyFactory {
 			case "random":
 				placeStrategy = new RandomPlaceStrategy(ai);
 				break;
+			case "border":
+				placeStrategy = new BorderPlaceStrategy(ai);
+				break;
 			default:
 				throw new ModelException("Unknown placing strategy: could not create place strategy.");
 		}
