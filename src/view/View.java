@@ -2,11 +2,12 @@ package view;
 
 public interface View {
 
-	public void startView();
-	public void openSettings();
-	public GamePanel getPanelPlayer();
-	public GamePanel getPanelAI();
-	public SelectionPanel getSelectionPanel();
-	public void showErrorMessage(String message);
+	void startView();
+	void openSettings();
+	GamePanel getPanelPlayer();
+	GamePanel getPanelAI();
+	SelectionPanel getSelectionPanel();
+	void showErrorMessage(String message);
+	String getStringInput(String message);
 	
 }

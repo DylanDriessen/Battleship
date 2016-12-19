@@ -63,5 +63,9 @@ public class ModelFacade {
 	public void registerGameObserver(GameObserver o) {
 		this.game.addObserver(o);
 	}
+
+	public void setPlayerName(String playerName) {
+		this.game.getPlayer().setName(playerName);
+	}
 	
 }

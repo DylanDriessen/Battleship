@@ -105,4 +105,9 @@ public class GameFrame extends JFrame implements View, GameObserver {
 		JOptionPane.showMessageDialog(null, message);
 	}
 
+	@Override
+	public String getStringInput(String message) {
+		return JOptionPane.showInputDialog(null, message);
+	}
+
 }
