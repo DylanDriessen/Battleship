@@ -4,8 +4,8 @@ public interface View {
 
 	public void startView();
 	public void openSettings();
-	public GamePanel getPanel1();
-	public GamePanel getPanel2();
+	public GamePanel getPanelPlayer();
+	public GamePanel getPanelAI();
 	public SelectionPanel getSelectionPanel();
 	
 }

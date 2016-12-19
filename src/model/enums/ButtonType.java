@@ -3,12 +3,12 @@ package model.enums;
 import java.awt.Color;
 
 public enum ButtonType {
-	EMPTY(new Color(165, 214, 254), true, ""), 
-	FOCUS(Color.GRAY, true, ""), 
-	OCCUPIED(Color.RED, true, ""), 
+	EMPTY( new Color(165, 214, 254), true, ""), 
+	FOCUS(new Color(67, 144, 178), false, ""), 
+	OCCUPIED(new Color(255, 165, 58), false, ""), 
 	SHOT_MISSED(new Color(165, 214, 254), true, "X"), 
-	SHOT_HIT(Color.MAGENTA, true, ""),
-	SUNK(Color.BLACK, true, "");
+	SHOT_HIT(new Color(255, 94, 59), false, ""),
+	SUNK(new Color(40, 40, 70), false, "");
 	
 	private Color color;
 	private boolean border;

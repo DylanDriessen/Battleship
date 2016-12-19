@@ -5,21 +5,13 @@ import model.game.Game;
 import model.game.GameObserver;
 import model.Position;
 import model.board.Board;
+import model.board.BoardObserver;
 import model.enums.Orientation;
 import model.enums.ShipType;
 
 public class ModelFacade {
 	
 	private Game game;
-
-	
-	public Game getGame() {
-		return game;
-	}
-
-	public void setGame(Game game) {
-		this.game = game;
-	}
 
 	public ModelFacade(Game game){
 		this.game = game;

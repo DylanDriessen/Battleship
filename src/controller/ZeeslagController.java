@@ -69,16 +69,15 @@ public class ZeeslagController implements Controller {
 	}
 	
 	public void buttonClicked(Position position, Board board) {
-		//TODO: shouldn't this be a Position object instead of x y?
 		try {
 			this.modelFacade.buttonClicked(position, this.shipType, this.orientation, board);
 		} catch (ModelException e) {
+			//TODO: zet in view?
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}
 	
 	public void buttonEntered(Position position, Board board) {
-		//TODO: shouldn't this be a Position object instead of x y?
 		try {
 			this.modelFacade.buttonEntered(position, this.shipType, this.orientation, board);
 		} catch (ModelException e) {
@@ -87,7 +86,6 @@ public class ZeeslagController implements Controller {
 	}
 	
 	public void buttonExited(Position position, Board board) {
-		//TODO: shouldn't this be a Position object instead of x y?
 		try {
 			this.modelFacade.buttonExited(position, this.shipType, this.orientation, board);
 		} catch (ModelException e) {

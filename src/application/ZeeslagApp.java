@@ -25,7 +25,7 @@ public class ZeeslagApp {
 		try {
 			model = new Game(properties, playerName);
 			ModelFacade modelFacade = new ModelFacade(model);
-			GameFrame view = new GameFrame(properties, modelFacade);
+			GameFrame view = new GameFrame(modelFacade);
 			ViewFacade viewFacade = new ViewFacade(view);
 			new ZeeslagController(modelFacade, viewFacade);
 			view.startView();

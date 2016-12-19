@@ -8,7 +8,6 @@ import java.util.Map;
 import exception.ModelException;
 import model.enums.Orientation;
 import model.enums.ShipType;
-import model.player.AI;
 import model.player.Player;
 import model.Position;
 import model.Ship;
@@ -58,7 +57,6 @@ public class Board implements BoardObservable {
 					
 					this.shipCounter--;
 					System.out.println("Ship sunk");
-					
 				}
 			}
 			
@@ -280,5 +278,5 @@ public class Board implements BoardObservable {
 			o.boardChanged(this);
 		}
 	}
-
 }
+

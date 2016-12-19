@@ -7,6 +7,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import model.Position;
+import model.enums.ButtonType;
 
 public class Square extends JButton {
 
@@ -16,7 +17,7 @@ public class Square extends JButton {
 	public Square(int x, int y) {
 		super();
 		this.position = new Position(x, y);
-		this.setBackground(new Color(165, 214, 254));
+		this.setBackground(ButtonType.EMPTY.getColor());
 	}
 
 	public Position getPosition() {

@@ -4,8 +4,10 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 
+import model.enums.ShipType;
 import view.Square;
 import view.View;
+import view.combobox.ComboItem;
 
 public class ViewFacade {
 	
@@ -16,11 +18,11 @@ public class ViewFacade {
 	}
 	
 	public Square[][] getButtonsPanel1() {
-		return this.view.getPanel1().getGrid().getButtons();
+		return this.view.getPanelPlayer().getGrid().getButtons();
 	}
 	
 	public Square[][] getButtonsPanel2() {
-		return this.view.getPanel2().getGrid().getButtons();
+		return this.view.getPanelAI().getGrid().getButtons();
 	}
 	
 	public JRadioButton getHorizontalButton() {
@@ -31,7 +33,7 @@ public class ViewFacade {
 		return this.view.getSelectionPanel().getVertical();
 	}
 	
-	public JComboBox getJComboBox() {
+	public JComboBox<ComboItem<ShipType>> getJComboBox() {
 		return this.view.getSelectionPanel().getShipsComboBox();
 	}
 	
