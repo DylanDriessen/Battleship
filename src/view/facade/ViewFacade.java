@@ -46,8 +46,19 @@ public class ViewFacade {
 	}
 
 	public void openSettings() {
-		this.view.openSettings();
-		
+		this.view.openSettings();	
+	}
+
+	public void showErrorMessage(String message) {
+		this.view.showErrorMessage(message);
+	}
+
+	public String getStringInput(String message) {
+		return this.view.getStringInput(message);
+	}
+	
+	public void startView() {
+		this.view.startView();
 	}
 	
 }

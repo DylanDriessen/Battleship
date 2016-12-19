@@ -100,4 +100,14 @@ public class GameFrame extends JFrame implements View, GameObserver {
 	    System.out.printf("Difficulty is %s.\n", difficulty);
 	}
 
+	@Override
+	public void showErrorMessage(String message) {
+		JOptionPane.showMessageDialog(null, message);
+	}
+
+	@Override
+	public String getStringInput(String message) {
+		return JOptionPane.showInputDialog(null, message);
+	}
+
 }

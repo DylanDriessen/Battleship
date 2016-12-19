@@ -26,9 +26,8 @@ public class Game implements GameObservable {
 	private PropertiesFile properties;
 	private String playerName;
 	
-	public  Game(PropertiesFile properties, String playerName) throws ModelException{
+	public  Game(PropertiesFile properties) throws ModelException{
 		this.properties = properties;
-		this.playerName = playerName;
 		
 		init();
 		
@@ -77,6 +76,10 @@ public class Game implements GameObservable {
 	
 	public void setWinner(Player player) {
 		this.winner = player;
+	}
+	
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
 	}
 	
 	//Getters

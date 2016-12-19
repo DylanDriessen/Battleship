@@ -33,6 +33,12 @@ public class ZeeslagController {
 		this.modelFacade = modelFacade;
 		this.viewFacade = viewFacade;
 		
+		String playerName = null;
+		while(playerName == null || playerName.isEmpty()) {
+			playerName = this.viewFacade.getStringInput("Gelieve uw naam in te vullen:");
+		}
+		this.modelFacade.setPlayerName(playerName);
+		
 		Square[][] squares1 = this.viewFacade.getButtonsPanel1();
 		Square[][] squares2 = this.viewFacade.getButtonsPanel2();
 		
@@ -50,8 +56,9 @@ public class ZeeslagController {
 		this.settingsListener = new SettingsListener();
 		this.viewFacade.getStartButton().addMouseListener(startListener);
 		this.viewFacade.getSettingsButton().addMouseListener(settingsListener);
-		
+	
 		this.modelFacade.placeAIShips(false);
+		this.viewFacade.startView();
 	}
 	
 	public void startGame() {
@@ -60,6 +67,7 @@ public class ZeeslagController {
 			this.viewFacade.getStartButton().removeMouseListener(startListener);
 			this.viewFacade.getStartButton().setEnabled(false);
 		} catch (ModelException e) {
+			this.viewFacade.showErrorMessage(e.getMessage());
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}
