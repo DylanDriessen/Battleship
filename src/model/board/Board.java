@@ -59,13 +59,10 @@ public class Board implements BoardObservable {
 					this.shipCounter--;
 					System.out.println("Ship sunk");
 					
-				} else {
-					this.changed.add(position);
 				}
-			} else {
-				this.changed.add(position);
 			}
 			
+			this.changed.add(position);
 			this.notifyBoardChanged();
 			return hit;
 		} else {
