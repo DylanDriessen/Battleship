@@ -47,17 +47,7 @@ public class SmartRandomAttackStrategy implements AttackStrategy {
 
 			try {
 				if (this.ai.getEnemyBoard().attack(new Position(x, y))) { // returns true if ship was hit
-					Ship ship = this.ai.getEnemyBoard().getBoardPositions()[x][y].getShip();
-					if (ship.getTimesHit() > 1 && !ship.isSunk()) {
-						this.lastHit = new Position(x, y);
-						this.found = true;
-					} else if (ship.isSunk()) {
-						this.lastHit = null;
-						this.found = false;
-					} else if (lastHit == null) {
-						this.lastHit = new Position(x, y);
-						this.found = false;
-					}
+					shipWasHit(x, y);
 				} else if (found) {
 					changeDirection();
 				}
@@ -69,7 +59,6 @@ public class SmartRandomAttackStrategy implements AttackStrategy {
 			} catch (ArrayIndexOutOfBoundsException e) {
 				if (found) {
 					changeDirection();
-					succeeded = true;
 				}
 			}
 		}
@@ -84,6 +73,20 @@ public class SmartRandomAttackStrategy implements AttackStrategy {
 			this.lastHit = new Position(lastHit.getX() + direction.getX() * backTrack, lastHit.getY());
 		else {
 			this.lastHit = new Position(lastHit.getX(), lastHit.getY() + direction.getY() * backTrack);
+		}
+	}
+	
+	public void shipWasHit(int x, int y) {
+		Ship ship = this.ai.getEnemyBoard().getBoardPositions()[x][y].getShip();
+		if (ship.getTimesHit() > 1 && !ship.isSunk()) {
+			this.lastHit = new Position(x, y);
+			this.found = true;
+		} else if (ship.isSunk()) {
+			this.lastHit = null;
+			this.found = false;
+		} else if (lastHit == null) {
+			this.lastHit = new Position(x, y);
+			this.found = false;
 		}
 	}
 }
