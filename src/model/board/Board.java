@@ -8,7 +8,6 @@ import java.util.Map;
 import exception.ModelException;
 import model.enums.Orientation;
 import model.enums.ShipType;
-import model.player.AI;
 import model.player.Player;
 import model.Position;
 import model.Ship;

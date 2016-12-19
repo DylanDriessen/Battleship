@@ -10,32 +10,25 @@ import javax.swing.border.Border;
 
 import model.game.Game;
 import model.game.GameObserver;
-import properties.PropertiesFile;
 import model.board.Board;
 import model.facade.ModelFacade;
 
 public class GameFrame extends JFrame implements View, GameObserver {
 	
 	private static final long serialVersionUID = 1L;
-	private GamePanel panel1, panel2;
+	private GamePanel panelPlayer, panelAI;
 	private SelectionPanel selectionPanel;
 	private ModelFacade modelFacade;
-	private PropertiesFile properties;
 	
 	public static final int WIDTH = 940;
 	public static final int HEIGHT = 360;
 	public static final Font DEFAULT_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, 16);
 
-	public GameFrame(PropertiesFile properties, ModelFacade modelFacade) {
+	public GameFrame(ModelFacade modelFacade) {
 		super();
 		
-		this.properties = properties;
 		this.modelFacade = modelFacade;
-		this.modelFacade.registerGameObserver(this);
-		String playerName = this.modelFacade.getPlayerName();
-		String aiName = this.modelFacade.getAIName();
-		int playerScore = this.modelFacade.getPlayerScore();
-		int aiScore = this.modelFacade.getAIScore();
+		this.modelFacade.registerGameObserver(this);		
 		
 		this.setSize(WIDTH, HEIGHT);
 		this.setResizable(false);
@@ -47,25 +40,31 @@ public class GameFrame extends JFrame implements View, GameObserver {
 		this.selectionPanel.setBorder(padding);
 		this.add(this.selectionPanel);
 		
-		Board board1 = this.modelFacade.getBoardPlayer();
-		this.panel1 = new GamePanel(this, playerName, playerScore, board1);
-		this.panel1.setBorder(padding);
-		this.add(this.panel1);
+		//Init Player GamePanel
+		String playerName = this.modelFacade.getPlayerName();
+		int playerScore = this.modelFacade.getPlayerScore();
+		Board boardPlayer = this.modelFacade.getBoardPlayer();
+		this.panelPlayer = new GamePanel(this, playerName, playerScore, boardPlayer);
+		this.panelPlayer.setBorder(padding);
+		this.add(this.panelPlayer);
 		
-		Board board2 = this.modelFacade.getBoardAI();
-		this.panel2 = new GamePanel(this, aiName, aiScore, board2);
-		this.panel2.setBorder(padding);
-		this.add(this.panel2);
+		//Init AI GamePanel
+		String aiName = this.modelFacade.getAIName();
+		int aiScore = this.modelFacade.getAIScore();
+		Board boardAI = this.modelFacade.getBoardAI();
+		this.panelAI = new GamePanel(this, aiName, aiScore, boardAI);
+		this.panelAI.setBorder(padding);
+		this.add(this.panelAI);
 	
 		revalidate();
 	}
 
-	public GamePanel getPanel1() {
-		return this.panel1;
+	public GamePanel getPanelPlayer() {
+		return this.panelPlayer;
 	}
 
-	public GamePanel getPanel2() {
-		return this.panel2;
+	public GamePanel getPanelAI() {
+		return this.panelAI;
 	}
 	
 	public SelectionPanel getSelectionPanel() {
