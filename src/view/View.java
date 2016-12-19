@@ -7,5 +7,6 @@ public interface View {
 	public GamePanel getPanelPlayer();
 	public GamePanel getPanelAI();
 	public SelectionPanel getSelectionPanel();
+	public void showErrorMessage(String message);
 	
 }

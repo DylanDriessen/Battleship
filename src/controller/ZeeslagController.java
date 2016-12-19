@@ -60,6 +60,7 @@ public class ZeeslagController {
 			this.viewFacade.getStartButton().removeMouseListener(startListener);
 			this.viewFacade.getStartButton().setEnabled(false);
 		} catch (ModelException e) {
+			this.viewFacade.showErrorMessage(e.getMessage());
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}
