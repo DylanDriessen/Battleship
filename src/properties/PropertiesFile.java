@@ -12,12 +12,12 @@ import java.util.Properties;
 
 public class PropertiesFile {
 	private Properties properties;
-	private String fileName = "zeeslag.ini";
+	private String fileName = "zeeslag.properties";
 	
 	public PropertiesFile() {
 		this.properties = new Properties();
 		
-		File f = new File("zeeslag.ini");
+		File f = new File(this.fileName);
 		if(!f.exists() || f.isDirectory()) { 
 		    this.create();
 		}
