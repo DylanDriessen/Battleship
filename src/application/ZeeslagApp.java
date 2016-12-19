@@ -17,9 +17,6 @@ public class ZeeslagApp {
 		while(playerName == null || playerName.isEmpty()) {
 			playerName = JOptionPane.showInputDialog(null, "Gelieve uw naam in te vullen:");
 		}
-		
-		//TODO: view should "observe" playerName from the model:
-		// I think code should work without the playerName parameter in the GameFrame constructor?
 		PropertiesFile properties = new PropertiesFile();
 		Game model;
 		try {
@@ -30,7 +27,7 @@ public class ZeeslagApp {
 			new ZeeslagController(modelFacade, viewFacade);
 			view.startView();
 		} catch (ModelException e) {
-			// TODO Auto-generated catch block
+			JOptionPane.showInputDialog(null, "Het spel kon niet gestart worden wegens een probleem met het opstarten.\n" + e.getMessage());
 			e.printStackTrace();
 		}
 	}

@@ -5,7 +5,6 @@ import model.game.Game;
 import model.game.GameObserver;
 import model.Position;
 import model.board.Board;
-import model.board.BoardObserver;
 import model.enums.Orientation;
 import model.enums.ShipType;
 

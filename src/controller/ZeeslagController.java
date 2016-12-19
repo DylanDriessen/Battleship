@@ -72,7 +72,6 @@ public class ZeeslagController {
 		try {
 			this.modelFacade.buttonClicked(position, this.shipType, this.orientation, board);
 		} catch (ModelException e) {
-			//TODO: zet in view?
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}

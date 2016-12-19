@@ -19,7 +19,6 @@ import model.game.state.NewState;
 public class Game implements GameObservable {
 	
 	private Player player, winner;
-	//TODO: Statisch type AI is geen player meer omdat we anders niet aan placeShip() kunnen. Kan dit beter? 
 	private AI ai;
 	private GameState currentState, newState, startedState, finishedState;
 	private List<GameObserver> observers;

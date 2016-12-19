@@ -34,7 +34,6 @@ public class SmartRandomAttackStrategy implements AttackStrategy {
 				x = lastHit.getX() + direction.getX();
 				y = lastHit.getY() + direction.getY();
 			} else if (lastHit != null) { // ship found but direction unknown
-				//TODO: cause for infinite loop
 				System.out.println("searching ship direction");
 				this.direction = Direction.randomDirection();
 				x = lastHit.getX() + direction.getX();

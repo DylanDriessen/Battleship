@@ -44,7 +44,6 @@ public class Board implements BoardObservable {
 		if (!boardPositions[x][y].isPlayed()) {
 			this.setChangedButtons(new ArrayList<Position>());
 			
-			//TODO: kan dit simpeler geschreven worden? :p
 			boolean hit = this.boardPositions[x][y].attack();
 			if (hit) {
 				this.player.decrementScore();
@@ -83,7 +82,6 @@ public class Board implements BoardObservable {
 	}
 	
 	public void placeShip(Ship ship, boolean visible) throws ModelException {
-		//TODO: kan dit met template?
 		if(this.shipCounter == 5) {
 			throw new ModelException("Je hebt het maximumaantal schepen bereikt.");
 		}
@@ -122,7 +120,6 @@ public class Board implements BoardObservable {
 	}
 	
 	public void placeGhostShip(Position position, ShipType type, Orientation orientation) throws ModelException {
-		//TODO: kan dit met template?
 		int x = position.getX();
 		int y = position.getY();
 		
@@ -158,7 +155,6 @@ public class Board implements BoardObservable {
 	}
 	
 	public void removeGhostShip(Position position, ShipType type, Orientation orientation) throws ModelException {
-		//TODO: kan dit met template?
 		int x = position.getX();
 		int y = position.getY();
 		
