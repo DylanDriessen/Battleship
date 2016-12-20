@@ -13,7 +13,7 @@ public class GamePanel extends JPanel implements BoardObserver {
 	private GameGrid grid;
 	private Board board;
 	
-	public GamePanel(View gameFrame, String playerName, int score, Board board) {
+	public GamePanel(GameFrame gameFrame, String playerName, int score, Board board) {
 		super();
 		
 		this.scoreboard = new Scoreboard(playerName, score);

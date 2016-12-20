@@ -13,35 +13,34 @@ import model.Position;
 import model.board.Board;
 import model.enums.Orientation;
 import model.enums.ShipType;
-import model.facade.ModelFacade;
-import view.GameGrid;
+import model.facade.IModelFacade;
 import view.GamePanel;
 import view.Square;
 import view.combobox.ComboBox;
 import view.combobox.ComboItem;
-import view.facade.ViewFacade;
+import view.facade.IViewFacade;
 
 public class ZeeslagController {
 
-	private final ViewFacade viewFacade;
-	private final ModelFacade modelFacade;
+	private final IViewFacade view;
+	private final IModelFacade model;
 	private Orientation orientation;
 	private ShipType shipType;
 	private StartListener startListener;
 	private SettingsListener settingsListener;
 	
-	public ZeeslagController(ModelFacade modelFacade, ViewFacade viewFacade) {
-		this.modelFacade = modelFacade;
-		this.viewFacade = viewFacade;
+	public ZeeslagController(IModelFacade model, IViewFacade view) {
+		this.model = model;
+		this.view = view;
 		
 		String playerName = null;
 		while(playerName == null || playerName.isEmpty()) {
-			playerName = this.viewFacade.getStringInput("Gelieve uw naam in te vullen:");
+			playerName = this.view.getStringInput("Gelieve uw naam in te vullen:");
 		}
-		this.modelFacade.setPlayerName(playerName);
+		this.model.setPlayerName(playerName);
 		
-		Square[][] squares1 = this.viewFacade.getButtonsPanel1();
-		Square[][] squares2 = this.viewFacade.getButtonsPanel2();
+		Square[][] squares1 = this.view.getButtonsPanel1();
+		Square[][] squares2 = this.view.getButtonsPanel2();
 		
 		for(int y = 0; y < 10; y++) {
 			for(int x = 0; x < 10; x++) {
@@ -50,35 +49,35 @@ public class ZeeslagController {
 			}
 		}
 		
-		this.viewFacade.getHorizontalButton().addActionListener(new RadioListener());
-		this.viewFacade.getVerticalButton().addActionListener(new RadioListener());
-		this.viewFacade.getJComboBox().addActionListener(new ComboboxListener());
+		this.view.getHorizontalButton().addActionListener(new RadioListener());
+		this.view.getVerticalButton().addActionListener(new RadioListener());
+		this.view.getJComboBox().addActionListener(new ComboboxListener());
 		this.startListener = new StartListener();
 		this.settingsListener = new SettingsListener();
-		this.viewFacade.getStartButton().addMouseListener(startListener);
-		this.viewFacade.getSettingsButton().addMouseListener(settingsListener);
+		this.view.getStartButton().addMouseListener(startListener);
+		this.view.getSettingsButton().addMouseListener(settingsListener);
 	
 		
-		this.viewFacade.startView();
+		this.view.startView();
 	}
 	
 	public void startGame() {
 		try {
-			this.modelFacade.startGame();
-			this.viewFacade.getStartButton().setEnabled(false);
+			this.model.startGame();
+			this.view.getStartButton().setEnabled(false);
 		} catch (ModelException e) {
-			this.viewFacade.showErrorMessage(e.getMessage());
+			this.view.showErrorMessage(e.getMessage());
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}
 	
 	public void openSettings() {
-		this.viewFacade.openSettings();
+		this.view.openSettings();
 	}
 	
 	public void buttonClicked(Position position, Board board) {
 		try {
-			this.modelFacade.buttonClicked(position, this.shipType, this.orientation, board);
+			this.model.buttonClicked(position, this.shipType, this.orientation, board);
 		} catch (ModelException e) {
 			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
@@ -86,7 +85,7 @@ public class ZeeslagController {
 	
 	public void buttonEntered(Position position, Board board) {
 		try {
-			this.modelFacade.buttonEntered(position, this.shipType, this.orientation, board);
+			this.model.buttonEntered(position, this.shipType, this.orientation, board);
 		} catch (ModelException e) {
 			return;
 		}
@@ -94,7 +93,7 @@ public class ZeeslagController {
 	
 	public void buttonExited(Position position, Board board) {
 		try {
-			this.modelFacade.buttonExited(position, this.shipType, this.orientation, board);
+			this.model.buttonExited(position, this.shipType, this.orientation, board);
 		} catch (ModelException e) {
 			return;
 		}

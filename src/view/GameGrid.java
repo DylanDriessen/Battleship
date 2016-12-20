@@ -16,7 +16,7 @@ public class GameGrid extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Square[][] buttons = new Square[10][10];
 	
-	public GameGrid(View gameFrame, int width) {
+	public GameGrid(GameFrame gameFrame, int width) {
 		super();
 		this.setLayout(new GridLayout(10, 10));
 		

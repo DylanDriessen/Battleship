@@ -5,16 +5,17 @@ import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 
 import model.enums.ShipType;
+import model.facade.IModelFacade;
+import view.GameFrame;
 import view.Square;
-import view.View;
 import view.combobox.ComboItem;
 
 public class ViewFacade implements IViewFacade{
 	
-	private View view;
+	private GameFrame view;
 	
-	public ViewFacade(View view){
-		this.view = view;
+	public ViewFacade(IModelFacade model){
+		this.view = new GameFrame(model);
 	}
 	
 	@Override

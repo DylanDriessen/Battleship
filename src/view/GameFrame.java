@@ -11,24 +11,24 @@ import javax.swing.border.Border;
 import model.game.Game;
 import model.game.GameObserver;
 import model.board.Board;
-import model.facade.ModelFacade;
+import model.facade.IModelFacade;
 
-public class GameFrame extends JFrame implements View, GameObserver {
+public class GameFrame extends JFrame implements GameObserver {
 	
 	private static final long serialVersionUID = 1L;
 	private GamePanel panelPlayer, panelAI;
 	private SelectionPanel selectionPanel;
-	private ModelFacade modelFacade;
+	private IModelFacade model;
 	
 	public static final int WIDTH = 940;
 	public static final int HEIGHT = 360;
 	public static final Font DEFAULT_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, 16);
 
-	public GameFrame(ModelFacade modelFacade) {
+	public GameFrame(IModelFacade model) {
 		super();
 		
-		this.modelFacade = modelFacade;
-		this.modelFacade.registerGameObserver(this);		
+		this.model = model;
+		this.model.registerGameObserver(this);		
 		
 		this.setSize(WIDTH, HEIGHT);
 		this.setResizable(false);
@@ -41,17 +41,17 @@ public class GameFrame extends JFrame implements View, GameObserver {
 		this.add(this.selectionPanel);
 		
 		//Init Player GamePanel
-		String playerName = this.modelFacade.getPlayerName();
-		int playerScore = this.modelFacade.getPlayerScore();
-		Board boardPlayer = this.modelFacade.getBoardPlayer();
+		String playerName = this.model.getPlayerName();
+		int playerScore = this.model.getPlayerScore();
+		Board boardPlayer = this.model.getBoardPlayer();
 		this.panelPlayer = new GamePanel(this, playerName, playerScore, boardPlayer);
 		this.panelPlayer.setBorder(padding);
 		this.add(this.panelPlayer);
 		
 		//Init AI GamePanel
-		String aiName = this.modelFacade.getAIName();
-		int aiScore = this.modelFacade.getAIScore();
-		Board boardAI = this.modelFacade.getBoardAI();
+		String aiName = this.model.getAIName();
+		int aiScore = this.model.getAIScore();
+		Board boardAI = this.model.getBoardAI();
 		this.panelAI = new GamePanel(this, aiName, aiScore, boardAI);
 		this.panelAI.setBorder(padding);
 		this.add(this.panelAI);
@@ -59,28 +59,23 @@ public class GameFrame extends JFrame implements View, GameObserver {
 		revalidate();
 	}
 	
-	@Override
 	public GamePanel getPanelPlayer() {
 		return this.panelPlayer;
 	}
 	
-	@Override
 	public GamePanel getPanelAI() {
 		return this.panelAI;
 	}
 	
-	@Override
 	public SelectionPanel getSelectionPanel() {
 		return this.selectionPanel;
 	}
 
-	@Override
 	public void startView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
 	}
 
-	@Override
 	public void gameChanged(Game game) {
 		if(game.getWinner() != null) {
 			JOptionPane.showMessageDialog(null, "Game over!\n" +  game.getWinner().getName() + " won met " +  game.getWinner().getScore() + " punten.");
@@ -88,7 +83,6 @@ public class GameFrame extends JFrame implements View, GameObserver {
 		}
 	}
 	
-	@Override
 	public void openSettings() {
 		String[] Settings = { "Makkelijk", "Medium", "Moeilijk" };
 		
@@ -104,12 +98,10 @@ public class GameFrame extends JFrame implements View, GameObserver {
 	    System.out.printf("Difficulty is %s.\n", difficulty);
 	}
 
-	@Override
 	public void showErrorMessage(String message) {
 		JOptionPane.showMessageDialog(null, message);
 	}
 
-	@Override
 	public String getStringInput(String message) {
 		return JOptionPane.showInputDialog(null, message);
 	}

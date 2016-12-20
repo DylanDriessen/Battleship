@@ -3,6 +3,7 @@ package model.facade;
 import exception.ModelException;
 import model.game.Game;
 import model.game.GameObserver;
+import properties.PropertiesFile;
 import model.Position;
 import model.board.Board;
 import model.enums.Orientation;
@@ -12,8 +13,8 @@ public class ModelFacade implements IModelFacade {
 	
 	private Game game;
 
-	public ModelFacade(Game game){
-		this.game = game;
+	public ModelFacade(PropertiesFile properties) throws ModelException {
+		this.game = new Game(properties);
 	}
 	
 	@Override
