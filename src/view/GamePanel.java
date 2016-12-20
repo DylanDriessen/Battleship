@@ -35,8 +35,7 @@ public class GamePanel extends JPanel implements BoardObserver {
 	
 	@Override
 	public void boardChanged(Board board) {
-		this.grid.setBoard(board);
-		this.grid.paintBoard();	
+		this.grid.paintBoard(board);	
 		this.scoreboard.setScore(board.getPlayer().getScore());
 		this.scoreboard.updateLabel();
 	}	
