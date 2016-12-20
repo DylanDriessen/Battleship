@@ -1,3 +1,7 @@
+/**
+ * @author Mathias Spanhove, Dylan Driessen, Wouter Cypers
+ */
+
 package model.game.state;
 
 import exception.ModelException;

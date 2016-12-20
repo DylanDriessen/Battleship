@@ -129,7 +129,7 @@ public class Board implements BoardObservable {
 		}
 	}
 	
-	public void placeGhostShip(Position position, ShipType type, Orientation orientation) throws ModelException {
+	public void placeGhostShip(Position position, ShipType type, Orientation orientation, boolean place) throws ModelException {
 		int x = position.getX();
 		int y = position.getY();
 		
@@ -148,7 +148,7 @@ public class Board implements BoardObservable {
 				verifyEnvironment(i, y);
 			}
 			for(int i = x; i < x + length; i++) {
-				this.boardPositions[i][y].setFocus(true);
+				this.boardPositions[i][y].setFocus(place);
 				this.changed.add(new Position(i, y));
 			}
 		} else {
@@ -156,35 +156,7 @@ public class Board implements BoardObservable {
 				verifyEnvironment(x, i);
 			}
 			for(int i = y; i < y + length; i++) {
-				this.boardPositions[x][i].setFocus(true);
-				this.changed.add(new Position(x, i));
-			}
-		}
-		
-		this.notifyBoardChanged();
-	}
-	
-	public void removeGhostShip(Position position, ShipType type, Orientation orientation) throws ModelException {
-		int x = position.getX();
-		int y = position.getY();
-		
-		int length = type.getLength();
-		this.setChangedButtons(new ArrayList<Position>());
-		
-		if(orientation.equals(Orientation.HORIZONTAL)) {
-			for(int i = x; i < x + length; i++) {
-				verifyEnvironment(i, y);
-			}
-			for(int i = x; i < x + length; i++) {
-				this.boardPositions[i][y].setFocus(false);
-				this.changed.add(new Position(i, y));
-			}
-		} else {
-			for(int i = y; i < y + length; i++) {
-				verifyEnvironment(x, i);
-			}
-			for(int i = y; i < y + length; i++) {
-				this.boardPositions[x][i].setFocus(false);
+				this.boardPositions[x][i].setFocus(place);
 				this.changed.add(new Position(x, i));
 			}
 		}
