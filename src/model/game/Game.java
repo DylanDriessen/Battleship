@@ -28,13 +28,8 @@ public class Game implements GameObservable {
 	
 	public  Game(PropertiesFile properties) throws ModelException{
 		this.properties = properties;
-		
-		init();
-		
 		this.observers = new ArrayList<GameObserver>();
-	}
-	
-	public void init() throws ModelException {
+		
 		Board boardPlayer = new Board();
 		Board boardAI = new Board();
 		
@@ -44,13 +39,14 @@ public class Game implements GameObservable {
 		this.newState = new NewState(this);
 		this.startedState = new StartedState(this);
 		this.finishedState = new FinishedState(this);
+		
 		setState(this.newState);
 	}
 	
 	public void startGame() throws ModelException {
-		//RandomPlaceStrategy oproepen
 		if (this.player.getMyBoard().getNbOfShips() == 5) {
 			this.currentState = startedState;
+			this.ai.placeShips(true);
 		} else {
 			throw new ModelException("Je moet exact 5 schepen op je eigen bord plaatsen.");
 		}
@@ -126,7 +122,18 @@ public class Game implements GameObservable {
 	}
 
 	public void reset() throws ModelException {
-		init();
+		this.player.resetScore();
+		this.ai.resetScore();
+		
+		this.player.getMyBoard().init();
+		this.ai.getMyBoard().init();
+		
+		this.player.getMyBoard().notifyBoardChanged();
+		this.ai.getMyBoard().notifyBoardChanged();
+	}
+
+	public void finishGame() throws ModelException {
+		this.currentState.finishGame();
 	}
 
 }

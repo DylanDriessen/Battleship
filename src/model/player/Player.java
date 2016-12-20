@@ -5,7 +5,8 @@ import model.board.Board;
 public class Player {
 	
 	private String name;
-	private int score = 19;
+	private final int initialScore = 19;
+	private int score;
 	private Board myBoard, enemyBoard;
 
 	public Player (String name, Board myBoard, Board enemyBoard){
@@ -13,6 +14,7 @@ public class Player {
 		this.myBoard = myBoard;
 		this.myBoard.setPlayer(this);
 		this.enemyBoard = enemyBoard;
+		this.score = this.initialScore;
 	}
 
 	public String getName() {
@@ -38,9 +40,17 @@ public class Player {
 	public int getScore() {
 		return this.score;
 	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
 	
 	public void decrementScore() {
 		this.score--;
+	}
+
+	public void resetScore() {
+		this.score = this.initialScore;
 	}
 
 }

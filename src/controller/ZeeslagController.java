@@ -15,6 +15,7 @@ import model.enums.Orientation;
 import model.enums.ShipType;
 import model.facade.ModelFacade;
 import view.GameGrid;
+import view.GamePanel;
 import view.Square;
 import view.combobox.ComboBox;
 import view.combobox.ComboItem;
@@ -57,14 +58,13 @@ public class ZeeslagController {
 		this.viewFacade.getStartButton().addMouseListener(startListener);
 		this.viewFacade.getSettingsButton().addMouseListener(settingsListener);
 	
-		this.modelFacade.placeAIShips(false);
+		
 		this.viewFacade.startView();
 	}
 	
 	public void startGame() {
 		try {
 			this.modelFacade.startGame();
-			this.viewFacade.getStartButton().removeMouseListener(startListener);
 			this.viewFacade.getStartButton().setEnabled(false);
 		} catch (ModelException e) {
 			this.viewFacade.showErrorMessage(e.getMessage());
@@ -114,7 +114,7 @@ public class ZeeslagController {
 		public void mouseClicked(MouseEvent e) {
 			Square button = (Square)e.getSource();
 			Position position = button.getPosition();
-			Board board = ((GameGrid) button.getParent()).getBoard();
+			Board board = ((GamePanel) button.getParent().getParent()).getBoard();
 			buttonClicked(position, board);
 		}
 
@@ -126,7 +126,7 @@ public class ZeeslagController {
 		public void mouseClicked(MouseEvent e) {
 			Square button = (Square)e.getSource();
 			Position position = button.getPosition();
-			Board board = ((GameGrid) button.getParent()).getBoard();
+			Board board = ((GamePanel) button.getParent().getParent()).getBoard();
 			buttonClicked(position, board);
 		}
 		
@@ -134,7 +134,7 @@ public class ZeeslagController {
 		public void mouseEntered(MouseEvent e) {
 			Square button = (Square)e.getSource();
 			Position position = button.getPosition();
-			Board board = ((GameGrid) button.getParent()).getBoard();
+			Board board = ((GamePanel) button.getParent().getParent()).getBoard();
 			buttonEntered(position, board);
 		}
 		
@@ -142,7 +142,7 @@ public class ZeeslagController {
 		public void mouseExited(MouseEvent e) {
 			Square button = (Square)e.getSource();
 			Position position = button.getPosition();
-			Board board = ((GameGrid) button.getParent()).getBoard();
+			Board board = ((GamePanel) button.getParent().getParent()).getBoard();
 			buttonExited(position, board);
 		}
 

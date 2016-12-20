@@ -81,6 +81,7 @@ public class GameFrame extends JFrame implements View, GameObserver {
 	public void gameChanged(Game game) {
 		if(game.getWinner() != null) {
 			JOptionPane.showMessageDialog(null, "Game over!\n" +  game.getWinner().getName() + " won met " +  game.getWinner().getScore() + " punten.");
+			this.selectionPanel.getStartButton().setEnabled(true);
 		}
 	}
 	
