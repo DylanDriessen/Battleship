@@ -73,8 +73,8 @@ public class SettingFrame extends JFrame {
 		AttackStrategies newAttackStrategy = (AttackStrategies) attackComboBox.getSelectedItem();
 		
 		PropertiesFile properties = this.model.getProperties();
-		properties.set("placeStrategyAI", newPlaceStrategy.name());
-		properties.set("attackStrategyAI", newAttackStrategy.name());
+		properties.set("placeStrategyAI", newPlaceStrategy.toString());
+		properties.set("attackStrategyAI", newAttackStrategy.toString());
 		properties.write();
 		
 		try {
