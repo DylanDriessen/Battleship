@@ -1,8 +1,6 @@
 package model.enums;
 
 public enum ShipType {
-	
-	
 	VLIEGDEK("Vliegdekschip", 5, 1),
 	SLAG("Slagschip", 4, 2),
 	ONDERZEEËR("Onderzeeër", 3, 3),

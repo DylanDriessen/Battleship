@@ -80,22 +80,13 @@ public class GameFrame extends JFrame implements GameObserver {
 		if(game.getWinner() != null) {
 			JOptionPane.showMessageDialog(null, "Game over!\n" +  game.getWinner().getName() + " won met " +  game.getWinner().getScore() + " punten.");
 			this.selectionPanel.getStartButton().setEnabled(true);
+			this.selectionPanel.getSettingsButton().setEnabled(true);
 		}
 	}
 	
 	public void openSettings() {
-		String[] Settings = { "Makkelijk", "Medium", "Moeilijk" };
-		
-	    String difficulty = (String) JOptionPane.showInputDialog(null, 
-	        "Kies een moeilijkheidsgraad:",
-	        "Instellingen",
-	        JOptionPane.QUESTION_MESSAGE, 
-	        null, 
-	        Settings, 
-	        Settings[0]);
-
-	    // favoritePizza will be null if the user clicks Cancel
-	    System.out.printf("Difficulty is %s.\n", difficulty);
+		SettingFrame settings = new SettingFrame(this.model);
+		settings.startView();
 	}
 
 	public void showErrorMessage(String message) {

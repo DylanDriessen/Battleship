@@ -1,18 +1,19 @@
 package model.player.placestrategy;
 
 import exception.ModelException;
+import model.enums.PlaceStrategies;
 import model.player.AI;
 
 public class PlaceStrategyFactory {
 
-	public static PlaceStrategy create(String strategy, AI ai) throws ModelException {
+	public static PlaceStrategy create(PlaceStrategies strategy, AI ai) throws ModelException {
 		PlaceStrategy placeStrategy = null;
 		
 		switch(strategy) {
-			case "random":
+			case RANDOM:
 				placeStrategy = new RandomPlaceStrategy(ai);
 				break;
-			case "border":
+			case BORDER:
 				placeStrategy = new BorderPlaceStrategy(ai);
 				break;
 			default:

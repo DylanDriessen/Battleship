@@ -6,25 +6,24 @@ import model.game.GameObserver;
 import properties.PropertiesFile;
 import model.Position;
 import model.board.Board;
+import model.enums.AttackStrategies;
 import model.enums.Orientation;
+import model.enums.PlaceStrategies;
 import model.enums.ShipType;
 
 public class ModelFacade implements IModelFacade {
 	
 	private Game game;
+	private PropertiesFile properties;
 
 	public ModelFacade(PropertiesFile properties) throws ModelException {
 		this.game = new Game(properties);
+		this.properties = properties;
 	}
 	
 	@Override
-	public Board getBoardPlayer() {
-		return this.game.getPlayer().getMyBoard();
-	}
-	
-	@Override
-	public Board getBoardAI() {
-		return this.game.getAI().getMyBoard();
+	public PropertiesFile getProperties() {
+		return properties;
 	}
 	
 	@Override
@@ -48,18 +47,13 @@ public class ModelFacade implements IModelFacade {
 	}
 	
 	@Override
-	public void placeAIShips(boolean visible) {
-		this.game.getAI().placeShips(visible);
-	}
-	
-	@Override
 	public String getPlayerName() {
 		return this.game.getPlayer().getName();
 	}
 	
 	@Override
-	public String getAIName() {
-		return this.game.getAI().getName();
+	public void setPlayerName(String playerName) {
+		this.game.getPlayer().setName(playerName);
 	}
 	
 	@Override
@@ -68,8 +62,33 @@ public class ModelFacade implements IModelFacade {
 	}
 	
 	@Override
+	public Board getBoardPlayer() {
+		return this.game.getPlayer().getMyBoard();
+	}
+	
+	@Override
+	public String getAIName() {
+		return this.game.getAI().getName();
+	}
+	
+	@Override
 	public int getAIScore() {
 		return this.game.getAI().getScore();
+	}
+	
+	@Override
+	public Board getBoardAI() {
+		return this.game.getAI().getMyBoard();
+	}
+	
+	@Override
+	public void placeAIShips(boolean visible) {
+		this.game.getAI().placeShips(visible);
+	}
+	
+	@Override
+	public void changeAIStrategies(PlaceStrategies newPlaceStrategy, AttackStrategies newAttackStrategy) throws ModelException {
+		this.game.getAI().changeStrategies(newPlaceStrategy, newAttackStrategy);
 	}
 	
 	@Override
@@ -77,9 +96,5 @@ public class ModelFacade implements IModelFacade {
 		this.game.addObserver(o);
 	}
 	
-	@Override
-	public void setPlayerName(String playerName) {
-		this.game.getPlayer().setName(playerName);
-	}
 	
 }

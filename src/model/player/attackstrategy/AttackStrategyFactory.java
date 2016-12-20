@@ -1,21 +1,22 @@
 package model.player.attackstrategy;
 
 import exception.ModelException;
+import model.enums.AttackStrategies;
 import model.player.AI;
 
 public class AttackStrategyFactory {
 
-	public static AttackStrategy create(String strategy, AI ai) throws ModelException {
+	public static AttackStrategy create(AttackStrategies strategy, AI ai) throws ModelException {
 		AttackStrategy attackStrategy = null;
 		
 		switch(strategy) {
-			case "random":
+			case RANDOM:
 				attackStrategy = new RandomAttackStrategy(ai);
 				break;
-			case "smartRandom":
+			case SMARTRANDOM:
 				attackStrategy = new SmartRandomAttackStrategy(ai);
 				break;
-			case "chance":
+			case CHANCE:
 				attackStrategy = new ChanceAttackStrategy(ai);
 				break;
 			default:

@@ -65,6 +65,7 @@ public class ZeeslagController {
 		try {
 			this.model.startGame();
 			this.view.getStartButton().setEnabled(false);
+			this.view.getSettingsButton().setEnabled(false);
 		} catch (ModelException e) {
 			this.view.showErrorMessage(e.getMessage());
 			JOptionPane.showMessageDialog(null, e.getMessage());

@@ -3,7 +3,7 @@ package model.enums;
 import java.awt.Color;
 
 public enum ButtonType {
-	EMPTY( new Color(165, 214, 254), true, ""), 
+	EMPTY(new Color(165, 214, 254), true, ""), 
 	FOCUS(new Color(67, 144, 178), false, ""), 
 	OCCUPIED(new Color(255, 165, 58), false, ""), 
 	SHOT_MISSED(new Color(165, 214, 254), true, "X"), 
