@@ -13,8 +13,9 @@ import java.util.Properties;
 public class PropertiesFile {
 	private Properties properties;
 	private String fileName = "zeeslag.properties";
+	private volatile static PropertiesFile uniqueInstance;
 	
-	public PropertiesFile() {
+	private PropertiesFile() {
 		this.properties = new Properties();
 		
 		File f = new File(this.fileName);
@@ -22,6 +23,17 @@ public class PropertiesFile {
 		    this.create();
 		}
 		read();
+	}
+	
+	public static PropertiesFile getInstance() {
+		if (uniqueInstance == null) {
+			synchronized (PropertiesFile.class) {
+				if (uniqueInstance == null) {
+					uniqueInstance = new PropertiesFile();
+				}
+			}
+		}
+		return uniqueInstance;
 	}
 	
 	public void read() {
