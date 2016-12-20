@@ -11,7 +11,6 @@ import javax.swing.JRadioButton;
 import exception.ModelException;
 import model.Position;
 import model.board.Board;
-import model.enums.BoardType;
 import model.enums.Orientation;
 import model.enums.ShipType;
 import model.facade.ModelFacade;
@@ -33,6 +32,12 @@ public class ZeeslagController {
 	public ZeeslagController(ModelFacade modelFacade, ViewFacade viewFacade) {
 		this.modelFacade = modelFacade;
 		this.viewFacade = viewFacade;
+		
+		String playerName = null;
+		while(playerName == null || playerName.isEmpty()) {
+			playerName = this.viewFacade.getStringInput("Gelieve uw naam in te vullen:");
+		}
+		this.modelFacade.setPlayerName(playerName);
 		
 		Square[][] squares1 = this.viewFacade.getButtonsPanel1();
 		Square[][] squares2 = this.viewFacade.getButtonsPanel2();
@@ -63,6 +68,7 @@ public class ZeeslagController {
 			this.viewFacade.getStartButton().setEnabled(false);
 		} catch (ModelException e) {
 			this.viewFacade.showErrorMessage(e.getMessage());
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}
 	
@@ -74,7 +80,7 @@ public class ZeeslagController {
 		try {
 			this.modelFacade.buttonClicked(position, this.shipType, this.orientation, board);
 		} catch (ModelException e) {
-			this.viewFacade.showErrorMessage(e.getMessage());
+			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}
 	
@@ -102,21 +108,13 @@ public class ZeeslagController {
 		this.shipType = shipType;
 	}
 	
-	public Board getBoardFromType(BoardType boardType) {
-		if(boardType == BoardType.PLAYER) {
-			return this.modelFacade.getBoardPlayer();
-		} else {
-			return this.modelFacade.getBoardAI();
-		}
-	}
-	
 	private class ClickListener extends MouseAdapter {
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
 			Square button = (Square)e.getSource();
 			Position position = button.getPosition();
-			Board board = getBoardFromType(((GameGrid) button.getParent()).getBoardType());
+			Board board = ((GameGrid) button.getParent()).getBoard();
 			buttonClicked(position, board);
 		}
 
@@ -128,7 +126,7 @@ public class ZeeslagController {
 		public void mouseClicked(MouseEvent e) {
 			Square button = (Square)e.getSource();
 			Position position = button.getPosition();
-			Board board = getBoardFromType(((GameGrid) button.getParent()).getBoardType());
+			Board board = ((GameGrid) button.getParent()).getBoard();
 			buttonClicked(position, board);
 		}
 		
@@ -136,7 +134,7 @@ public class ZeeslagController {
 		public void mouseEntered(MouseEvent e) {
 			Square button = (Square)e.getSource();
 			Position position = button.getPosition();
-			Board board = getBoardFromType(((GameGrid) button.getParent()).getBoardType());
+			Board board = ((GameGrid) button.getParent()).getBoard();
 			buttonEntered(position, board);
 		}
 		
@@ -144,7 +142,7 @@ public class ZeeslagController {
 		public void mouseExited(MouseEvent e) {
 			Square button = (Square)e.getSource();
 			Position position = button.getPosition();
-			Board board = getBoardFromType(((GameGrid) button.getParent()).getBoardType());
+			Board board = ((GameGrid) button.getParent()).getBoard();
 			buttonExited(position, board);
 		}
 

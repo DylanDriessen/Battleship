@@ -3,10 +3,8 @@ package model.facade;
 import exception.ModelException;
 import model.game.Game;
 import model.game.GameObserver;
-import view.GamePanel;
 import model.Position;
 import model.board.Board;
-import model.board.BoardObserver;
 import model.enums.Orientation;
 import model.enums.ShipType;
 
@@ -68,14 +66,6 @@ public class ModelFacade {
 
 	public void setPlayerName(String playerName) {
 		this.game.getPlayer().setName(playerName);
-	}
-
-	public void registerBoardAIObserver(BoardObserver panelAI) {
-		this.game.getAI().getMyBoard().addObserver(panelAI);
-	}
-
-	public void registerBoardPlayerObserver(BoardObserver panelPlayer) {
-		this.game.getPlayer().getMyBoard().addObserver(panelPlayer);
 	}
 	
 }

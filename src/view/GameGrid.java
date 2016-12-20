@@ -9,7 +9,6 @@ import javax.swing.JPanel;
 
 import model.Position;
 import model.board.Board;
-import model.enums.BoardType;
 import model.enums.ButtonType;
 
 public class GameGrid extends JPanel {
@@ -17,9 +16,8 @@ public class GameGrid extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private Square[][] buttons = new Square[10][10];
 	private Board board;
-	private BoardType boardType;
 	
-	public GameGrid(View gameFrame, int width, BoardType boardType) {
+	public GameGrid(View gameFrame, int width, Board board) {
 		super();
 		this.setLayout(new GridLayout(10, 10));
 		
@@ -35,13 +33,13 @@ public class GameGrid extends JPanel {
 			}
 		}
 		
-		this.boardType = boardType;
-		
 		this.setBorder(BorderFactory.createLineBorder(new Color(139, 162, 180), 3));
+
+		this.board = board;
 	}
 
-	public BoardType getBoardType() {
-		return boardType;
+	public Board getBoard() {
+		return board;
 	}
 	
 	public void setBoard(Board board) {

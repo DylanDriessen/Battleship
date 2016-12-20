@@ -4,7 +4,7 @@ import model.board.Board;
 
 public class Player {
 	
-	private String name = "Player";
+	private String name;
 	private int score = 19;
 	private Board myBoard, enemyBoard;
 
