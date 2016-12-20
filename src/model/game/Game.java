@@ -28,10 +28,9 @@ public class Game implements GameObservable {
 	
 	public  Game(PropertiesFile properties) throws ModelException{
 		this.properties = properties;
+		this.observers = new ArrayList<GameObserver>();
 		
 		init();
-		
-		this.observers = new ArrayList<GameObserver>();
 	}
 	
 	public void init() throws ModelException {

@@ -11,6 +11,7 @@ import javax.swing.border.Border;
 import model.game.Game;
 import model.game.GameObserver;
 import model.board.Board;
+import model.enums.BoardType;
 import model.facade.ModelFacade;
 
 public class GameFrame extends JFrame implements View, GameObserver {
@@ -43,16 +44,16 @@ public class GameFrame extends JFrame implements View, GameObserver {
 		//Init Player GamePanel
 		String playerName = this.modelFacade.getPlayerName();
 		int playerScore = this.modelFacade.getPlayerScore();
-		Board boardPlayer = this.modelFacade.getBoardPlayer();
-		this.panelPlayer = new GamePanel(this, playerName, playerScore, boardPlayer);
+		this.panelPlayer = new GamePanel(this, playerName, playerScore, BoardType.PLAYER);
+		this.modelFacade.registerBoardPlayerObserver(this.panelPlayer);
 		this.panelPlayer.setBorder(padding);
 		this.add(this.panelPlayer);
 		
 		//Init AI GamePanel
 		String aiName = this.modelFacade.getAIName();
 		int aiScore = this.modelFacade.getAIScore();
-		Board boardAI = this.modelFacade.getBoardAI();
-		this.panelAI = new GamePanel(this, aiName, aiScore, boardAI);
+		this.panelAI = new GamePanel(this, aiName, aiScore, BoardType.AI);
+		this.modelFacade.registerBoardAIObserver(this.panelAI);
 		this.panelAI.setBorder(padding);
 		this.add(this.panelAI);
 	
@@ -88,7 +89,11 @@ public class GameFrame extends JFrame implements View, GameObserver {
 	public void openSettings() {
 		String[] Settings = { "Makkelijk", "Medium", "Moeilijk" };
 		
-	    String difficulty = (String) JOptionPane.showInputDialog(null, 
+		JFrame settingsFrame = new JFrame("Settings");
+		
+		
+		
+	    String difficulty = (String) JOptionPane.showInputDialog(settingsFrame, 
 	        "Kies een moeilijkheidsgraad:",
 	        "Instellingen",
 	        JOptionPane.QUESTION_MESSAGE, 
