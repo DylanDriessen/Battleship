@@ -16,7 +16,7 @@ import model.game.state.FinishedState;
 import model.game.state.GameState;
 import model.game.state.NewState;
 
-public class Game implements GameObservable {
+public class Game implements GameObservable{
 	
 	private Player player, winner;
 	private AI ai;

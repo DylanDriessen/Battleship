@@ -58,15 +58,18 @@ public class GameFrame extends JFrame implements View, GameObserver {
 	
 		revalidate();
 	}
-
+	
+	@Override
 	public GamePanel getPanelPlayer() {
 		return this.panelPlayer;
 	}
-
+	
+	@Override
 	public GamePanel getPanelAI() {
 		return this.panelAI;
 	}
 	
+	@Override
 	public SelectionPanel getSelectionPanel() {
 		return this.selectionPanel;
 	}
