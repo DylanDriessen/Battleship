@@ -91,12 +91,20 @@ public class Board implements BoardObservable {
 		}
 	}
 	
-	public void placeShip(Ship ship, boolean visible) throws ModelException {
+	public void placeShip(Ship ship, boolean ghost, boolean visible) throws ModelException {
 		if(this.shipCounter == 5) {
-			throw new ModelException("Je hebt het maximumaantal schepen bereikt.");
+			if(ghost) {
+				return;
+			} else {
+				throw new ModelException("Je hebt het maximumaantal schepen bereikt.");
+			}
 		}
 		if(maxAmountShipsReached(ship.getShipType())) {
-			throw new ModelException("Je hebt te veel schepen van het type \"" + ship.getShipType().getName() + "\" geplaatst.");
+			if(ghost) {
+				return;
+			} else {
+				throw new ModelException("Je hebt te veel schepen van het type \"" + ship.getShipType().getName() + "\" geplaatst.");
+			}
 		}
 		
 		int x = ship.getAnchor().getX();
@@ -109,61 +117,25 @@ public class Board implements BoardObservable {
 				verifyEnvironment(i, y);
 			}
 			for(int i = x; i < x + length; i++) {
-				this.boardPositions[i][y].setShip(ship);
-				changed.add(new Position(i, y));
+				changeBoardPositions(i, y, ship, ghost, visible);
 			}
 		} else {
 			for(int i = y; i < y + length; i++) {
 				verifyEnvironment(x, i);
 			}
 			for(int i = y; i < y + length; i++) {
-				this.boardPositions[x][i].setShip(ship);
-				changed.add(new Position(x, i));
+				changeBoardPositions(x, i, ship, ghost, visible);
 			}
 		}
 		
-		this.incrementCounters(ship.getShipType());
-		this.ships.add(ship);
-		if(visible) {
-			this.notifyBoardChanged();
-		}
-	}
-	
-	public void placeGhostShip(Position position, ShipType type, Orientation orientation, boolean place) throws ModelException {
-		int x = position.getX();
-		int y = position.getY();
-		
-		if(this.shipCounter == 5) {
-			return;
-		}
-		if(maxAmountShipsReached(type)) {
-			return;
-		}
-		
-		int length = type.getLength();
-		this.setChangedButtons(new ArrayList<Position>());
-		
-		if(orientation.equals(Orientation.HORIZONTAL)) {
-			for(int i = x; i < x + length; i++) {
-				verifyEnvironment(i, y);
-			}
-			for(int i = x; i < x + length; i++) {
-				this.boardPositions[i][y].setFocus(place);
-				this.changed.add(new Position(i, y));
-			}
-		} else {
-			for(int i = y; i < y + length; i++) {
-				verifyEnvironment(x, i);
-			}
-			for(int i = y; i < y + length; i++) {
-				this.boardPositions[x][i].setFocus(place);
-				this.changed.add(new Position(x, i));
-			}
+		if(!ghost) {
+			this.incrementCounters(ship.getShipType());
+			this.ships.add(ship);
 		}
 		
 		this.notifyBoardChanged();
 	}
-	
+		
 	private boolean maxAmountShipsReached(ShipType shipType) {
 		return this.shipTypeCounter.get(shipType) >= shipType.getAmount();
 	}
@@ -194,6 +166,15 @@ public class Board implements BoardObservable {
 		}
 		
 		return occupied;
+	}
+	
+	private void changeBoardPositions(int x, int y, Ship ship, boolean ghost, boolean visible) {
+		if(ghost) {
+			this.boardPositions[x][y].setFocus(visible);
+		} else {
+			this.boardPositions[x][y].setShip(ship, visible);
+		}
+		changed.add(new Position(x, y));
 	}
 	
 	private void incrementCounters(ShipType shipType) {

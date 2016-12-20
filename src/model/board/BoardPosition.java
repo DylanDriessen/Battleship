@@ -27,9 +27,11 @@ public class BoardPosition {
 		return this.ship;
 	}
 	
-	public void setShip(Ship ship) {
+	public void setShip(Ship ship, boolean visible) {
 		this.ship = ship;
-		setButtonType(ButtonType.OCCUPIED);
+		if(visible) {
+			setButtonType(ButtonType.OCCUPIED);
+		}
 	}
 	
 	public boolean attack() {

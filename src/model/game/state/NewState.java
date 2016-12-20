@@ -30,8 +30,7 @@ public class NewState implements GameState {
 		}
 		
 		Ship ship = new Ship(shipType, position, orientation);
-		
-		this.game.getPlayer().getMyBoard().placeShip(ship, true);
+		this.game.getPlayer().getMyBoard().placeShip(ship, false, true);
 	}
 
 	@Override
@@ -46,7 +45,8 @@ public class NewState implements GameState {
 			return;
 		}
 		
-		this.game.getPlayer().getMyBoard().placeGhostShip(position, shipType, orientation, true);
+		Ship ship = new Ship(shipType, position, orientation);
+		this.game.getPlayer().getMyBoard().placeShip(ship, true, true);
 	}
 
 	@Override
@@ -61,7 +61,8 @@ public class NewState implements GameState {
 			return;
 		}
 		
-		this.game.getPlayer().getMyBoard().placeGhostShip(position, shipType, orientation, false);
+		Ship ship = new Ship(shipType, position, orientation);
+		this.game.getPlayer().getMyBoard().placeShip(ship, true, false);
 	}
 
 	@Override

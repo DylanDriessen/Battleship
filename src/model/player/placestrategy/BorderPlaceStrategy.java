@@ -42,7 +42,7 @@ public class BorderPlaceStrategy implements PlaceStrategy {
 			Ship ship = new Ship(ShipType.values()[shipTypeIndex], p , Orientation.values()[orientationIndex]);
 			
 			try {
-				this.ai.getMyBoard().placeShip(ship, visible);
+				this.ai.getMyBoard().placeShip(ship, false, visible);
 				succeededCount++;
 				System.out.println("AI placed a " + ship.getShipType().getName() + " on (" + x + "," + y + ") with orientation " + ship.getOrientation().getName());
 			} catch (ModelException ignored){
