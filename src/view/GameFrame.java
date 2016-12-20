@@ -19,11 +19,12 @@ public class GameFrame extends JFrame implements GameObserver {
 	private GamePanel panelPlayer, panelAI;
 	private SelectionPanel selectionPanel;
 	private IModelFacade model;
+	private Game game;
 	
 	public static final int WIDTH = 940;
 	public static final int HEIGHT = 360;
 	public static final Font DEFAULT_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, 16);
-
+	
 	public GameFrame(IModelFacade model) {
 		super();
 		
@@ -77,8 +78,13 @@ public class GameFrame extends JFrame implements GameObserver {
 	}
 
 	public void gameChanged(Game game) {
-		if(game.getWinner() != null) {
-			JOptionPane.showMessageDialog(null, "Game over!\n" +  game.getWinner().getName() + " won met " +  game.getWinner().getScore() + " punten.");
+		this.game = game;
+		endGame();
+	}
+	
+	public void endGame() {
+		if(this.game.getWinner() != null) {
+			JOptionPane.showMessageDialog(null, "Game over!\n" +  this.game.getWinner().getName() + " won met " +  this.game.getWinner().getScore() + " punten.");
 			this.selectionPanel.getStartButton().setEnabled(true);
 			this.selectionPanel.getSettingsButton().setEnabled(true);
 		}
