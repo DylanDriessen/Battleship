@@ -24,15 +24,25 @@ public class Board implements BoardObservable {
 	
 	public Board() {
 		this.observers = new ArrayList<BoardObserver>();
+		init();
+		//INIT pls
+	}
+	
+	public void init() {
+		this.changed = new ArrayList<Position>();
+		this.shipCounter = 0;
+		
 		this.shipTypeCounter = new EnumMap<ShipType, Integer>(ShipType.class){{
 			for(ShipType st : ShipType.values()) {
 				put(st, 0);
 			}
 		}};
+		
 		this.boardPositions = new BoardPosition[10][10];
 		for (int i = 0; i < 10; i++) {
 			for (int j = 0; j < 10; j++) {
 				boardPositions[i][j] = new BoardPosition();
+				this.changed.add(new Position(i, j));
 			}
 		}
 	}
@@ -274,5 +284,6 @@ public class Board implements BoardObservable {
 			o.boardChanged(this);
 		}
 	}
+
 }
 

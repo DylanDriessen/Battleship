@@ -93,8 +93,6 @@ public class SelectionPanel extends JPanel {
 		gbc.gridwidth = 2;
 		gbc.fill = GridBagConstraints.HORIZONTAL;
 		this.add(this.startButton, gbc);
-		
-		
 	}
 
 	public JLabel getShipsLabel() {

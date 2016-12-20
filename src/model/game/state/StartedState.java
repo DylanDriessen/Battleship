@@ -3,6 +3,7 @@ package model.game.state;
 import exception.ModelException;
 import model.game.Game;
 import model.player.Player;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import model.Position;
 import model.board.Board;
 import model.enums.Orientation;
@@ -41,9 +42,8 @@ public class StartedState implements GameState {
 		
 		if(winner != null) {
 			this.game.setWinner(winner);
-			this.game.notifyGameChanged();
-			this.game.reset();
-			this.game.setState(this.game.getNewState());
+			this.game.setState(this.game.getFinishedState());
+			this.game.finishGame();
 		}
 		
 	}
@@ -73,6 +73,12 @@ public class StartedState implements GameState {
 
 	public void setGame(Game game) {
 		this.game = game;
+	}
+
+	@Override
+	public void finishGame() throws ModelException {
+		//TODO
+		throw new NotImplementedException();
 	}
 
 }

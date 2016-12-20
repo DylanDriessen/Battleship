@@ -2,6 +2,7 @@ package model.game.state;
 
 import exception.ModelException;
 import model.game.Game;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import model.Position;
 import model.Ship;
 import model.board.Board;
@@ -61,6 +62,11 @@ public class NewState implements GameState {
 		}
 		
 		this.game.getPlayer().getMyBoard().removeGhostShip(position, shipType, orientation);
+	}
+
+	@Override
+	public void finishGame() throws ModelException {
+		throw new NotImplementedException();
 	}
 
 }
