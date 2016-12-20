@@ -239,4 +239,3 @@ public class Board implements BoardObservable {
 	}
 
 }
-
