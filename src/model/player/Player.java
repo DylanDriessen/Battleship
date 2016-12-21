@@ -17,6 +17,10 @@ public class Player {
 		this.score = this.initialScore;
 	}
 
+	public Player(Board myBoard, Board enemyBoard) {
+		this(null, myBoard, enemyBoard);
+	}
+
 	public String getName() {
 		return name;
 	}

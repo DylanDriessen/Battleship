@@ -22,9 +22,7 @@ public class Game implements GameObservable{
 	private AI ai;
 	private GameState currentState, newState, startedState, finishedState;
 	private List<GameObserver> observers;
-	
 	private PropertiesFile properties;
-	private String playerName;
 	
 	public  Game(PropertiesFile properties) throws ModelException{
 		this.properties = properties;
@@ -33,7 +31,7 @@ public class Game implements GameObservable{
 		Board boardPlayer = new Board();
 		Board boardAI = new Board();
 		
-		this.player = new Player(this.playerName, boardPlayer, boardAI);
+		this.player = new Player(boardPlayer, boardAI);
 		this.ai = new AI(this.properties, boardAI, boardPlayer);
 				
 		this.newState = new NewState(this);
@@ -72,10 +70,6 @@ public class Game implements GameObservable{
 	
 	public void setWinner(Player player) {
 		this.winner = player;
-	}
-	
-	public void setPlayerName(String playerName) {
-		this.playerName = playerName;
 	}
 	
 	//Getters
