@@ -3,8 +3,8 @@ package model.player.placestrategy;
 import java.util.Random;
 
 import exception.ModelException;
-import model.Position;
-import model.Ship;
+import model.board.Position;
+import model.board.Ship;
 import model.enums.Orientation;
 import model.enums.ShipType;
 import model.player.AI;

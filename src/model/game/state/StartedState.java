@@ -8,8 +8,8 @@ import exception.ModelException;
 import model.game.Game;
 import model.player.Player;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-import model.Position;
 import model.board.Board;
+import model.board.Position;
 import model.enums.Orientation;
 import model.enums.ShipType;
 
@@ -23,7 +23,7 @@ public class StartedState implements GameState {
 	}
 	
 	@Override
-	public void squareClicked(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {	
+	public void squareLeftClicked(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {	
 		if (!board.equals(this.game.getPlayer().getEnemyBoard())) {
 			return;
 		}

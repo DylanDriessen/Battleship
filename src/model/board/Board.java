@@ -9,8 +9,6 @@ import exception.ModelException;
 import model.enums.Orientation;
 import model.enums.ShipType;
 import model.player.Player;
-import model.Position;
-import model.Ship;
 
 public class Board implements BoardObservable {
 	
@@ -135,6 +133,33 @@ public class Board implements BoardObservable {
 		
 		this.notifyObservers();
 	}
+	
+	public void removeShip(Position position) {
+		int x = position.getX();
+		int y = position.getY();
+		
+		if (this.boardPositions[x][y].containsShip()) {
+			Ship ship = this.boardPositions[x][y].getShip();
+			this.setChangedButtons(new ArrayList<Position>());
+			this.decrementCounters(ship.getShipType());
+			this.ships.remove(ship);
+			for (Position p : ship.getPositions()) {
+				this.boardPositions[p.getX()][p.getY()].removeShip();
+				this.changed.add(new Position(p.getX(), p.getY()));	
+			}
+		}
+		
+		this.notifyObservers();
+	}
+	
+	private void changeBoardPositions(int x, int y, Ship ship, boolean ghost, boolean visible) {
+		if(ghost) {
+			this.boardPositions[x][y].setFocus(visible);
+		} else {
+			this.boardPositions[x][y].setShip(ship, visible);
+		}
+		changed.add(new Position(x, y));
+	}
 		
 	private boolean maxAmountShipsReached(ShipType shipType) {
 		return this.shipTypeCounter.get(shipType) >= shipType.getAmount();
@@ -168,20 +193,18 @@ public class Board implements BoardObservable {
 		return occupied;
 	}
 	
-	private void changeBoardPositions(int x, int y, Ship ship, boolean ghost, boolean visible) {
-		if(ghost) {
-			this.boardPositions[x][y].setFocus(visible);
-		} else {
-			this.boardPositions[x][y].setShip(ship, visible);
-		}
-		changed.add(new Position(x, y));
-	}
-	
 	private void incrementCounters(ShipType shipType) {
 		Integer count = this.shipTypeCounter.get(shipType);
 		count++;
 		this.shipTypeCounter.put(shipType, count);
 		this.shipCounter++;
+	}
+	
+	private void decrementCounters(ShipType shipType) {
+		Integer count = this.shipTypeCounter.get(shipType);
+		count--;
+		this.shipTypeCounter.put(shipType, count);
+		this.shipCounter--;
 	}
 	
 	//Getters & setters

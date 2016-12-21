@@ -1,6 +1,5 @@
 package model.board;
 
-import model.Ship;
 import model.enums.ButtonType;
 
 public class BoardPosition {
@@ -32,6 +31,11 @@ public class BoardPosition {
 		if(visible) {
 			setButtonType(ButtonType.OCCUPIED);
 		}
+	}
+	
+	public void removeShip() {
+		this.ship = null;
+		setButtonType(ButtonType.EMPTY);
 	}
 	
 	public boolean attack() {

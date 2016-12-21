@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import exception.ModelException;
-import model.Position;
 import model.board.Board;
+import model.board.Position;
 import model.enums.Orientation;
 import model.enums.ShipType;
 import model.game.state.StartedState;
@@ -50,8 +50,12 @@ public class Game implements GameObservable{
 		}
 	}
 
-	public void buttonClicked(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
-		this.currentState.squareClicked(position, shipType, orientation, board);
+	public void leftButtonClicked(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+		this.currentState.squareLeftClicked(position, shipType, orientation, board);
+	}
+	
+	public void rightButtonClicked(Position position, Board board) throws ModelException {
+		this.currentState.squareRightClicked(position, board);
 	}
 	
 	public void buttonEntered(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {

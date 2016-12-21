@@ -4,8 +4,8 @@ import exception.ModelException;
 import model.game.Game;
 import model.game.GameObserver;
 import properties.PropertiesFile;
-import model.Position;
 import model.board.Board;
+import model.board.Position;
 import model.enums.AttackStrategies;
 import model.enums.Orientation;
 import model.enums.PlaceStrategies;
@@ -32,8 +32,13 @@ public class ModelFacade implements IModelFacade {
 	}
 	
 	@Override
-	public void buttonClicked(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
-		this.game.buttonClicked(position, shipType, orientation, board);
+	public void leftButtonClicked(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+		this.game.leftButtonClicked(position, shipType, orientation, board);
+	}
+	
+	@Override
+	public void rightButtonClicked(Position position, Board board) throws ModelException {
+		this.game.rightButtonClicked(position, board);
 	}
 	
 	@Override
@@ -95,6 +100,5 @@ public class ModelFacade implements IModelFacade {
 	public void registerGameObserver(GameObserver o) {
 		this.game.addObserver(o);
 	}
-	
 	
 }

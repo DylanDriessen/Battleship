@@ -6,7 +6,7 @@ import java.awt.Graphics;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
-import model.Position;
+import model.board.Position;
 import model.enums.ButtonType;
 
 public class Square extends JButton {

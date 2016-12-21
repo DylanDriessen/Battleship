@@ -7,8 +7,8 @@ import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import model.Position;
 import model.board.Board;
+import model.board.Position;
 import model.enums.ButtonType;
 
 public class GameGrid extends JPanel {

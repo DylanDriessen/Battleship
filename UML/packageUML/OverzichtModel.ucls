@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.1.12" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+<class-diagram version="1.1.11" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
-  <class id="1" language="java" name="model.Position" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/model/Position.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="model.board.Position" project="OOO-Zeeslag" 
+    file="/OOO-Zeeslag/src/model/board/Position.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="160" width="113" x="454" y="220"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -10,8 +10,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="model.Ship" project="OOO-Zeeslag" file="/OOO-Zeeslag/src/model/Ship.java" 
-    binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="model.board.Ship" project="OOO-Zeeslag" 
+    file="/OOO-Zeeslag/src/model/board/Ship.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="268" width="231" x="811" y="163"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -21,8 +21,12 @@
   </class>  
   <association id="3">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="4" name="anchor"/>      
-      <multiplicity id="5" minimum="0" maximum="1"/>    
+      <attribute id="4" name="anchor">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="5" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  

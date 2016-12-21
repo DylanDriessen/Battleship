@@ -3,9 +3,9 @@ package model.game.state;
 import exception.ModelException;
 import model.game.Game;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-import model.Position;
-import model.Ship;
 import model.board.Board;
+import model.board.Position;
+import model.board.Ship;
 import model.enums.Orientation;
 import model.enums.ShipType;
 
@@ -18,7 +18,7 @@ public class NewState implements GameState {
 	}
 	
 	@Override
-	public void squareClicked(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {	
+	public void squareLeftClicked(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {	
 		if(shipType == null) {
 			throw new ModelException("Gelieve een schip te kiezen.");
 		}
@@ -31,6 +31,14 @@ public class NewState implements GameState {
 		
 		Ship ship = new Ship(shipType, position, orientation);
 		this.game.getPlayer().getMyBoard().placeShip(ship, false, true);
+	}
+	
+	public void squareRightClicked(Position position, Board board) {
+		if (!board.equals(this.game.getPlayer().getMyBoard())) {
+			return;
+		}
+		
+		this.game.getPlayer().getMyBoard().removeShip(position);
 	}
 
 	@Override

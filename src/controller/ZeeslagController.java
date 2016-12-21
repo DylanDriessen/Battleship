@@ -6,10 +6,11 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JRadioButton;
+import javax.swing.SwingUtilities;
 
 import exception.ModelException;
-import model.Position;
 import model.board.Board;
+import model.board.Position;
 import model.enums.Orientation;
 import model.enums.ShipType;
 import model.facade.IModelFacade;
@@ -71,16 +72,24 @@ public class ZeeslagController {
 	public void askPlayerName() {
 		String playerName;
 		playerName = this.view.getStringInput("Gelieve uw naam in te vullen:");
-		if(playerName == null) {
+		if(playerName == null || playerName.isEmpty()) {
 			playerName = "Player";
 		}
 		this.model.setPlayerName(playerName);
 		this.view.updateLabel(playerName);
 	}
 	
-	public void buttonClicked(Position position, Board board) {
+	public void leftButtonClicked(Position position, Board board) {
 		try {
-			this.model.buttonClicked(position, this.shipType, this.orientation, board);
+			this.model.leftButtonClicked(position, this.shipType, this.orientation, board);
+		} catch (ModelException e) {
+			this.view.showErrorMessage(e.getMessage());
+		}
+	}
+	
+	public void rightButtonClicked(Position position, Board board) {
+		try {
+			this.model.rightButtonClicked(position, board);
 		} catch (ModelException e) {
 			this.view.showErrorMessage(e.getMessage());
 		}
@@ -109,18 +118,6 @@ public class ZeeslagController {
 	public void setShipType(ShipType shipType) {
 		this.shipType = shipType;
 	}
-	
-	private class ClickListener extends MouseAdapter {
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			Square button = (Square)e.getSource();
-			Position position = button.getPosition();
-			Board board = ((GamePanel) button.getParent().getParent()).getBoard();
-			buttonClicked(position, board);
-		}
-
-	}
 
 	private class AdvancedClickListener extends MouseAdapter {
 
@@ -129,7 +126,12 @@ public class ZeeslagController {
 			Square button = (Square)e.getSource();
 			Position position = button.getPosition();
 			Board board = ((GamePanel) button.getParent().getParent()).getBoard();
-			buttonClicked(position, board);
+			
+			if (SwingUtilities.isLeftMouseButton(e)) {
+				leftButtonClicked(position, board);
+			} else {
+				rightButtonClicked(position, board);
+			}
 		}
 		
 		@Override

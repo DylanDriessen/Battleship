@@ -3,7 +3,7 @@ package model.player.attackstrategy;
 import java.util.Random;
 
 import exception.ModelException;
-import model.Position;
+import model.board.Position;
 import model.player.AI;
 
 public class RandomAttackStrategy implements AttackStrategy {
