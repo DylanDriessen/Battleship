@@ -9,6 +9,7 @@ import java.lang.reflect.Array;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
@@ -27,27 +28,39 @@ public class SettingFrame extends JFrame {
 	private JComboBox<AttackStrategies> attackComboBox;
 	private JButton saveButton;
 	private IModelFacade model;
+	private JLabel placeStrategyLabel, attackStrategyLabel;
 
 	public SettingFrame(IModelFacade model) {
 		this.model = model;
 		PropertiesFile properties = this.model.getProperties();
 		
 		this.setSize(new Dimension(200, 200));
+		this.setResizable(false);
 		this.setLocationRelativeTo(null);
 
 		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(3, 1, 20, 20));
+		panel.setLayout(new GridLayout(5, 1, 10, 10));
 		this.add(panel);
 		setContentPane(panel);
 
+		this.placeStrategyLabel = new JLabel("Plaatsingsstrategie:");
+		this.placeStrategyLabel.setFont(GameFrame.DEFAULT_FONT);
+		panel.add(this.placeStrategyLabel);
+		
 		PlaceStrategies currPlaceStrategy = PlaceStrategies.valueOf(properties.get("placeStrategyAI").toUpperCase());
 		this.placeComboBox = new JComboBox<PlaceStrategies>(PlaceStrategies.values());
 		this.placeComboBox.setSelectedItem(currPlaceStrategy);
+		this.placeComboBox.setFont(GameFrame.DEFAULT_FONT);
 		panel.add(this.placeComboBox);
 
+		this.attackStrategyLabel = new JLabel("Aanvalsstrategie:");
+		this.attackStrategyLabel.setFont(GameFrame.DEFAULT_FONT);
+		panel.add(this.attackStrategyLabel);
+		
 		AttackStrategies currAttackStrategy = AttackStrategies.valueOf(properties.get("attackStrategyAI").toUpperCase());
 		this.attackComboBox = new JComboBox<AttackStrategies>(AttackStrategies.values());
 		this.attackComboBox.setSelectedItem(currAttackStrategy);
+		this.attackComboBox.setFont(GameFrame.DEFAULT_FONT);
 		panel.add(this.attackComboBox);
 
 		this.saveButton = new JButton();

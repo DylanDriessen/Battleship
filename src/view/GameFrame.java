@@ -5,6 +5,7 @@ import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.border.Border;
 
@@ -95,12 +96,16 @@ public class GameFrame extends JFrame implements GameObserver {
 		settings.startView();
 	}
 
-	public void showErrorMessage(String message) {
-		JOptionPane.showMessageDialog(null, message);
+	public void showMessage(String message) {
+		JLabel label = new JLabel(message);
+		label.setFont(DEFAULT_FONT);
+		JOptionPane.showMessageDialog(this, label, "", JOptionPane.WARNING_MESSAGE);
 	}
 
 	public String getStringInput(String message) {
-		return JOptionPane.showInputDialog(null, message);
+		JLabel label = new JLabel(message);
+		label.setFont(DEFAULT_FONT);
+		return JOptionPane.showInputDialog(this, label, "", JOptionPane.QUESTION_MESSAGE);
 	}
 
 }

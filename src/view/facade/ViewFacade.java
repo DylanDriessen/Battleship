@@ -60,7 +60,7 @@ public class ViewFacade implements IViewFacade{
 	
 	@Override
 	public void showErrorMessage(String message) {
-		this.view.showErrorMessage(message);
+		this.view.showMessage(message);
 	}
 	
 	@Override
