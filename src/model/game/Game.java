@@ -42,11 +42,12 @@ public class Game implements GameObservable{
 	}
 	
 	public void startGame() throws ModelException {
-		if (this.player.getMyBoard().getNbOfShips() == 5) {
+		int nbOfShips = this.player.getMyBoard().getNbOfShips();
+		if (nbOfShips == 5) {
 			this.currentState = startedState;
 			this.ai.placeShips(false);
 		} else {
-			throw new ModelException("Je moet exact 5 schepen op je eigen bord plaatsen.");
+			throw new ModelException("Je moet nog " + (5 - nbOfShips) + " sch" + (5 - nbOfShips == 1 ? "ip" : "epen") + " op je eigen bord plaatsen.");
 		}
 	}
 
