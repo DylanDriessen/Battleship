@@ -48,7 +48,6 @@ public class Game implements GameObservable{
 			this.currentState = startedState;
 			this.ai.placeShips(false);
 		} else {
-			System.out.println("yoloswag");
 			throw new ModelException("Je moet exact 5 schepen op je eigen bord plaatsen.");
 		}
 	}

@@ -72,5 +72,11 @@ public class ViewFacade implements IViewFacade{
 	public void startView() {
 		this.view.startView();
 	}
+
+	@Override
+	public void updateLabel(String playerName) {
+		this.view.getPanelPlayer().getScoreboard().setPlayerName(playerName);
+		this.view.getPanelPlayer().getScoreboard().updateLabel();
+	}
 	
 }

@@ -32,4 +32,8 @@ public class Scoreboard extends JPanel {
 	public void updateLabel() {
 		this.label.setText(this.playerName + " (" + this.score + "):");
 	}
+
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
+	}
 }

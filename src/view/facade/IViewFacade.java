@@ -20,4 +20,5 @@ public interface IViewFacade {
 	void showErrorMessage(String message);
 	String getStringInput(String message);
 	void startView();
+	void updateLabel(String playerName);
 }

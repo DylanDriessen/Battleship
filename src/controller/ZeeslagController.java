@@ -33,12 +33,6 @@ public class ZeeslagController {
 		this.model = model;
 		this.view = view;
 		
-		String playerName = null;
-		while(playerName == null || playerName.isEmpty()) {
-			playerName = this.view.getStringInput("Gelieve uw naam in te vullen:");
-		}
-		this.model.setPlayerName(playerName);
-		
 		Square[][] squares1 = this.view.getButtonsPanel1();
 		Square[][] squares2 = this.view.getButtonsPanel2();
 		
@@ -57,7 +51,7 @@ public class ZeeslagController {
 		this.view.getStartButton().addMouseListener(startListener);
 		this.view.getSettingsButton().addMouseListener(settingsListener);
 	
-		
+		this.askPlayerName();
 		this.view.startView();
 	}
 	
@@ -73,6 +67,15 @@ public class ZeeslagController {
 	
 	public void openSettings() {
 		this.view.openSettings();
+	}
+	
+	public void askPlayerName() {
+		String playerName = null;
+		while(playerName == null || playerName.isEmpty()) {
+			playerName = this.view.getStringInput("Gelieve uw naam in te vullen:");
+		}
+		this.model.setPlayerName(playerName);
+		this.view.updateLabel(playerName);
 	}
 	
 	public void buttonClicked(Position position, Board board) {
