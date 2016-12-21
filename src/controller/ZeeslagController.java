@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 
 import exception.ModelException;
@@ -70,9 +69,10 @@ public class ZeeslagController {
 	}
 	
 	public void askPlayerName() {
-		String playerName = null;
-		while(playerName == null || playerName.isEmpty()) {
-			playerName = this.view.getStringInput("Gelieve uw naam in te vullen:");
+		String playerName;
+		playerName = this.view.getStringInput("Gelieve uw naam in te vullen:");
+		if(playerName == null) {
+			playerName = "Player";
 		}
 		this.model.setPlayerName(playerName);
 		this.view.updateLabel(playerName);
