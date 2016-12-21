@@ -87,11 +87,6 @@ public class ModelFacade implements IModelFacade {
 	}
 	
 	@Override
-	public void placeAIShips(boolean visible) {
-		this.game.getAI().placeShips(visible);
-	}
-	
-	@Override
 	public void changeAIStrategies(PlaceStrategies newPlaceStrategy, AttackStrategies newAttackStrategy) throws ModelException {
 		this.game.getAI().changeStrategies(newPlaceStrategy, newAttackStrategy);
 	}

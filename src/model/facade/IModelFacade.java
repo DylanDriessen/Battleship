@@ -27,7 +27,6 @@ public interface IModelFacade {
 	String getAIName();
 	int getAIScore();
 	Board getBoardAI();
-	void placeAIShips(boolean visible);
 	void changeAIStrategies(PlaceStrategies newPlaceStrategy, AttackStrategies newAttackStrategy) throws ModelException;
 	
 	void registerGameObserver(GameObserver o);
