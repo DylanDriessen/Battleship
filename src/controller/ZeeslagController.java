@@ -68,6 +68,7 @@ public class ZeeslagController {
 			this.model.startGame();
 			this.view.getStartButton().setEnabled(false);
 			this.view.getSettingsButton().setEnabled(false);
+			this.view.closeSettings();
 		} catch (ModelException e) {
 			this.view.showErrorMessage(e.getMessage());
 		}

@@ -23,7 +23,6 @@ public class Board implements BoardObservable {
 	public Board() {
 		this.observers = new ArrayList<BoardObserver>();
 		init();
-		//INIT pls
 	}
 	
 	public void init() {
@@ -259,6 +258,10 @@ public class Board implements BoardObservable {
 		for(BoardObserver o : this.observers) {
 			o.update(this);
 		}
+	}
+
+	public void reset() {
+		this.init();
 	}
 
 }

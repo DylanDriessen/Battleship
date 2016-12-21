@@ -13,19 +13,32 @@ public class ChanceAttackStrategy implements AttackStrategy {
 	private AI ai;
 	private ArrayList<Ship> ships;
 	private Ship currShip;
-	private int currAttackPosition = 0;
+	private int currAttackPosition;
+	private boolean enemyShipsCollected;
 	
 	public ChanceAttackStrategy(AI ai) {
 		this.ai = ai;
-		this.ships = getShips();
+		init();
+	}
+	
+	public void init() {
+		this.ships = null;
+		this.currShip = null;
+		this.currAttackPosition = 0;
+		this.enemyShipsCollected = false;
 	}
 
 	@Override
 	public void attack() {
 		Random r = new Random();
 
+		if(!this.enemyShipsCollected) {
+			this.ships = getShips();
+			this.enemyShipsCollected = true;
+		}
+		
 		boolean succeeded = false;
-		while (! succeeded) {
+		while (!succeeded) {
 
 			int x, y;
 			int chance = r.nextInt(5);
@@ -64,16 +77,22 @@ public class ChanceAttackStrategy implements AttackStrategy {
 
 			} catch (ModelException ignored) {
 				// Ignore
-			}
+			} 
 		}
 	}
 	
-	public Position getNewShipPosition() {
+	@Override
+	public void reset() {
+		init();
+	}
+	
+	private Position getNewShipPosition() {
 		this.currShip = ships.remove(0);
 		return this.currShip.getAnchor();
 	}
 	
-	public ArrayList<Ship> getShips() {
+	private ArrayList<Ship> getShips() {
 		return this.ai.getEnemyBoard().getShips();
 	}
+	
 }

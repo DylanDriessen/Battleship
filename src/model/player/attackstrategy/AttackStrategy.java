@@ -2,6 +2,9 @@ package model.player.attackstrategy;
 
 public interface AttackStrategy {
 
-	public void attack();
+	void attack();
+	default void reset() {
+		return;
+	}
 	
 }

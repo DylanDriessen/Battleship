@@ -11,12 +11,19 @@ import model.player.AI;
 public class SmartRandomAttackStrategy implements AttackStrategy {
 
 	private AI ai;
-	private Position lastHit = null;
+	private Position lastHit;
 	private Direction direction;
-	private boolean found = false;
+	private boolean found;
 	
 	public SmartRandomAttackStrategy(AI ai) {
 		this.ai = ai;
+		init();
+	}
+	
+	public void init() {
+		this.lastHit = null;
+		this.direction = null;
+		this.found = false;
 	}
 
 	@Override
@@ -63,7 +70,12 @@ public class SmartRandomAttackStrategy implements AttackStrategy {
 		}
 	}
 	
-	public void changeDirection() {
+	@Override
+	public void reset() {
+		init();
+	}
+	
+	private void changeDirection() {
 		Ship ship = this.ai.getEnemyBoard().getBoardPositions()[lastHit.getX()][lastHit.getY()].getShip();
 		int backTrack = ship.getTimesHit() - 1;
 		this.direction = Direction.oppositeDirection(this.direction);
@@ -75,7 +87,7 @@ public class SmartRandomAttackStrategy implements AttackStrategy {
 		}
 	}
 	
-	public void shipWasHit(int x, int y) {
+	private void shipWasHit(int x, int y) {
 		Ship ship = this.ai.getEnemyBoard().getBoardPositions()[x][y].getShip();
 		if (ship.getTimesHit() > 1 && !ship.isSunk()) {
 			this.lastHit = new Position(x, y);

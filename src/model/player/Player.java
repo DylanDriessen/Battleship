@@ -57,4 +57,9 @@ public class Player {
 		this.score = this.initialScore;
 	}
 
+	public void reset() {
+		this.myBoard.reset();
+		resetScore();
+	}
+
 }

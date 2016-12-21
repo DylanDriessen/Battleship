@@ -5,7 +5,9 @@ import model.game.Game;
 import model.board.Board;
 import model.board.Position;
 import model.board.Ship;
+import model.enums.AttackStrategies;
 import model.enums.Orientation;
+import model.enums.PlaceStrategies;
 import model.enums.ShipType;
 
 public class NewState implements GameState {
@@ -70,6 +72,11 @@ public class NewState implements GameState {
 		
 		Ship ship = new Ship(shipType, position, orientation);
 		this.game.getPlayer().getMyBoard().placeShip(ship, true, false);
+	}
+	
+	@Override
+	public void changeStrategies(PlaceStrategies newPlaceStrategy, AttackStrategies newAttackStrategy) throws ModelException {
+		this.game.getAI().changeStrategies(newPlaceStrategy, newAttackStrategy);
 	}
 
 }

@@ -6,7 +6,9 @@ import java.util.List;
 import exception.ModelException;
 import model.board.Board;
 import model.board.Position;
+import model.enums.AttackStrategies;
 import model.enums.Orientation;
+import model.enums.PlaceStrategies;
 import model.enums.ShipType;
 import model.game.state.StartedState;
 import model.player.AI;
@@ -45,7 +47,7 @@ public class Game implements GameObservable{
 		int nbOfShips = this.player.getMyBoard().getNbOfShips();
 		if (nbOfShips == 5) {
 			this.currentState = startedState;
-			this.ai.placeShips(false);
+			this.ai.placeShips(true);
 		} else {
 			throw new ModelException("Je moet nog " + (5 - nbOfShips) + " sch" + (5 - nbOfShips == 1 ? "ip" : "epen") + " op je eigen bord plaatsen.");
 		}
@@ -121,11 +123,8 @@ public class Game implements GameObservable{
 	}
 
 	public void reset() throws ModelException {
-		this.player.resetScore();
-		this.ai.resetScore();
-		
-		this.player.getMyBoard().init();
-		this.ai.getMyBoard().init();
+		this.player.reset();
+		this.ai.reset();
 		
 		this.player.getMyBoard().notifyObservers();
 		this.ai.getMyBoard().notifyObservers();
@@ -133,6 +132,10 @@ public class Game implements GameObservable{
 
 	public void finishGame() throws ModelException {
 		this.currentState.finishGame();
+	}
+
+	public void changeStrategies(PlaceStrategies newPlaceStrategy, AttackStrategies newAttackStrategy) throws ModelException {
+		this.currentState.changeStrategies(newPlaceStrategy, newAttackStrategy);
 	}
 
 }
