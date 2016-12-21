@@ -46,8 +46,9 @@ public class Game implements GameObservable{
 	public void startGame() throws ModelException {
 		if (this.player.getMyBoard().getNbOfShips() == 5) {
 			this.currentState = startedState;
-			this.ai.placeShips(true);
+			this.ai.placeShips(false);
 		} else {
+			System.out.println("yoloswag");
 			throw new ModelException("Je moet exact 5 schepen op je eigen bord plaatsen.");
 		}
 	}
@@ -115,9 +116,9 @@ public class Game implements GameObservable{
 	}
 
 	@Override
-	public void notifyGameChanged() {
+	public void notifyObservers() {
 		for(GameObserver o : this.observers) {
-			o.gameChanged(this);;
+			o.update(this);
 		}
 	}
 
@@ -128,8 +129,8 @@ public class Game implements GameObservable{
 		this.player.getMyBoard().init();
 		this.ai.getMyBoard().init();
 		
-		this.player.getMyBoard().notifyBoardChanged();
-		this.ai.getMyBoard().notifyBoardChanged();
+		this.player.getMyBoard().notifyObservers();
+		this.ai.getMyBoard().notifyObservers();
 	}
 
 	public void finishGame() throws ModelException {

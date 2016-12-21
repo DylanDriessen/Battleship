@@ -65,9 +65,4 @@ public class NewState implements GameState {
 		this.game.getPlayer().getMyBoard().placeShip(ship, true, false);
 	}
 
-	@Override
-	public void finishGame() throws ModelException {
-		throw new NotImplementedException();
-	}
-
 }

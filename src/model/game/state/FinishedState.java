@@ -32,7 +32,7 @@ public class FinishedState implements GameState {
 
 	@Override
 	public void finishGame() throws ModelException {
-		this.game.notifyGameChanged();
+		this.game.notifyObservers();
 		this.game.reset();
 		this.game.setState(this.game.getNewState());
 	}
