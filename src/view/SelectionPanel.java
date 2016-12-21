@@ -2,6 +2,7 @@ package view;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.lang.reflect.Array;
 
 import javax.swing.ButtonGroup;
@@ -28,19 +29,20 @@ public class SelectionPanel extends JPanel {
 	private JButton settingsButton;
 	
 	public SelectionPanel() {
-				
 		this.setLayout(new GridBagLayout());
 		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.fill = GridBagConstraints.HORIZONTAL;
 		gbc.anchor = GridBagConstraints.NORTHWEST;
-		gbc.weighty = 7;
-		gbc.weightx = 2;
+		gbc.weightx = 1;
+	    gbc.gridheight = 1;
+	    gbc.ipady = 6;
 
 		this.shipsLabel = new JLabel("Beschikbare schepen:");
 		this.shipsLabel.setFont(GameFrame.DEFAULT_FONT);
 	    gbc.gridx = 0;
 	    gbc.gridy = 0;
 	    gbc.gridwidth = 2;
-	    gbc.gridheight = 1;
+	    gbc.insets = new Insets(0, 0, 3, 0);
 		this.add(this.shipsLabel, gbc);
 
 		//Workaround to make array of a generic type
@@ -52,12 +54,19 @@ public class SelectionPanel extends JPanel {
 
 		this.shipsComboBox = new ComboBox<ComboItem<ShipType>>(ships, new ComboItem<ShipType>("Selecteer een schip:"));
 	    this.shipsComboBox.setFont(GameFrame.DEFAULT_FONT);
-		gbc.gridy = 1;
+	    gbc.gridx = 0;
+	    gbc.gridy = 1;
+	    gbc.gridwidth = 2;
+	    gbc.insets = new Insets(0, 0, 25, 0);
 		this.add(this.shipsComboBox, gbc);
+		
 		
 	    this.orientationLabel = new JLabel("Oriëntatie:");
 	    this.orientationLabel.setFont(GameFrame.DEFAULT_FONT);
-	    gbc.gridy = 3;
+	    gbc.gridx = 0;
+	    gbc.gridy = 2;
+	    gbc.gridwidth = 2;
+	    gbc.insets = new Insets(0, 0, 0, 0);
 	    this.add(this.orientationLabel, gbc);
 	    
 		ButtonGroup buttonGroup = new ButtonGroup();
@@ -69,29 +78,33 @@ public class SelectionPanel extends JPanel {
 		buttonGroup.add(this.horizontal);
 		buttonGroup.add(this.vertical);
 		
-	    gbc.gridy = 4;
+		gbc.gridx = 0;
+	    gbc.gridy = 3;
 	    gbc.gridwidth = 1;
 		this.add(this.horizontal, gbc);
 		
 		gbc.gridx = 1;
+	    gbc.gridy = 3;
+	    gbc.gridwidth = 1;
 		this.add(this.vertical, gbc);
+		
+		gbc.insets = new Insets(30, 0, 0, 0);
+		gbc.anchor = GridBagConstraints.SOUTHWEST;
 		
 		this.settingsButton = new JButton();
 		this.settingsButton.setFont(GameFrame.DEFAULT_FONT);
 		this.settingsButton.setText("Instellingen");
 		gbc.gridx = 0;
-		gbc.gridy = 5;
-		gbc.gridwidth = 2;
-		gbc.fill = GridBagConstraints.HORIZONTAL;
+	    gbc.gridy = 4;
+	    gbc.gridwidth = 2;
 		this.add(this.settingsButton, gbc);
 		
 		this.startButton = new JButton();
 		this.startButton.setFont(GameFrame.DEFAULT_FONT);
 		this.startButton.setText("Start Spel");
 		gbc.gridx = 0;
-		gbc.gridy = 6;
-		gbc.gridwidth = 2;
-		gbc.fill = GridBagConstraints.HORIZONTAL;
+	    gbc.gridy = 5;
+	    gbc.gridwidth = 2;
 		this.add(this.startButton, gbc);
 	}
 

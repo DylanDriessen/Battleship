@@ -54,8 +54,18 @@ public class ViewFacade implements IViewFacade{
 	}
 	
 	@Override
+	public JButton getSaveButton() {
+		return this.view.getSettingsFrame().getSaveButton();
+	}
+	
+	@Override
 	public void openSettings() {
 		this.view.openSettings();	
+	}
+	
+	@Override
+	public void closeSettings() {
+		this.view.getSettingsFrame().endView();	
 	}
 	
 	@Override

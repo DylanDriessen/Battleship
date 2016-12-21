@@ -1,16 +1,25 @@
 package model.enums;
 
 public enum AttackStrategies {
-	RANDOM("random"), SMARTRANDOM("smartRandom"), CHANCE("chance");
+	RANDOM("random", "Willekeurig"), SMARTRANDOM("smartRandom", "Mensachtig"), CHANCE("chance", "Superkrachtig");
 	
-	private String name;
+	private String name, label;
 	
-	AttackStrategies(String name) {
+	AttackStrategies(String name, String label) {
 		this.name = name;
+		this.label = label;
+	}
+	
+	public String getLabel() {
+		return this.label;
+	}
+	
+	public String getName() {
+		return this.name();
 	}
 	
 	@Override
 	public String toString(){
-		return this.name;
+		return this.label;
 	}
 }

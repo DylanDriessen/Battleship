@@ -5,16 +5,21 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
+import javax.swing.JButton;
 import javax.swing.JRadioButton;
 import javax.swing.SwingUtilities;
 
 import exception.ModelException;
 import model.board.Board;
 import model.board.Position;
+import model.enums.AttackStrategies;
 import model.enums.Orientation;
+import model.enums.PlaceStrategies;
 import model.enums.ShipType;
 import model.facade.IModelFacade;
+import properties.PropertiesFile;
 import view.GamePanel;
+import view.SettingsFrame;
 import view.Square;
 import view.combobox.ComboBox;
 import view.combobox.ComboItem;
@@ -28,6 +33,7 @@ public class ZeeslagController {
 	private ShipType shipType;
 	private StartListener startListener;
 	private SettingsListener settingsListener;
+	private SaveListener saveListener;
 	
 	public ZeeslagController(IModelFacade model, IViewFacade view) {
 		this.model = model;
@@ -48,8 +54,10 @@ public class ZeeslagController {
 		this.view.getJComboBox().addActionListener(new ComboboxListener());
 		this.startListener = new StartListener();
 		this.settingsListener = new SettingsListener();
+		this.saveListener = new SaveListener();
 		this.view.getStartButton().addMouseListener(startListener);
 		this.view.getSettingsButton().addMouseListener(settingsListener);
+		this.view.getSaveButton().addMouseListener(saveListener);
 	
 		this.askPlayerName();
 		this.view.startView();
@@ -119,6 +127,21 @@ public class ZeeslagController {
 		this.shipType = shipType;
 	}
 
+	public void saveSettings(PlaceStrategies newPlaceStrategy, AttackStrategies newAttackStrategy) {		
+		PropertiesFile properties = this.model.getProperties();
+		properties.set("placeStrategyAI", newPlaceStrategy.getName());
+		properties.set("attackStrategyAI", newAttackStrategy.getName());
+		properties.write();
+		
+		try {
+			this.model.changeAIStrategies(newPlaceStrategy, newAttackStrategy);
+		} catch (ModelException e) {
+			this.view.showErrorMessage(e.getMessage());
+		}
+		
+		this.view.closeSettings();
+	}
+	
 	private class AdvancedClickListener extends MouseAdapter {
 
 		@Override
@@ -189,5 +212,18 @@ public class ZeeslagController {
 			openSettings();
 		}
 		
+	}
+	
+	private class SaveListener extends MouseAdapter {
+
+		@Override
+		public void mouseClicked(MouseEvent e) {
+			JButton source = (JButton)e.getSource();
+			SettingsFrame settingsFrame = (SettingsFrame)(source.getParent().getParent().getParent().getParent());
+			PlaceStrategies newPlaceStrategy = (PlaceStrategies) settingsFrame.getPlaceComboBox().getSelectedItem();
+			AttackStrategies newAttackStrategy = (AttackStrategies) settingsFrame.getAttackComboBox().getSelectedItem();
+			saveSettings(newPlaceStrategy, newAttackStrategy);
+		}
+
 	}
 }

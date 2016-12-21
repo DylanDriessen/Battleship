@@ -1,27 +1,22 @@
 package view;
 
 import java.awt.Dimension;
-import java.awt.GridLayout;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.lang.reflect.Array;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import exception.ModelException;
 import model.enums.AttackStrategies;
 import model.enums.PlaceStrategies;
 import model.facade.IModelFacade;
-import model.player.attackstrategy.AttackStrategy;
-import model.player.placestrategy.PlaceStrategy;
 import properties.PropertiesFile;
 
-public class SettingFrame extends JFrame {
+public class SettingsFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JComboBox<PlaceStrategies> placeComboBox;
@@ -30,45 +25,59 @@ public class SettingFrame extends JFrame {
 	private IModelFacade model;
 	private JLabel placeStrategyLabel, attackStrategyLabel;
 
-	public SettingFrame(IModelFacade model) {
+	public SettingsFrame(IModelFacade model) {
 		this.model = model;
 		PropertiesFile properties = this.model.getProperties();
 		
-		this.setSize(new Dimension(200, 200));
+		this.setSize(new Dimension(300, 270));
 		this.setResizable(false);
-		this.setLocationRelativeTo(null);
-
-		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(5, 1, 10, 10));
+		this.setTitle("Instellingen");
+		
+		JPanel panel = new JPanel();		
+		panel.setLayout(new GridBagLayout());
+		panel.setBorder(GameFrame.PADDING);
+		GridBagConstraints gbc = new GridBagConstraints();
+		gbc.fill = GridBagConstraints.HORIZONTAL;
+		gbc.anchor = GridBagConstraints.NORTHWEST;
+		gbc.weightx = 1;
+	    gbc.gridheight = 1;
+	    gbc.ipady = 6;
 		this.add(panel);
 		setContentPane(panel);
 
 		this.placeStrategyLabel = new JLabel("Plaatsingsstrategie:");
 		this.placeStrategyLabel.setFont(GameFrame.DEFAULT_FONT);
-		panel.add(this.placeStrategyLabel);
+		gbc.gridy = 0;
+		gbc.insets = new Insets(20, 0, 3, 0);
+		panel.add(this.placeStrategyLabel, gbc);
 		
 		PlaceStrategies currPlaceStrategy = PlaceStrategies.valueOf(properties.get("placeStrategyAI").toUpperCase());
 		this.placeComboBox = new JComboBox<PlaceStrategies>(PlaceStrategies.values());
 		this.placeComboBox.setSelectedItem(currPlaceStrategy);
 		this.placeComboBox.setFont(GameFrame.DEFAULT_FONT);
-		panel.add(this.placeComboBox);
+		gbc.gridy = 1;
+		gbc.insets = new Insets(0, 0, 15, 0);
+		panel.add(this.placeComboBox, gbc);
 
 		this.attackStrategyLabel = new JLabel("Aanvalsstrategie:");
 		this.attackStrategyLabel.setFont(GameFrame.DEFAULT_FONT);
-		panel.add(this.attackStrategyLabel);
+		gbc.gridy = 2;
+		gbc.insets = new Insets(0, 0, 3, 0);
+		panel.add(this.attackStrategyLabel, gbc);
 		
 		AttackStrategies currAttackStrategy = AttackStrategies.valueOf(properties.get("attackStrategyAI").toUpperCase());
 		this.attackComboBox = new JComboBox<AttackStrategies>(AttackStrategies.values());
 		this.attackComboBox.setSelectedItem(currAttackStrategy);
 		this.attackComboBox.setFont(GameFrame.DEFAULT_FONT);
-		panel.add(this.attackComboBox);
+		gbc.gridy = 3;
+		gbc.insets = new Insets(0, 0, 25, 0);
+		panel.add(this.attackComboBox, gbc);
 
 		this.saveButton = new JButton();
 		this.saveButton.setFont(GameFrame.DEFAULT_FONT);
-		this.saveButton.setText("Opslagen");
-		SaveListener listener = new SaveListener();
-		this.saveButton.addMouseListener(listener);
-		panel.add(this.saveButton);
+		this.saveButton.setText("Bewaren");
+		gbc.gridy = 4;
+		panel.add(this.saveButton, gbc);
 
 		this.revalidate();
 	}
@@ -81,31 +90,16 @@ public class SettingFrame extends JFrame {
 		setVisible(false);
 	}
 	
-	public void saveSettings() {
-		PlaceStrategies newPlaceStrategy = (PlaceStrategies) placeComboBox.getSelectedItem();
-		AttackStrategies newAttackStrategy = (AttackStrategies) attackComboBox.getSelectedItem();
-		
-		PropertiesFile properties = this.model.getProperties();
-		properties.set("placeStrategyAI", newPlaceStrategy.toString());
-		properties.set("attackStrategyAI", newAttackStrategy.toString());
-		properties.write();
-		
-		try {
-			this.model.changeAIStrategies(newPlaceStrategy, newAttackStrategy);
-		} catch (ModelException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
-		}
-		
-		this.endView();
+	public JComboBox<PlaceStrategies> getPlaceComboBox() {
+		return this.placeComboBox;
 	}
-
-	private class SaveListener extends MouseAdapter {
-
-		@Override
-		public void mouseClicked(MouseEvent e) {
-			saveSettings();
-		}
-
+	
+	public JComboBox<AttackStrategies> getAttackComboBox() {
+		return this.attackComboBox;
+	}
+	
+	public JButton getSaveButton() {
+		return this.saveButton;
 	}
 
 }

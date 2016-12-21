@@ -2,7 +2,6 @@ package model.game.state;
 
 import exception.ModelException;
 import model.game.Game;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import model.board.Board;
 import model.board.Position;
 import model.board.Ship;

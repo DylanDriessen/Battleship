@@ -1,7 +1,9 @@
 package view;
 
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.Toolkit;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -20,12 +22,14 @@ public class GameFrame extends JFrame implements GameObserver {
 	private GamePanel panelPlayer, panelAI;
 	private SelectionPanel selectionPanel;
 	private IModelFacade model;
+	private SettingsFrame settingsFrame;
 	private Game game;
 	
 	public static final int WIDTH = 940;
 	public static final int HEIGHT = 360;
 	public static final Font DEFAULT_FONT = new Font(Font.SANS_SERIF, Font.PLAIN, 16);
-	
+	public static final Border PADDING = BorderFactory.createEmptyBorder(10, 10, 10, 10);
+
 	public GameFrame(IModelFacade model) {
 		super();
 		
@@ -34,12 +38,14 @@ public class GameFrame extends JFrame implements GameObserver {
 		
 		this.setSize(WIDTH, HEIGHT);
 		this.setResizable(false);
-		
 		this.setLayout(new GridLayout(1,3));
-		Border padding = BorderFactory.createEmptyBorder(10, 10, 10, 10);
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
+		this.setTitle("Zeeslag");
 		
+		//Init SelectionPanel
 		this.selectionPanel = new SelectionPanel();
-		this.selectionPanel.setBorder(padding);
+		this.selectionPanel.setBorder(PADDING);
 		this.add(this.selectionPanel);
 		
 		//Init Player GamePanel
@@ -47,7 +53,7 @@ public class GameFrame extends JFrame implements GameObserver {
 		int playerScore = this.model.getPlayerScore();
 		Board boardPlayer = this.model.getBoardPlayer();
 		this.panelPlayer = new GamePanel(this, playerName, playerScore, boardPlayer);
-		this.panelPlayer.setBorder(padding);
+		this.panelPlayer.setBorder(PADDING);
 		this.add(this.panelPlayer);
 		
 		//Init AI GamePanel
@@ -55,8 +61,12 @@ public class GameFrame extends JFrame implements GameObserver {
 		int aiScore = this.model.getAIScore();
 		Board boardAI = this.model.getBoardAI();
 		this.panelAI = new GamePanel(this, aiName, aiScore, boardAI);
-		this.panelAI.setBorder(padding);
+		this.panelAI.setBorder(PADDING);
 		this.add(this.panelAI);
+		
+		//SettingFrame
+		this.settingsFrame = new SettingsFrame(model);
+		this.settingsFrame.setLocationRelativeTo(this);
 	
 		revalidate();
 	}
@@ -73,6 +83,10 @@ public class GameFrame extends JFrame implements GameObserver {
 		return this.selectionPanel;
 	}
 
+	public SettingsFrame getSettingsFrame() {
+		return this.settingsFrame;
+	}
+	
 	public void startView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setVisible(true);
@@ -92,8 +106,7 @@ public class GameFrame extends JFrame implements GameObserver {
 	}
 	
 	public void openSettings() {
-		SettingFrame settings = new SettingFrame(this.model);
-		settings.startView();
+		this.settingsFrame.startView();
 	}
 
 	public void showMessage(String message) {
@@ -107,5 +120,6 @@ public class GameFrame extends JFrame implements GameObserver {
 		label.setFont(DEFAULT_FONT);
 		return JOptionPane.showInputDialog(this, label, "", JOptionPane.QUESTION_MESSAGE);
 	}
+
 
 }

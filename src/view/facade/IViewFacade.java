@@ -16,7 +16,9 @@ public interface IViewFacade {
 	JComboBox<ComboItem<ShipType>> getJComboBox();
 	JButton getStartButton();
 	JButton getSettingsButton();
+	JButton getSaveButton();
 	void openSettings();
+	void closeSettings();
 	void showErrorMessage(String message);
 	String getStringInput(String message);
 	void startView();
