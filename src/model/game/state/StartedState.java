@@ -79,10 +79,4 @@ public class StartedState implements GameState {
 		this.game = game;
 	}
 
-	@Override
-	public void finishGame() throws ModelException {
-		//TODO
-		throw new NotImplementedException();
-	}
-
 }

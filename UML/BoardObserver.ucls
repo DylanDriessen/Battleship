@@ -38,25 +38,33 @@
     </display>  
   </class>  
   <realization id="5">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="1"/>  
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
   </realization>  
   <association id="6">    
     <end type="SOURCE" refId="4" navigable="false">      
-      <attribute id="7" name="board"/>      
-      <multiplicity id="8" minimum="0" maximum="1"/>    
+      <attribute id="7" name="board">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="8" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <realization id="9">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="2"/>  
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="1"/>  
   </realization>  
   <association id="10">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="11" name="observers"/>      
-      <multiplicity id="12" minimum="0" maximum="2147483647"/>    
+      <attribute id="11" name="observers">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="12" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  

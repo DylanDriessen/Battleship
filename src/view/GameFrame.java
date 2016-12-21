@@ -77,7 +77,7 @@ public class GameFrame extends JFrame implements GameObserver {
 		setVisible(true);
 	}
 
-	public void gameChanged(Game game) {
+	public void update(Game game) {
 		this.game = game;
 		endGame();
 	}

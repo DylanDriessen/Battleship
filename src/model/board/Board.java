@@ -70,7 +70,7 @@ public class Board implements BoardObservable {
 			}
 			
 			this.changed.add(position);
-			this.notifyBoardChanged();
+			this.notifyObservers();
 			return hit;
 		} else {
 			throw new ModelException("Je kan deze coördinaten niet opnieuw aanvallen.");
@@ -87,7 +87,7 @@ public class Board implements BoardObservable {
 			this.boardPositions[x][y].setFocus(value);
 			this.changed.add(position);
 			
-			this.notifyBoardChanged();
+			this.notifyObservers();
 		}
 	}
 	
@@ -133,7 +133,7 @@ public class Board implements BoardObservable {
 			this.ships.add(ship);
 		}
 		
-		this.notifyBoardChanged();
+		this.notifyObservers();
 	}
 		
 	private boolean maxAmountShipsReached(ShipType shipType) {
@@ -232,9 +232,9 @@ public class Board implements BoardObservable {
 	}
 
 	@Override
-	public void notifyBoardChanged() {
+	public void notifyObservers() {
 		for(BoardObserver o : this.observers) {
-			o.boardChanged(this);
+			o.update(this);
 		}
 	}
 

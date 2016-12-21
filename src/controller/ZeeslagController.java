@@ -68,7 +68,6 @@ public class ZeeslagController {
 			this.view.getSettingsButton().setEnabled(false);
 		} catch (ModelException e) {
 			this.view.showErrorMessage(e.getMessage());
-			JOptionPane.showMessageDialog(null, e.getMessage());
 		}
 	}
 	
@@ -80,7 +79,7 @@ public class ZeeslagController {
 		try {
 			this.model.buttonClicked(position, this.shipType, this.orientation, board);
 		} catch (ModelException e) {
-			JOptionPane.showMessageDialog(null, e.getMessage());
+			this.view.showErrorMessage(e.getMessage());
 		}
 	}
 	
