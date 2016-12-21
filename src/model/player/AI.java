@@ -27,7 +27,6 @@ public class AI extends Player {
 	public void changeStrategies(PlaceStrategies newPlaceStrategy, AttackStrategies newAttackStrategy) throws ModelException {
 		this.placeStrategy = PlaceStrategyFactory.create(newPlaceStrategy, this);
 		this.attackStrategy = AttackStrategyFactory.create(newAttackStrategy, this);
-		resetStrategies();
 	}
 
 	public void placeShips(boolean visible) {
@@ -41,11 +40,8 @@ public class AI extends Player {
 	@Override
 	public void reset() {
 		super.reset();
-		resetStrategies();
-	}
-	
-	private void resetStrategies() {
 		this.placeStrategy.reset();
 		this.attackStrategy.reset();
 	}
+	
 }
