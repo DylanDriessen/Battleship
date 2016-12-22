@@ -71,30 +71,14 @@ public class GameFrame extends JFrame implements GameObserver {
 		revalidate();
 	}
 	
-	public GamePanel getPanelPlayer() {
-		return this.panelPlayer;
-	}
-	
-	public GamePanel getPanelAI() {
-		return this.panelAI;
-	}
-	
-	public SelectionPanel getSelectionPanel() {
-		return this.selectionPanel;
-	}
-
-	public SettingsFrame getSettingsFrame() {
-		return this.settingsFrame;
-	}
-	
 	public void startView() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setVisible(true);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
 	}
 
 	public void update(Game game) {
 		this.game = game;
-		endGame();
+		this.endGame();
 	}
 	
 	public void endGame() {
@@ -120,6 +104,20 @@ public class GameFrame extends JFrame implements GameObserver {
 		label.setFont(DEFAULT_FONT);
 		return JOptionPane.showInputDialog(this, label, "", JOptionPane.QUESTION_MESSAGE);
 	}
+	
+	public GamePanel getPanelPlayer() {
+		return this.panelPlayer;
+	}
+	
+	public GamePanel getPanelAI() {
+		return this.panelAI;
+	}
+	
+	public SelectionPanel getSelectionPanel() {
+		return this.selectionPanel;
+	}
 
-
+	public SettingsFrame getSettingsFrame() {
+		return this.settingsFrame;
+	}
 }

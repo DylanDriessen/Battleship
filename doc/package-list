@@ -1,0 +1,15 @@
+application
+controller
+exception
+model.board
+model.enums
+model.facade
+model.game
+model.game.state
+model.player
+model.player.attackstrategy
+model.player.placestrategy
+properties
+view
+view.combobox
+view.facade

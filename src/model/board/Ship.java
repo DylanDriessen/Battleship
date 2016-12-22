@@ -39,6 +39,12 @@ public class Ship {
 		return anchor;
 	}
 	
+	/**
+	 * Geef al de coördinaten terug waar dit schip zich op bevind.
+	 * 
+	 * @return
+	 * 		lijst van coördinaten waar het schip zich op bevind.
+	 */
 	public ArrayList<Position> getPositions() {
 		ArrayList<Position> positions = new ArrayList<Position>();
 		

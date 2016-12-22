@@ -88,7 +88,7 @@ public class ModelFacade implements IModelFacade {
 	
 	@Override
 	public void changeAIStrategies(PlaceStrategies newPlaceStrategy, AttackStrategies newAttackStrategy) throws ModelException {
-		this.game.changeStrategies(newPlaceStrategy, newAttackStrategy);
+		this.game.changeAIStrategies(newPlaceStrategy, newAttackStrategy);
 	}
 	
 	@Override

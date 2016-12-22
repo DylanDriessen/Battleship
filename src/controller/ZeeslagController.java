@@ -35,6 +35,15 @@ public class ZeeslagController {
 	private SettingsListener settingsListener;
 	private SaveListener saveListener;
 	
+	/**
+	 * Constructor ZeeslagController
+	 * 
+	 * De constructor zal bij de initialisatie al de nodige listeners aanmaken om later bij userinput
+	 * te kunnen comuniceren met de view en model. Daarna zal hij de naam van de speler vragen en het spel tonen.
+	 * 
+	 * @param model
+	 * @param view
+	 */
 	public ZeeslagController(IModelFacade model, IViewFacade view) {
 		this.model = model;
 		this.view = view;
@@ -63,6 +72,12 @@ public class ZeeslagController {
 		this.view.startView();
 	}
 	
+	/**
+	 * Deze methode wordt opgeroepen wanneer er op de "Start spel" knop wordt geklikt.
+	 * 
+	 * Indien het spel nog niet gestart kan worden, zal de model een error gooien die in deze functie wordt opgevangen
+	 * en doorgegeven wordt aan de view.
+	 */
 	public void startGame() {
 		try {
 			this.model.startGame();
@@ -74,10 +89,16 @@ public class ZeeslagController {
 		}
 	}
 	
+	/**
+	 * Deze methode wordt opgeroepen wanneer er op de "Instellingen" knop wordt geklikt.
+	 */
 	public void openSettings() {
 		this.view.openSettings();
 	}
 	
+	/**
+	 * Deze methode wordt door de constructor opgeroepen en vraagt de naam van de speler.
+	 */
 	public void askPlayerName() {
 		String playerName;
 		playerName = this.view.getStringInput("Gelieve uw naam in te vullen:");
@@ -88,6 +109,14 @@ public class ZeeslagController {
 		this.view.updateLabel(playerName);
 	}
 	
+	/**
+	 * Deze methode wordt opgeroepen wanneer er met de linkermuisknop op een vakje in het spelbord is geklikt.
+	 * 
+	 * @param position
+	 * 		Coördinaten van de geklikte button
+	 * @param board
+	 * 		Het spelbord waar het geklikte vakje toebehoord
+	 */
 	public void leftButtonClicked(Position position, Board board) {
 		try {
 			this.model.leftButtonClicked(position, this.shipType, this.orientation, board);
@@ -96,6 +125,14 @@ public class ZeeslagController {
 		}
 	}
 	
+	/**
+	 * Deze methode wordt opgeroepen wanneer er met de rechtermuisknop op een vakje in het spelbord is geklikt.
+	 * 
+	 * @param position
+	 * 		Coördinaten van de geklikte button
+	 * @param board
+	 * 		Het spelbord waar het geklikte vakje toebehoord
+	 */
 	public void rightButtonClicked(Position position, Board board) {
 		try {
 			this.model.rightButtonClicked(position, board);
@@ -104,6 +141,14 @@ public class ZeeslagController {
 		}
 	}
 	
+	/**
+	 * Deze methode wordt opgeroepen wanneer de muis in een vakje van het spelbord beweegt.
+	 * 
+	 * @param position
+	 * 		Coördinaten van de geklikte button
+	 * @param board
+	 * 		Het spelbord waar het geklikte vakje toebehoord
+	 */
 	public void buttonEntered(Position position, Board board) {
 		try {
 			this.model.buttonEntered(position, this.shipType, this.orientation, board);
@@ -112,6 +157,14 @@ public class ZeeslagController {
 		}
 	}
 	
+	/**
+	 * Deze methode wordt opgeroepen wanneer de muis uit een vakje van het spelbord beweegt.
+	 * 
+	 * @param position
+	 * 		Coördinaten van de geklikte button
+	 * @param board
+	 * 		Het spelbord waar het geklikte vakje toebehoord
+	 */
 	public void buttonExited(Position position, Board board) {
 		try {
 			this.model.buttonExited(position, this.shipType, this.orientation, board);
@@ -120,14 +173,34 @@ public class ZeeslagController {
 		}
 	}
 	
+	/**
+	 * Setter voor orientatie
+	 * 
+	 * @param orientation
+	 * 		De nieuwe orientatie (horizontaal of verticaal) waarin een schip zal geplaatst worden op het spelbord
+	 */
 	public void setOrientation(Orientation orientation) {
 		this.orientation = orientation;
 	}
 
+	/**
+	 * Setter voor het type schip
+	 * 
+	 * @param shipType
+	 * 		De nieuwe geselecteerde schip
+	 */
 	public void setShipType(ShipType shipType) {
 		this.shipType = shipType;
 	}
 
+	/**
+	 * Deze methode wordt opgeroepen wanneer er op de knop "Bewaren" wordt geklikt in de instellingen frame
+	 * 
+	 * @param newPlaceStrategy
+	 * 		De nieuwe placestrategy dat de AI zal gebruiken
+	 * @param newAttackStrategy
+	 * 		De nieuwe attackstrategy dat de AI zal gebruiken
+	 */
 	public void saveSettings(PlaceStrategies newPlaceStrategy, AttackStrategies newAttackStrategy) {		
 		PropertiesFile properties = this.model.getProperties();
 		properties.set("placeStrategyAI", newPlaceStrategy.getName());

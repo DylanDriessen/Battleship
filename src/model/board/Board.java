@@ -15,12 +15,14 @@ public class Board implements BoardObservable {
 	private List<BoardObserver> observers;
 	private Map<ShipType, Integer> shipTypeCounter;
 	private int shipCounter;
+	private int maxNumberOfShips;
 	private ArrayList<Position> changed;	
 	private BoardPosition[][] boardPositions;
 	private ArrayList<Ship> ships = new ArrayList<Ship>();
 	private Player player;
 	
-	public Board() {
+	public Board(int maxNumberOfShips) {
+		this.maxNumberOfShips = maxNumberOfShips;
 		this.observers = new ArrayList<BoardObserver>();
 		init();
 	}
@@ -45,6 +47,16 @@ public class Board implements BoardObservable {
 		}
 	}
 	
+	/**
+	 * Als de doorgegeven positie nog niet is aangevallen, zal deze aangevallen worden.
+	 * 
+	 * @param position
+	 * 		De positie dat aangevallen wordt
+	 * @return
+	 * 		True bij het raken van een schip, anders False
+	 * @throws ModelException
+	 * 		Indien een positie aangevallen wordt dat al is aangevallen
+	 */
 	public boolean attack(Position position) throws ModelException {
 		int x = position.getX();
 		int y = position.getY();
@@ -75,6 +87,14 @@ public class Board implements BoardObservable {
 		}
 	}
 	
+	/**
+	 * Benadruk de gegeven positie
+	 * 
+	 * @param position
+	 * 		De positie dat gefocused moet worden
+	 * @param value
+	 * 		Indien True, zal er gefocused worden, anders zal de focus verwijderd worden
+	 */
 	public void focus(Position position, boolean value) {
 		int x = position.getX();
 		int y = position.getY();
@@ -89,8 +109,23 @@ public class Board implements BoardObservable {
 		}
 	}
 	
+	/**
+	 * Methode dat een gegeven schip op het spelbord plaatst.
+	 * 
+	 * @param ship
+	 * 		Het schip dat op het spelbord geplaatst moet worden
+	 * @param ghost
+	 * 		True om een tijdelijk ghostschip aan te duiden op het spelbord, 
+	 * 		dit is een hulpmiddel om te tonen waar je de schepen kunt plaatsen.
+	 * @param visible
+	 * 		True als het schip zichtbaar is voor de user (schepen speler zijn zichtbaar, schepen AI niet)
+	 * @throws ModelException
+	 * 		Indien het schip op een ongeldige positie geplaatst wordt
+	 * 		Indien het maximum aantal schepen op het spelbord is bereikt
+	 * 		Indien het maximum aantal schepen van een type op het spelbord zijn geplaatst
+	 */
 	public void placeShip(Ship ship, boolean ghost, boolean visible) throws ModelException {
-		if(this.shipCounter == 5) {
+		if(this.shipCounter == this.maxNumberOfShips) {
 			if(ghost) {
 				return;
 			} else {
@@ -134,6 +169,12 @@ public class Board implements BoardObservable {
 		this.notifyObservers();
 	}
 	
+	/**
+	 * Verwijderd het schip, indien deze bestaat, op de gegeven positie.
+	 * 
+	 * @param position
+	 * 		De positie waar het schip verwijderd moet worden
+	 */
 	public void removeShip(Position position) {
 		int x = position.getX();
 		int y = position.getY();
@@ -152,6 +193,20 @@ public class Board implements BoardObservable {
 		this.notifyObservers();
 	}
 	
+	/**
+	 * Update het spelbord (boardpositions)
+	 * 
+	 * @param x
+	 * 		X-coördinaat spelbord
+	 * @param y
+	 * 		Y-coördinaat spelbord
+	 * @param ship
+	 * 		Schip dat op het bord geplaatst wordt
+	 * @param ghost
+	 * 		True indien het schip een ghostschip is
+	 * @param visible
+	 * 		True indien het schip zichtbaar is voor de user
+	 */
 	private void changeBoardPositions(int x, int y, Ship ship, boolean ghost, boolean visible) {
 		if(ghost) {
 			this.boardPositions[x][y].setFocus(visible);
@@ -165,6 +220,16 @@ public class Board implements BoardObservable {
 		return this.shipTypeCounter.get(shipType) >= shipType.getAmount();
 	}
 	
+	/**
+	 * Controleer gegeven coördinaten om te zien of je er een schip kan plaatsen.
+	 * 
+	 * @param x
+	 * 		X-coördinaat spelbord
+	 * @param y
+	 * 		Y-coördinaat spelbord
+	 * @throws ModelException
+	 * 		Indien het ongeldige coördinaten zijn voor een schip op te plaatsen.
+	 */
 	private void verifyEnvironment(int x, int y) throws ModelException {
 		if(x > 9 || y > 9) {
 			throw new ModelException("Je kan geen schip buiten het bord plaatsen.");
@@ -176,7 +241,17 @@ public class Board implements BoardObservable {
 			throw new ModelException("Je kan een schip niet zo dicht bij een naburig schip plaatsen.");
 		}
 	}
-		
+	
+	/**
+	 * Controleer of een schip grenst aan de doorgegeven coördinaten
+	 * 
+	 * @param x
+	 * 		X-coördinaat spelbord
+	 * @param y
+	 * 		Y-coördinaat spelbord
+	 * @return
+	 * 		True indien er een schip aan deze positie grenst
+	 */
 	private boolean neighbourContainsShip(int x, int y) {
 		boolean occupied = false;
 		

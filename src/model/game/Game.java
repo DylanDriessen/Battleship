@@ -18,77 +18,99 @@ import model.game.state.FinishedState;
 import model.game.state.GameState;
 import model.game.state.NewState;
 
-public class Game implements GameObservable{
-	
+public class Game implements GameObservable {
+
 	private Player player, winner;
 	private AI ai;
 	private GameState currentState, newState, startedState, finishedState;
 	private List<GameObserver> observers;
 	private PropertiesFile properties;
-	
-	public  Game(PropertiesFile properties) throws ModelException{
+	private static final int MAX_NUMBER_OF_SHIPS = 5;
+
+	public Game(PropertiesFile properties) throws ModelException {
 		this.properties = properties;
 		this.observers = new ArrayList<GameObserver>();
-		
-		Board boardPlayer = new Board();
-		Board boardAI = new Board();
-		
+
+		Board boardPlayer = new Board(MAX_NUMBER_OF_SHIPS);
+		Board boardAI = new Board(MAX_NUMBER_OF_SHIPS);
+
 		this.player = new Player(boardPlayer, boardAI);
 		this.ai = new AI(this.properties, boardAI, boardPlayer);
-				
+
 		this.newState = new NewState(this);
 		this.startedState = new StartedState(this);
 		this.finishedState = new FinishedState(this);
-		
+
 		setState(this.newState);
 	}
-	
+
 	public void startGame() throws ModelException {
 		int nbOfShips = this.player.getMyBoard().getNbOfShips();
-		if (nbOfShips == 5) {
+		if (nbOfShips == MAX_NUMBER_OF_SHIPS) {
 			this.currentState = startedState;
 			this.ai.placeShips(false);
 		} else {
-			throw new ModelException("Je moet nog " + (5 - nbOfShips) + " sch" + (5 - nbOfShips == 1 ? "ip" : "epen") + " op je eigen bord plaatsen.");
+			throw new ModelException("Je moet nog " + (MAX_NUMBER_OF_SHIPS - nbOfShips) + " sch"
+					+ (MAX_NUMBER_OF_SHIPS - nbOfShips == 1 ? "ip" : "epen") + " op je eigen bord plaatsen.");
 		}
 	}
+	
+	public void resetGame() throws ModelException {
+		this.player.reset();
+		this.ai.reset();
 
-	public void leftButtonClicked(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
-		this.currentState.squareLeftClicked(position, shipType, orientation, board);
+		this.player.getMyBoard().notifyObservers();
+		this.ai.getMyBoard().notifyObservers();
 	}
 	
+	public void finishGame() throws ModelException {
+		this.currentState.finishGame();
+	}
+
+	public void changeAIStrategies(PlaceStrategies newPlaceStrategy, AttackStrategies newAttackStrategy)
+			throws ModelException {
+		this.currentState.changeStrategies(newPlaceStrategy, newAttackStrategy);
+	}
+
+	public void leftButtonClicked(Position position, ShipType shipType, Orientation orientation, Board board)
+			throws ModelException {
+		this.currentState.squareLeftClicked(position, shipType, orientation, board);
+	}
+
 	public void rightButtonClicked(Position position, Board board) throws ModelException {
 		this.currentState.squareRightClicked(position, board);
 	}
-	
-	public void buttonEntered(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+
+	public void buttonEntered(Position position, ShipType shipType, Orientation orientation, Board board)
+			throws ModelException {
 		this.currentState.squareEntered(position, shipType, orientation, board);
 	}
-	
-	public void buttonExited(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException {
+
+	public void buttonExited(Position position, ShipType shipType, Orientation orientation, Board board)
+			throws ModelException {
 		this.currentState.squareExited(position, shipType, orientation, board);
 	}
-	
-	//Setters
-	
+
+	// Setters
+
 	public void setState(GameState state) {
 		this.currentState = state;
 	}
-	
+
 	public void setWinner(Player player) {
 		this.winner = player;
 	}
-	
-	//Getters
-	
+
+	// Getters
+
 	public Player getPlayer() {
 		return player;
 	}
-	
+
 	public AI getAI() {
 		return ai;
 	}
-	
+
 	public Player getWinner() {
 		return winner;
 	}
@@ -117,25 +139,8 @@ public class Game implements GameObservable{
 
 	@Override
 	public void notifyObservers() {
-		for(GameObserver o : this.observers) {
+		for (GameObserver o : this.observers) {
 			o.update(this);
 		}
 	}
-
-	public void reset() throws ModelException {
-		this.player.reset();
-		this.ai.reset();
-		
-		this.player.getMyBoard().notifyObservers();
-		this.ai.getMyBoard().notifyObservers();
-	}
-
-	public void finishGame() throws ModelException {
-		this.currentState.finishGame();
-	}
-
-	public void changeStrategies(PlaceStrategies newPlaceStrategy, AttackStrategies newAttackStrategy) throws ModelException {
-		this.currentState.changeStrategies(newPlaceStrategy, newAttackStrategy);
-	}
-
 }
