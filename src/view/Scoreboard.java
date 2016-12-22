@@ -5,6 +5,9 @@ import java.awt.FlowLayout;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class Scoreboard extends JPanel {
 
 	private static final long serialVersionUID = 1L;

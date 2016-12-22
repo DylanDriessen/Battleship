@@ -1,5 +1,8 @@
 package model.board;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class Position {
 
 	private int x, y;

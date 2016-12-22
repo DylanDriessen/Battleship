@@ -6,6 +6,9 @@ import exception.ModelException;
 import model.board.Position;
 import model.player.AI;
 
+/**
+ * @author Dylan
+ */
 public class RandomAttackStrategy implements AttackStrategy {
 
 	private AI ai;

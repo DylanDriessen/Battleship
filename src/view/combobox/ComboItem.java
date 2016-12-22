@@ -1,5 +1,8 @@
 package view.combobox;
 
+/**
+ * @author Wouter
+ */
 public class ComboItem<T> {
 
 	private String label;

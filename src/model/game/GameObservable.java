@@ -1,5 +1,8 @@
 package model.game;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public interface GameObservable {
 	
 	void addObserver (GameObserver o);

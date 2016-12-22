@@ -9,6 +9,9 @@ import properties.PropertiesFile;
 import view.facade.IViewFacade;
 import view.facade.ViewFacade;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class ZeeslagApp {
 	
 	public static void main(String[] args) {

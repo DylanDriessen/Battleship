@@ -6,6 +6,9 @@ import javax.swing.JPanel;
 import model.board.Board;
 import model.board.BoardObserver;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class GamePanel extends JPanel implements BoardObserver {
 
 	private static final long serialVersionUID = 1L;

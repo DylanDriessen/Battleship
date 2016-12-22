@@ -11,6 +11,9 @@ import model.board.Board;
 import model.board.Position;
 import model.enums.ButtonType;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class GameGrid extends JPanel {
 
 	private static final long serialVersionUID = 1L;

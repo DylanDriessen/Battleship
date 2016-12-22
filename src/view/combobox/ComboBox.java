@@ -3,6 +3,9 @@ package view.combobox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 
+/**
+ * @author Wouter
+ */
 public class ComboBox<T> extends JComboBox<T> {
 
 	private static final long serialVersionUID = 1L;

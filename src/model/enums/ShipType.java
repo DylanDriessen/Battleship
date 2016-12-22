@@ -1,5 +1,8 @@
 package model.enums;
 
+/**
+ * @author Wouter & Dylan
+ */
 public enum ShipType {
 	VLIEGDEK("Vliegdekschip", 5, 1),
 	SLAG("Slagschip", 4, 2),

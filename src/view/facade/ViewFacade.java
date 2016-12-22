@@ -10,6 +10,9 @@ import view.GameFrame;
 import view.Square;
 import view.combobox.ComboItem;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class ViewFacade implements IViewFacade{
 	
 	private GameFrame view;

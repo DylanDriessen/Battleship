@@ -2,6 +2,9 @@ package model.enums;
 
 import java.awt.Color;
 
+/**
+ * @author Mathias
+ */
 public enum ButtonType {
 	EMPTY(new Color(165, 214, 254), true, ""), 
 	FOCUS(new Color(67, 144, 178), false, ""), 

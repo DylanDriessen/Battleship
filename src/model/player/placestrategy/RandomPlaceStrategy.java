@@ -9,6 +9,9 @@ import model.enums.Orientation;
 import model.enums.ShipType;
 import model.player.AI;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class RandomPlaceStrategy implements PlaceStrategy {
 	
 	private AI ai;

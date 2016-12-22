@@ -1,5 +1,8 @@
 package model.board;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public interface BoardObservable {
 	
 	void addObserver (BoardObserver o);

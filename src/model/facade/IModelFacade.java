@@ -10,6 +10,9 @@ import model.enums.ShipType;
 import model.game.GameObserver;
 import properties.PropertiesFile;
 
+/**
+ * @author Wouter
+ */
 public interface IModelFacade {
 
 	PropertiesFile getProperties();

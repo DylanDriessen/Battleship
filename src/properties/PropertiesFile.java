@@ -10,6 +10,9 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.util.Properties;
 
+/**
+ * @author Mathias
+ */
 public class PropertiesFile {
 	private Properties properties;
 	private String fileName = "zeeslag.properties";

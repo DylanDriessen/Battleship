@@ -5,6 +5,9 @@ import java.util.ArrayList;
 import model.enums.Orientation;
 import model.enums.ShipType;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class Ship {
 	
 	private int timesHit = 0;

@@ -9,6 +9,9 @@ import javax.swing.JButton;
 import model.board.Position;
 import model.enums.ButtonType;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class Square extends JButton {
 
 	private static final long serialVersionUID = 1L;

@@ -17,6 +17,9 @@ import model.enums.ShipType;
 import view.combobox.ComboBox;
 import view.combobox.ComboItem;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class SelectionPanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;

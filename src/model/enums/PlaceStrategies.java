@@ -1,5 +1,8 @@
 package model.enums;
 
+/**
+ * @author Mathias
+ */
 public enum PlaceStrategies {
 	RANDOM("random", "Willekeurig"), BORDER("border", "Aan de rand");
 	

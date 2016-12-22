@@ -8,6 +8,9 @@ import model.board.Ship;
 import model.enums.Direction;
 import model.player.AI;
 
+/**
+ * @author Mathias
+ */
 public class SmartRandomAttackStrategy implements AttackStrategy {
 
 	private AI ai;

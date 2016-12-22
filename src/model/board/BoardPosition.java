@@ -2,6 +2,9 @@ package model.board;
 
 import model.enums.ButtonType;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class BoardPosition {
 	
 	private Ship ship;

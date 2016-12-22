@@ -9,6 +9,9 @@ import model.enums.PlaceStrategies;
 import model.enums.ShipType;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public interface GameState {
 
 	public void squareLeftClicked(Position position, ShipType shipType, Orientation orientation, Board board) throws ModelException;

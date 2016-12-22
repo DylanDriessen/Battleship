@@ -8,6 +8,9 @@ import model.enums.ShipType;
 import view.Square;
 import view.combobox.ComboItem;
 
+/**
+ * @author Wouter
+ */
 public interface IViewFacade {
 	Square[][] getButtonsPanel1();
 	Square[][] getButtonsPanel2();

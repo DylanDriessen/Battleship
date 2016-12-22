@@ -7,6 +7,9 @@ import model.board.Position;
 import model.enums.Orientation;
 import model.enums.ShipType;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class FinishedState implements GameState {
 
 	private Game game;

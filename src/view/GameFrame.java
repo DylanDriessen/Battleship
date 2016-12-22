@@ -16,6 +16,9 @@ import model.game.GameObserver;
 import model.board.Board;
 import model.facade.IModelFacade;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class GameFrame extends JFrame implements GameObserver {
 	
 	private static final long serialVersionUID = 1L;

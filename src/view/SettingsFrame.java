@@ -16,6 +16,9 @@ import model.enums.PlaceStrategies;
 import model.facade.IModelFacade;
 import properties.PropertiesFile;
 
+/**
+ * @author Mathias, Wouter
+ */
 public class SettingsFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;

@@ -5,6 +5,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * @author Mathias
+ */
 public enum Direction {
 	EAST(1, 0, "West"), SOUTH(0, -1, "North"), WEST(-1, 0, "East"), NORTH(0, 1, "SOUTH");
 

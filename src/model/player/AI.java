@@ -10,6 +10,9 @@ import model.player.placestrategy.PlaceStrategy;
 import model.player.placestrategy.PlaceStrategyFactory;
 import properties.PropertiesFile;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class AI extends Player {
 	
 	private PlaceStrategy placeStrategy;

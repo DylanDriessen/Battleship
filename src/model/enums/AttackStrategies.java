@@ -1,5 +1,8 @@
 package model.enums;
 
+/**
+ * @author Mathias
+ */
 public enum AttackStrategies {
 	RANDOM("random", "Willekeurig"), SMARTRANDOM("smartRandom", "Mensachtig"), CHANCE("chance", "Superkrachtig");
 	

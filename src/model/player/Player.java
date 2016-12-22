@@ -2,6 +2,9 @@ package model.player;
 
 import model.board.Board;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class Player {
 	
 	private String name = "Player";

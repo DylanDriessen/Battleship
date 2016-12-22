@@ -8,6 +8,9 @@ import model.board.Position;
 import model.board.Ship;
 import model.player.AI;
 
+/**
+ * @author Mathias, Wouter
+ */
 public class ChanceAttackStrategy implements AttackStrategy {
 
 	private AI ai;

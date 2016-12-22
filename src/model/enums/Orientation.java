@@ -1,5 +1,8 @@
 package model.enums;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public enum Orientation {
 	VERTICAL("Verticaal"), HORIZONTAL("Horizontaal");
 	

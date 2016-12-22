@@ -18,6 +18,9 @@ import model.game.state.FinishedState;
 import model.game.state.GameState;
 import model.game.state.NewState;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class Game implements GameObservable {
 
 	private Player player, winner;

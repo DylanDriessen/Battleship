@@ -4,6 +4,9 @@ import exception.ModelException;
 import model.enums.AttackStrategies;
 import model.player.AI;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class AttackStrategyFactory {
 
 	public static AttackStrategy create(AttackStrategies strategy, AI ai) throws ModelException {

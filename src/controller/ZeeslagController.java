@@ -25,6 +25,9 @@ import view.combobox.ComboBox;
 import view.combobox.ComboItem;
 import view.facade.IViewFacade;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class ZeeslagController {
 
 	private final IViewFacade view;

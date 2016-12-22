@@ -10,6 +10,9 @@ import model.enums.Orientation;
 import model.enums.PlaceStrategies;
 import model.enums.ShipType;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class NewState implements GameState {
 
 	private Game game;

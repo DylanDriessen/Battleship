@@ -11,6 +11,9 @@ import model.enums.Orientation;
 import model.enums.PlaceStrategies;
 import model.enums.ShipType;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class ModelFacade implements IModelFacade {
 	
 	private Game game;

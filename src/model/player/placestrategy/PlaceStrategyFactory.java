@@ -4,6 +4,9 @@ import exception.ModelException;
 import model.enums.PlaceStrategies;
 import model.player.AI;
 
+/**
+ * @author Mathias, Wouter & Dylan
+ */
 public class PlaceStrategyFactory {
 
 	public static PlaceStrategy create(PlaceStrategies strategy, AI ai) throws ModelException {
