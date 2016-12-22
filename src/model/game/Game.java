@@ -47,7 +47,7 @@ public class Game implements GameObservable{
 		int nbOfShips = this.player.getMyBoard().getNbOfShips();
 		if (nbOfShips == 5) {
 			this.currentState = startedState;
-			this.ai.placeShips(true);
+			this.ai.placeShips(false);
 		} else {
 			throw new ModelException("Je moet nog " + (5 - nbOfShips) + " sch" + (5 - nbOfShips == 1 ? "ip" : "epen") + " op je eigen bord plaatsen.");
 		}

@@ -27,6 +27,7 @@ public class Board implements BoardObservable {
 	
 	public void init() {
 		this.changed = new ArrayList<Position>();
+		this.ships = new ArrayList<Ship>();
 		this.shipCounter = 0;
 		
 		this.shipTypeCounter = new EnumMap<ShipType, Integer>(ShipType.class){{
