@@ -14,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 
 import model.board.Board;
-import model.board.BoardObservable;
 import model.board.BoardObserver;
 import model.enums.Orientation;
 import model.enums.ShipType;

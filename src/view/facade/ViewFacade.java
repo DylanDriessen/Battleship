@@ -7,8 +7,8 @@ import javax.swing.JRadioButton;
 import model.enums.ShipType;
 import model.facade.IModelFacade;
 import view.GameFrame;
-import view.Square;
 import view.combobox.ComboItem;
+import view.square.Square;
 
 /**
  * @author Mathias, Wouter & Dylan

@@ -20,10 +20,10 @@ import model.facade.IModelFacade;
 import properties.PropertiesFile;
 import view.GamePanel;
 import view.SettingsFrame;
-import view.Square;
 import view.combobox.ComboBox;
 import view.combobox.ComboItem;
 import view.facade.IViewFacade;
+import view.square.Square;
 
 /**
  * @author Mathias, Wouter & Dylan

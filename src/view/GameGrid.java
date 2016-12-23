@@ -9,7 +9,9 @@ import javax.swing.JPanel;
 
 import model.board.Board;
 import model.board.Position;
-import model.enums.ButtonType;
+import view.square.Square;
+import view.square.SquareType;
+import view.square.SquareTypeFactory;
 
 /**
  * @author Mathias, Wouter & Dylan
@@ -42,7 +44,7 @@ public class GameGrid extends JPanel {
 		for(Position p : board.getChangedButtons()) {
 			int x = p.getX();
 			int y = p.getY();
-			ButtonType type = board.getBoardPositions()[x][y].getButtonType();
+			SquareType type = SquareTypeFactory.create(board.getBoardPositions()[x][y].getButtonType());
 			this.buttons[x][y].setBackground(type.getColor());
 			this.buttons[x][y].setBorderPainted(type.hasBorder());
 			this.buttons[x][y].setText(type.getText());

@@ -5,8 +5,8 @@ import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
 
 import model.enums.ShipType;
-import view.Square;
 import view.combobox.ComboItem;
+import view.square.Square;
 
 /**
  * @author Wouter

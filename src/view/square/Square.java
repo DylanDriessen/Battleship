@@ -1,4 +1,4 @@
-package view;
+package view.square;
 
 import java.awt.Color;
 import java.awt.Graphics;
@@ -7,10 +7,9 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 import model.board.Position;
-import model.enums.ButtonType;
 
 /**
- * @author Mathias, Wouter & Dylan
+ * @author Mathias, Wouter
  */
 public class Square extends JButton {
 
@@ -20,7 +19,7 @@ public class Square extends JButton {
 	public Square(int x, int y) {
 		super();
 		this.position = new Position(x, y);
-		this.setBackground(ButtonType.EMPTY.getColor());
+		this.setBackground(SquareType.EMPTY.getColor());
 	}
 
 	public Position getPosition() {
