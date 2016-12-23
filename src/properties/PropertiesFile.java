@@ -90,7 +90,7 @@ public class PropertiesFile {
 		this.properties.setProperty(property, value);
 	}
 	
-	public void create() {
+	private void create() {
 		PrintWriter writer = null;
 		
 		try{

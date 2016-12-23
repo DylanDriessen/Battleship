@@ -75,7 +75,7 @@ public class BoardPosition {
 		return this.color;
 	}
 	
-	public void setButtonType(ButtonType color) {
+	private void setButtonType(ButtonType color) {
 		this.color = color;
 	}
 }

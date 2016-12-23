@@ -53,7 +53,7 @@ public class GamePanel extends JPanel implements BoardObserver {
 		return this.board;
 	}
 	
-	public void setBoard(Board board) {
+	private void setBoard(Board board) {
 		this.board = board;
 	}
 	

@@ -340,10 +340,6 @@ public class Board implements BoardObservable {
 		return shipCounter;
 	}
 
-	public void setShipCounter(int shipCounter) {
-		this.shipCounter = shipCounter;
-	}
-
 	public ArrayList<Ship> getShips() {
 		return ships;
 	}

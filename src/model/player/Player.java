@@ -40,23 +40,15 @@ public class Player {
 		return enemyBoard;
 	}
 
-	public void setBoard(Board board) {
-		this.myBoard = board;
-	}
-
 	public int getScore() {
 		return this.score;
-	}
-
-	public void setScore(int score) {
-		this.score = score;
 	}
 	
 	public void decrementScore() {
 		this.score--;
 	}
 
-	public void resetScore() {
+	private void resetScore() {
 		this.score = Player.INITIAL_SCORE;
 	}
 
