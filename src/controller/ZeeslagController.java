@@ -39,9 +39,7 @@ public class ZeeslagController {
 	private SaveListener saveListener;
 	
 	/**
-	 * Constructor ZeeslagController
-	 * 
-	 * De constructor zal bij de initialisatie al de nodige listeners aanmaken om later bij userinput
+	 * De zeeslagconstructor zal bij de initialisatie al de nodige listeners aanmaken om later bij userinput
 	 * te kunnen comuniceren met de view en model. Daarna zal hij de naam van de speler vragen en het spel tonen.
 	 * 
 	 * @param model
@@ -112,6 +110,7 @@ public class ZeeslagController {
 		if(playerName == null || playerName.isEmpty()) {
 			playerName = "Player";
 		}
+		playerName = playerName.substring(0, 1).toUpperCase() + playerName.substring(1).toLowerCase();
 		this.model.setPlayerName(playerName);
 		this.view.updatePlayerNameLabel(playerName);
 	}
