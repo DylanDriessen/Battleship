@@ -9,6 +9,7 @@ import javax.swing.JPanel;
 
 import model.board.Board;
 import model.board.Position;
+import model.board.Ship;
 import model.enums.ButtonType;
 
 /**
@@ -49,10 +50,23 @@ public class GameGrid extends JPanel {
 			this.buttons[x][y].setToolTipText(type.getToolTip());
 			this.buttons[x][y].repaint();
 		}
-	}	
+	}
+	
+	public void revealBoard(Board board) {
+		for(Ship ship : board.getShips()) {
+			for(Position p : ship.getPositions()) {
+				System.out.println("repainting");
+				int x = p.getX();
+				int y = p.getY();
+				ButtonType type = board.getBoardPositions()[x][y].getButtonType();
+				this.buttons[x][y].setBackground(type.getColor());
+				this.buttons[x][y].setBorderPainted(type.hasBorder());
+				this.buttons[x][y].repaint();
+			}
+		}
+	}
 	
 	public Square[][] getButtons() {
 		return this.buttons;
 	}
-
 }
