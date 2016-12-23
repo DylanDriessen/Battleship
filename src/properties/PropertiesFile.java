@@ -40,26 +40,45 @@ public class PropertiesFile {
 	}
 	
 	public void read() {
+		InputStream is = null;
+		
 		try {
-			InputStream is = new FileInputStream(this.fileName);
+			is = new FileInputStream(this.fileName);
 			this.properties.load(is);
-			is.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			if (is != null) {
+				try {
+					is.close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
 		}
 	}
 	
 	public void write() {
+		OutputStream os = null;
+		
 		try {
-			OutputStream os = new FileOutputStream(this.fileName);
+			os = new FileOutputStream(this.fileName);
 			this.properties.store(os, null);
 			os.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			if (os != null) {
+				try {
+					os.close();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+			}
 		}
 	}
 	
@@ -72,13 +91,18 @@ public class PropertiesFile {
 	}
 	
 	public void create() {
+		PrintWriter writer = null;
+		
 		try{
-		    PrintWriter writer = new PrintWriter(this.fileName, "UTF-8");
+		    writer = new PrintWriter(this.fileName, "UTF-8");
 		    writer.println("placeStrategyAI=random");
 		    writer.println("attackStrategyAI=random");
-		    writer.close();
 		} catch (Exception e) {
 		   e.printStackTrace();
+		} finally {
+			if (writer != null) {
+				writer.close();
+			}
 		}
 	}
 }

@@ -317,7 +317,7 @@ public class Board implements BoardObservable {
 	}
 	
 	public BoardPosition[][] getBoardPositions() {
-		return this.boardPositions;
+		return this.boardPositions.clone();
 	}
 	
 	public ArrayList<Position> getChangedButtons() {
