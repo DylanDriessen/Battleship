@@ -157,7 +157,6 @@ public class SelectionPanel extends JPanel implements BoardObserver {
 		int amount = this.getSelectedShipAmount();
 		String name = amount != 1 ? this.getSelectedShipType().getPlural() : this.getSelectedShipType().getName();
 		this.shipsAvailableLabel.setText("Je kan nog " + amount + " " + name.toLowerCase() + " plaatsen");
-		System.out.println("View: " + amount + " " + name);
 	}
 
 	public JComboBox<ComboItem<ShipType>> getShipsComboBox() {
