@@ -4,31 +4,36 @@ package model.enums;
  * @author Wouter & Dylan
  */
 public enum ShipType {
-	VLIEGDEK("Vliegdekschip", 5, 1),
-	SLAG("Slagschip", 4, 2),
-	ONDERZEEËR("Onderzeeër", 3, 3),
-	TORPEDO("Torpedobootjager", 3, 3),
-	PATROUILLE("Patrouilleschip", 2, 4);
+	VLIEGDEK("Vliegdekschip", "Vliegdekschepen", 5, 1),
+	SLAG("Slagschip", "Slagschepen", 4, 2),
+	ONDERZEEËR("Onderzeeër", "Onderzeeërs", 3, 3),
+	TORPEDO("Torpedobootjager", "Torpedobootjagers", 3, 3),
+	PATROUILLE("Patrouilleschip", "Patrouilleschepen", 2, 4);
 	
-	private String name;
+	private String name, plural;
 	private int length, amount;
 	
-	ShipType(String name, int length, int amount) {
+	ShipType(String name, String plural, int length, int amount) {
 		this.name = name;
+		this.plural = plural;
 		this.length = length;
 		this.amount = amount;
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
+	}
+	
+	public String getPlural() {
+		return this.plural;
 	}
 
 	public int getLength() {
-		return length;
+		return this.length;
 	}
 
 	public int getAmount() {
-		return amount;
+		return this.amount;
 	}
 	
 	@Override

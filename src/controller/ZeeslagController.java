@@ -109,7 +109,7 @@ public class ZeeslagController {
 			playerName = "Player";
 		}
 		this.model.setPlayerName(playerName);
-		this.view.updateLabel(playerName);
+		this.view.updatePlayerNameLabel(playerName);
 	}
 	
 	/**
@@ -194,6 +194,8 @@ public class ZeeslagController {
 	 */
 	public void setShipType(ShipType shipType) {
 		this.shipType = shipType;
+		int amount = shipType.getAmount();
+		this.view.updateShipsAvailableLabel(amount > 1 ? shipType.getPlural() : shipType.getName(), shipType.getAmount());
 	}
 
 	/**
