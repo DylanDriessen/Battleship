@@ -205,7 +205,9 @@ public class ZeeslagController {
 	 */
 	public void setShipType(ShipType shipType) {
 		this.shipType = shipType;
-		this.updateShipsAvailable(this.shipType);
+		if(shipType != null) {
+			this.updateShipsAvailable(this.shipType);
+		}
 	}
 	
 	/**

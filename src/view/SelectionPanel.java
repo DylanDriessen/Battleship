@@ -1,5 +1,6 @@
 package view;
 
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -72,7 +73,8 @@ public class SelectionPanel extends JPanel implements BoardObserver {
 		this.add(this.shipsComboBox, gbc);
 
 		this.shipsAvailableLabel = new JLabel(" ");
-		this.shipsAvailableLabel.setFont(GameFrame.DEFAULT_FONT);
+		Font smallerFont = GameFrame.DEFAULT_FONT.deriveFont((float) 14.0);
+		this.shipsAvailableLabel.setFont(smallerFont);
 		gbc.gridx = 0;
 		gbc.gridy = 2;
 		gbc.gridwidth = 2;
@@ -84,7 +86,7 @@ public class SelectionPanel extends JPanel implements BoardObserver {
 		gbc.gridx = 0;
 		gbc.gridy = 3;
 		gbc.gridwidth = 2;
-		gbc.insets = new Insets(0, 0, 0, 0);
+		gbc.insets = new Insets(10, 0, 0, 0);
 		this.add(this.orientationLabel, gbc);
 
 		ButtonGroup buttonGroup = new ButtonGroup();
@@ -115,6 +117,7 @@ public class SelectionPanel extends JPanel implements BoardObserver {
 		gbc.gridx = 0;
 		gbc.gridy = 5;
 		gbc.gridwidth = 2;
+		gbc.insets = new Insets(25, 0, 0, 0);
 		this.add(this.settingsButton, gbc);
 
 		this.startButton = new JButton();
@@ -123,6 +126,7 @@ public class SelectionPanel extends JPanel implements BoardObserver {
 		gbc.gridx = 0;
 		gbc.gridy = 6;
 		gbc.gridwidth = 2;
+		gbc.insets = new Insets(15, 0, 0, 0);
 		this.add(this.startButton, gbc);
 
 		this.board = board;
