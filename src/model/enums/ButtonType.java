@@ -8,7 +8,7 @@ import java.awt.Color;
 public enum ButtonType {
 	EMPTY(new Color(165, 214, 254), true, "", null), 
 	FOCUS(new Color(67, 144, 178), false, "", null), 
-	OCCUPIED(new Color(255, 165, 58), false, "", "rightclick to remove ship"), 
+	OCCUPIED(new Color(255, 165, 58), false, "", "Rechtermuisklik om dit schip te verwijderen"), 
 	SHOT_MISSED(new Color(165, 214, 254), true, "X", null), 
 	SHOT_HIT(new Color(255, 94, 59), false, "", null),
 	SUNK(new Color(40, 40, 70), false, "", null);
