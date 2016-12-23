@@ -3,7 +3,7 @@ package view.square;
 import java.awt.Color;
 
 /**
- * @author Wouter
+ * @author Wouter, Mathias
  */
 public enum SquareType {
 	EMPTY(new Color(165, 214, 254), true, "", null), 

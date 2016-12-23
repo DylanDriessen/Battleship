@@ -10,7 +10,6 @@ import javax.swing.JPanel;
 import model.board.Board;
 import model.board.Position;
 import model.board.Ship;
-import model.enums.ButtonType;
 import view.square.Square;
 import view.square.SquareType;
 import view.square.SquareTypeFactory;
