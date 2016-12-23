@@ -86,8 +86,13 @@ public class GameFrame extends JFrame implements GameObserver {
 	
 	public void endGame() {
 		if(this.game.getWinner() != null) {
-			this.getPanelAI().getGrid().revealBoard(this.model.getBoardAI());
-			System.out.println("showing AI board");
+			new Thread() {
+	            public void run() {
+	            	getPanelAI().revealBoard();
+	    			System.out.println("showing AI board");
+	    			revalidate();
+	            }
+	        }.start();
 			this.showMessage("Game over!\n" +  this.game.getWinner().getName() + " won met " +  this.game.getWinner().getScore() + " punten.");
 			this.selectionPanel.getStartButton().setEnabled(true);
 			this.selectionPanel.getSettingsButton().setEnabled(true);
