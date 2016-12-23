@@ -168,15 +168,17 @@ public class SelectionPanel extends JPanel implements BoardObserver {
 	}
 
 	public void disableShipsAvailableLabel(boolean value) {
-		this.shipsAvailableLabel.setText("");
+		this.shipsAvailableLabel.setText("Je kan geen schepen meer plaatsen");
 		this.shipsAvailableLabel.setEnabled(value);
 	}
 	
 	public void updateShipsAvailableLabel() {
-		if (this.shipsAvailableLabel.isEnabled()) {
+		if (this.shipsAvailableLabel.isEnabled() && this.board.getNbOfShips() != this.board.getMaxNumberOfShips()) {
 			int amount = this.getAvailableShipsOfSelectedType();
 			String name = amount != 1 ? this.getSelectedShipType().getPlural() : this.getSelectedShipType().getName();
 			this.shipsAvailableLabel.setText("Je kan nog " + amount + " " + name.toLowerCase() + " plaatsen");
+		} else if (this.shipsAvailableLabel.isEnabled() && this.board.getNbOfShips() == this.board.getMaxNumberOfShips()) {
+			this.disableShipsAvailableLabel(true);
 		}
 	}
 
