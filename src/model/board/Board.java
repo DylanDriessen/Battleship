@@ -316,6 +316,10 @@ public class Board implements BoardObservable {
 		return this.shipTypeCounter.get(shipType);
 	}
 	
+	public int getMaxNumberOfShips() {
+		return this.maxNumberOfShips;
+	}
+	
 	public BoardPosition[][] getBoardPositions() {
 		return this.boardPositions.clone();
 	}

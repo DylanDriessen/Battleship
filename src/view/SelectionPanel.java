@@ -31,7 +31,7 @@ public class SelectionPanel extends JPanel implements BoardObserver {
 	private Board board;
 	private JLabel shipsLabel, shipsAvailableLabel, orientationLabel;
 	private ShipType selectedShipType;
-	private int selectedShipAmount;
+	private int availableShipsOfType;
 	private ComboBox<ComboItem<ShipType>> shipsComboBox;
 	private JRadioButton horizontal;
 	private JRadioButton vertical;
@@ -145,26 +145,39 @@ public class SelectionPanel extends JPanel implements BoardObserver {
 		this.selectedShipType = selectedShipType;
 	}
 
-	public int getSelectedShipAmount() {
-		return selectedShipAmount;
+	public int getAvailableShipsOfSelectedType() {
+		return this.availableShipsOfType;
+	}
+	
+	public int calcAvailableShipsOfSelectedType() {
+		int newAmount = this.getSelectedShipType().getAmount() - this.board.getNbOfShipTypeUsed(this.getSelectedShipType());
+		int allowedAmount = this.board.getMaxNumberOfShips() - this.board.getNbOfShips();
+		if (newAmount > allowedAmount) {
+			newAmount = allowedAmount;
+		}
+		
+		return newAmount;
 	}
 
-	public void setSelectedShipAmount(int selectedShipAmount) {
-		this.selectedShipAmount = selectedShipAmount;
+	public void setAvailableShipsOfSelectedType(int availableShipsOfType) {
+		this.availableShipsOfType = availableShipsOfType;
 	}
 
 	public JLabel getShipsAvailableLabel() {
 		return this.shipsAvailableLabel;
 	}
 
-	public void resetShipsAvailableLabel() {
+	public void disableShipsAvailableLabel(boolean value) {
 		this.shipsAvailableLabel.setText("");
+		this.shipsAvailableLabel.setEnabled(value);
 	}
 	
 	public void updateShipsAvailableLabel() {
-		int amount = this.getSelectedShipAmount();
-		String name = amount != 1 ? this.getSelectedShipType().getPlural() : this.getSelectedShipType().getName();
-		this.shipsAvailableLabel.setText("Je kan nog " + amount + " " + name.toLowerCase() + " plaatsen");
+		if (this.shipsAvailableLabel.isEnabled()) {
+			int amount = this.getAvailableShipsOfSelectedType();
+			String name = amount != 1 ? this.getSelectedShipType().getPlural() : this.getSelectedShipType().getName();
+			this.shipsAvailableLabel.setText("Je kan nog " + amount + " " + name.toLowerCase() + " plaatsen");
+		}
 	}
 
 	public JComboBox<ComboItem<ShipType>> getShipsComboBox() {
@@ -190,9 +203,8 @@ public class SelectionPanel extends JPanel implements BoardObserver {
 	@Override
 	public void update(Board board) {
 		this.setBoard(board);
-		
-		int newAmount = this.getSelectedShipType().getAmount() - this.board.getNbOfShipTypeUsed(this.getSelectedShipType());
-		this.setSelectedShipAmount(newAmount);
+		int amount = this.calcAvailableShipsOfSelectedType();
+		this.setAvailableShipsOfSelectedType(amount);
 		this.updateShipsAvailableLabel();
 	}
 

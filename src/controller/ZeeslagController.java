@@ -88,7 +88,7 @@ public class ZeeslagController {
 			this.view.getJComboBox().setEnabled(false);
 			this.view.getHorizontalButton().setEnabled(false);
 			this.view.getVerticalButton().setEnabled(false);
-			this.view.resetShipsAvailableLabel();
+			this.view.disableShipsAvailableLabel(false);
 			
 			for(int i = 0; i < 10; i++) {
 				for(int j = 0; j < 10; j++) {
@@ -217,9 +217,7 @@ public class ZeeslagController {
 	 * 		Het geselecteerde type schip in de combobox
 	 */
 	public void updateShipsAvailable(ShipType shipType) {
-		int used = this.model.getBoardPlayer().getNbOfShipTypeUsed(shipType);
-		int available = shipType.getAmount() - used;
-		this.view.updateShipsAvailableLabel(shipType, available);
+		this.view.updateShipsAvailableLabel(shipType);
 	}
 
 	/**

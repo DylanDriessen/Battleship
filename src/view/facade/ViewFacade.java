@@ -93,14 +93,15 @@ public class ViewFacade implements IViewFacade{
 	}
 	
 	@Override
-	public void resetShipsAvailableLabel() {
-		this.view.getSelectionPanel().resetShipsAvailableLabel();
+	public void disableShipsAvailableLabel(boolean value) {
+		this.view.getSelectionPanel().disableShipsAvailableLabel(value);
 	}
 
 	@Override
-	public void updateShipsAvailableLabel(ShipType shipType, int amount) {
+	public void updateShipsAvailableLabel(ShipType shipType) {
 		this.view.getSelectionPanel().setSelectedShipType(shipType);
-		this.view.getSelectionPanel().setSelectedShipAmount(amount);
+		int amount = this.view.getSelectionPanel().calcAvailableShipsOfSelectedType();
+		this.view.getSelectionPanel().setAvailableShipsOfSelectedType(amount);
 		this.view.getSelectionPanel().updateShipsAvailableLabel();
 	}
 	

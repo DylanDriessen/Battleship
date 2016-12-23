@@ -92,6 +92,7 @@ public class GameFrame extends JFrame implements GameObserver {
 			this.selectionPanel.getShipsComboBox().setEnabled(true);
 			this.selectionPanel.getHorizontal().setEnabled(true);
 			this.selectionPanel.getVertical().setEnabled(true);
+			this.selectionPanel.getShipsAvailableLabel().setEnabled(true);
 		}
 	}
 	
