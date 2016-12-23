@@ -153,6 +153,10 @@ public class SelectionPanel extends JPanel implements BoardObserver {
 		return this.shipsAvailableLabel;
 	}
 
+	public void resetShipsAvailableLabel() {
+		this.shipsAvailableLabel.setText("");
+	}
+	
 	public void updateShipsAvailableLabel() {
 		int amount = this.getSelectedShipAmount();
 		String name = amount != 1 ? this.getSelectedShipType().getPlural() : this.getSelectedShipType().getName();

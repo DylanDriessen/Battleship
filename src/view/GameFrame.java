@@ -89,6 +89,9 @@ public class GameFrame extends JFrame implements GameObserver {
 			JOptionPane.showMessageDialog(null, "Game over!\n" +  this.game.getWinner().getName() + " won met " +  this.game.getWinner().getScore() + " punten.");
 			this.selectionPanel.getStartButton().setEnabled(true);
 			this.selectionPanel.getSettingsButton().setEnabled(true);
+			this.selectionPanel.getShipsComboBox().setEnabled(true);
+			this.selectionPanel.getHorizontal().setEnabled(true);
+			this.selectionPanel.getVertical().setEnabled(true);
 		}
 	}
 	
