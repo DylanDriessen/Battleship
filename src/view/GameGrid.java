@@ -46,6 +46,7 @@ public class GameGrid extends JPanel {
 			this.buttons[x][y].setBackground(type.getColor());
 			this.buttons[x][y].setBorderPainted(type.hasBorder());
 			this.buttons[x][y].setText(type.getText());
+			this.buttons[x][y].setToolTipText(type.getToolTip());
 			this.buttons[x][y].repaint();
 		}
 	}	
