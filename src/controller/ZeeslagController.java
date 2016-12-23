@@ -194,8 +194,19 @@ public class ZeeslagController {
 	 */
 	public void setShipType(ShipType shipType) {
 		this.shipType = shipType;
-		int amount = shipType.getAmount();
-		this.view.updateShipsAvailableLabel(amount > 1 ? shipType.getPlural() : shipType.getName(), shipType.getAmount());
+		this.updateShipsAvailable(this.shipType);
+	}
+	
+	/**
+	 * Update het label dat toont hoeveel schepen je van een bepaald type je nog kan plaatsen
+	 * 
+	 * @param shipType
+	 * 		Het geselecteerde type schip in de combobox
+	 */
+	public void updateShipsAvailable(ShipType shipType) {
+		int used = this.model.getBoardPlayer().getNbOfShipTypeUsed(shipType);
+		int available = shipType.getAmount() - used;
+		this.view.updateShipsAvailableLabel(available > 1 ? shipType.getPlural() : shipType.getName(), available);
 	}
 
 	/**

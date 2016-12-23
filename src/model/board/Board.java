@@ -49,6 +49,10 @@ public class Board implements BoardObservable {
 			}
 		}
 	}
+
+	public void reset() {
+		this.init();
+	}
 	
 	/**
 	 * Als de doorgegeven positie nog niet is aangevallen, zal deze aangevallen worden.
@@ -285,9 +289,31 @@ public class Board implements BoardObservable {
 		this.shipCounter--;
 	}
 	
+	//Observer
+	@Override
+	public void addObserver(BoardObserver o) {
+		this.observers.add(o);
+	}
+
+	@Override
+	public void removeObserver(BoardObserver o) {
+		this.observers.remove(o);
+	}
+
+	@Override
+	public void notifyObservers() {
+		for(BoardObserver o : this.observers) {
+			o.update(this);
+		}
+	}
+	
 	//Getters & setters
 	public int getNbOfShips() {
 		return this.shipCounter;
+	}
+	
+	public int getNbOfShipTypeUsed(ShipType shipType) {
+		return this.shipTypeCounter.get(shipType);
 	}
 	
 	public BoardPosition[][] getBoardPositions() {
@@ -321,26 +347,4 @@ public class Board implements BoardObservable {
 	public ArrayList<Ship> getShips() {
 		return ships;
 	}
-
-	@Override
-	public void addObserver(BoardObserver o) {
-		this.observers.add(o);
-	}
-
-	@Override
-	public void removeObserver(BoardObserver o) {
-		this.observers.remove(o);
-	}
-
-	@Override
-	public void notifyObservers() {
-		for(BoardObserver o : this.observers) {
-			o.update(this);
-		}
-	}
-
-	public void reset() {
-		this.init();
-	}
-
 }
