@@ -47,14 +47,14 @@ public class GameFrame extends JFrame implements GameObserver {
 		this.setTitle("Zeeslag");
 		
 		//Init SelectionPanel
-		this.selectionPanel = new SelectionPanel();
+		Board boardPlayer = this.model.getBoardPlayer();
+		this.selectionPanel = new SelectionPanel(boardPlayer);
 		this.selectionPanel.setBorder(PADDING);
 		this.add(this.selectionPanel);
 		
 		//Init Player GamePanel
 		String playerName = this.model.getPlayerName();
 		int playerScore = this.model.getPlayerScore();
-		Board boardPlayer = this.model.getBoardPlayer();
 		this.panelPlayer = new GamePanel(this, playerName, playerScore, boardPlayer);
 		this.panelPlayer.setBorder(PADDING);
 		this.add(this.panelPlayer);

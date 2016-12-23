@@ -313,6 +313,7 @@ public class Board implements BoardObservable {
 	}
 	
 	public int getNbOfShipTypeUsed(ShipType shipType) {
+		System.out.println("NbOfShips: " + shipType.getName() + this.shipTypeCounter.get(shipType));
 		return this.shipTypeCounter.get(shipType);
 	}
 	

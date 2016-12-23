@@ -26,5 +26,5 @@ public interface IViewFacade {
 	String getStringInput(String message);
 	void startView();
 	void updatePlayerNameLabel(String playerName);
-	void updateShipsAvailableLabel(String name, int amount);
+	void updateShipsAvailableLabel(ShipType shipType, int amount);
 }

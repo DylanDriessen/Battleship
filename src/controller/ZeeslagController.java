@@ -206,7 +206,8 @@ public class ZeeslagController {
 	public void updateShipsAvailable(ShipType shipType) {
 		int used = this.model.getBoardPlayer().getNbOfShipTypeUsed(shipType);
 		int available = shipType.getAmount() - used;
-		this.view.updateShipsAvailableLabel(available > 1 ? shipType.getPlural() : shipType.getName(), available);
+		System.out.println("controller: " + shipType.getName() + " " + available);
+		this.view.updateShipsAvailableLabel(shipType, available);
 	}
 
 	/**
