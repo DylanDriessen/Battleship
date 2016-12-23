@@ -83,11 +83,19 @@ public class ZeeslagController {
 		try {
 			this.model.startGame();
 			this.view.getStartButton().setEnabled(false);
+			
 			this.view.getSettingsButton().setEnabled(false);
 			this.view.getJComboBox().setEnabled(false);
 			this.view.getHorizontalButton().setEnabled(false);
 			this.view.getVerticalButton().setEnabled(false);
 			this.view.resetShipsAvailableLabel();
+			
+			for(int i = 0; i < 10; i++) {
+				for(int j = 0; j < 10; j++) {
+					this.view.getButtonsPanel1()[i][j].setToolTipText(null);
+				}
+			}
+			
 			this.view.closeSettings();
 		} catch (ModelException e) {
 			this.view.showErrorMessage(e.getMessage());
