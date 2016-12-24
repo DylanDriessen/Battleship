@@ -39,10 +39,6 @@ public class GamePanel extends JPanel implements BoardObserver {
 		this.scoreboard.updateLabel();
 	}
 	
-	public void revealBoard() {
-		this.grid.revealBoard(this.board);		
-	}
-	
 	//Getters & setters
 
 	public GameGrid getGrid() {

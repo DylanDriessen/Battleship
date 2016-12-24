@@ -9,7 +9,7 @@ public class BoardPosition {
 	
 	private Ship ship;
 	private boolean isPlayed = false;
-	private ButtonType color = ButtonType.EMPTY;
+	private ButtonType buttonType = ButtonType.EMPTY;
 	
 	public BoardPosition() {}
 	
@@ -72,10 +72,10 @@ public class BoardPosition {
 	}
 
 	public ButtonType getButtonType() {
-		return this.color;
+		return this.buttonType;
 	}
 	
-	private void setButtonType(ButtonType color) {
-		this.color = color;
+	private void setButtonType(ButtonType buttonType) {
+		this.buttonType = buttonType;
 	}
 }

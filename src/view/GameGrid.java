@@ -54,20 +54,6 @@ public class GameGrid extends JPanel {
 		}
 	}
 	
-	public void revealBoard(Board board) {
-		for(Ship ship : board.getShips()) {
-			for(Position p : ship.getPositions()) {
-				System.out.println("repainting");
-				int x = p.getX();
-				int y = p.getY();
-				SquareType type = SquareTypeFactory.create(board.getBoardPositions()[x][y].getButtonType());
-				this.buttons[x][y].setBackground(type.getColor());
-				this.buttons[x][y].setBorderPainted(type.hasBorder());
-				this.buttons[x][y].repaint();
-			}
-		}
-	}
-	
 	public Square[][] getButtons() {
 		return this.buttons;
 	}

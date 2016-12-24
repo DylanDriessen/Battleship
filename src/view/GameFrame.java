@@ -86,13 +86,6 @@ public class GameFrame extends JFrame implements GameObserver {
 	
 	public void endGame() {
 		if(this.game.getWinner() != null) {
-			new Thread() {
-	            public void run() {
-	            	getPanelAI().revealBoard();
-	    			System.out.println("showing AI board");
-	    			revalidate();
-	            }
-	        }.start();
 			this.showMessage("Game over!\n" +  this.game.getWinner().getName() + " won met " +  this.game.getWinner().getScore() + " punten.");
 			this.selectionPanel.getStartButton().setEnabled(true);
 			this.selectionPanel.getSettingsButton().setEnabled(true);
@@ -108,9 +101,13 @@ public class GameFrame extends JFrame implements GameObserver {
 	}
 
 	public void showMessage(String message) {
-		JLabel label = new JLabel(message);
+		JLabel label = new JLabel(convertToMultiline(message));
 		label.setFont(DEFAULT_FONT);
 		JOptionPane.showMessageDialog(this, label, "", JOptionPane.WARNING_MESSAGE);
+	}
+	
+	private static String convertToMultiline(String text) {
+	    return "<html>" + text.replaceAll("\n", "<br>") + "</html>";
 	}
 
 	public String getStringInput(String message) {
