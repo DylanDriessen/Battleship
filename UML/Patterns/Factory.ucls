@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <class id="1" language="java" name="model.player.placestrategy.PlaceStrategyFactory" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/model/player/placestrategy/PlaceStrategyFactory.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="106" width="264" x="486" y="460"/>    
+    <position height="-1" width="-1" x="616" y="503"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -13,6 +13,15 @@
   <class id="2" language="java" name="model.player.attackstrategy.AttackStrategyFactory" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/model/player/attackstrategy/AttackStrategyFactory.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="616" y="390"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="view.square.SquareTypeFactory" project="OOO-Zeeslag" 
+    file="/OOO-Zeeslag/src/view/square/SquareTypeFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="616" y="616"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

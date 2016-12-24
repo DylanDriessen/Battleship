@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
   <enumeration id="1" language="java" name="model.enums.AttackStrategies" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/model/enums/AttackStrategies.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="244" y="148"/>    
+    <position height="-1" width="-1" x="245" y="111"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </enumeration>  
   <enumeration id="2" language="java" name="model.enums.ButtonType" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/model/enums/ButtonType.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="502" y="402"/>    
+    <position height="-1" width="-1" x="960" y="118"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -30,7 +30,7 @@
   </enumeration>  
   <enumeration id="4" language="java" name="model.enums.PlaceStrategies" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/model/enums/PlaceStrategies.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="464" y="137"/>    
+    <position height="-1" width="-1" x="484" y="123"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -39,7 +39,7 @@
   </enumeration>  
   <enumeration id="5" language="java" name="model.enums.Orientation" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/model/enums/Orientation.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="694" y="145"/>    
+    <position height="-1" width="-1" x="730" y="106"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -48,7 +48,16 @@
   </enumeration>  
   <enumeration id="6" language="java" name="model.enums.ShipType" project="OOO-Zeeslag" 
     file="/OOO-Zeeslag/src/model/enums/ShipType.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="719" y="400"/>    
+    <position height="-1" width="-1" x="494" y="427"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </enumeration>  
+  <enumeration id="7" language="java" name="view.square.SquareType" project="OOO-Zeeslag" 
+    file="/OOO-Zeeslag/src/view/enums/SquareType.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="751" y="428"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      

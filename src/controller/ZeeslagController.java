@@ -39,8 +39,8 @@ public class ZeeslagController {
 	private SaveListener saveListener;
 	
 	/**
-	 * De zeeslagconstructor zal bij de initialisatie al de nodige listeners aanmaken om later bij userinput
-	 * te kunnen comuniceren met de view en model. Daarna zal hij de naam van de speler vragen en het spel tonen.
+	 * De zeeslagconstructor zal bij de initialisatie al de nodige listeners aanmaken om later bij user input
+	 * te kunnen comuniceren met de view en model. Daarna zal het de naam van de speler vragen en het spel tonen.
 	 * 
 	 * @param model
 	 * @param view
